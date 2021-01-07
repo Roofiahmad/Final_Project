@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+.btn-primary {
+    @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+}
+
+.btn-primary:hover {
+    @apply bg-blue-700 text-blue-700;
+}

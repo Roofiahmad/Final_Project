@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PhotoCard from "./components/PhotoCard";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto mt-12 px-3 lg:px-0">
+      <PhotoCard />
+      <button onClick={ () => {window.location.reload()} } className="btn-primary mb-2">Generate</button>
     </div>
   );
 }
