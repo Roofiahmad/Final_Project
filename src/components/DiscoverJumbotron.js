@@ -1,5 +1,6 @@
 import React from 'react';
 import jumbotron from '../assets/jumbotron.png';
+import arrow from '../assets/arrow.png'
 
 
 const DiscoverJumbotron = () => {
@@ -10,7 +11,7 @@ const DiscoverJumbotron = () => {
                 <div className="my-auto">
                   <p className="border border-solid border-red-600 text-red-800 text-sm w-14 text-center my-2 rounded-sm">Medical</p>
                   <h1 className="font-bold text-3xl mb-6">Your little kindness is precious</h1>
-                  <a href="#" className="font-bold"><span className="text-xl font-bold">&larr;</span> See all categories </a>
+                  <a href="#" className="font-bold flex"><img src={arrow} alt="" width="20" className="mr-2"/>See all categories </a>
                 </div>
                </div>
                <div className="sm:ml-auto ml-0">

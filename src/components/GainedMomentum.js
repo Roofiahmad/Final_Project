@@ -24,7 +24,7 @@ const GainedMomentum = () => {
                         </div>
                         <div className="text-right">
                             <p className="text-sm">Goal</p>
-                            <p className="font-bold">IDR 50.000.000</p>
+                            <p>IDR 50.000.000</p>
                         </div>
                     </div>
                    </div>
@@ -46,7 +46,7 @@ const GainedMomentum = () => {
                         </div>
                         <div className="text-right">
                             <p className="text-sm">Goal</p>
-                            <p className="font-bold">IDR 50.000.000</p>
+                            <p>IDR 50.000.000</p>
                         </div>
                     </div>
                    </div>
@@ -68,7 +68,7 @@ const GainedMomentum = () => {
                         </div>
                         <div className="text-right">
                             <p className="text-sm">Goal</p>
-                            <p className="font-bold">IDR 50.000.000</p>
+                            <p>IDR 50.000.000</p>
                         </div>
                     </div>
                    </div>
