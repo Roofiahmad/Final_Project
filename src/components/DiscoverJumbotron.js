@@ -4,7 +4,7 @@ import jumbotron from '../assets/jumbotron.png';
 
 const DiscoverJumbotron = () => {
     return (
-        <div className="container mt-14 mb-32">
+        <div className="w-10/12 mt-20 mb-36 mx-auto">
            <div className="grid grid-cols-1 gap-5 justify-between md:gap-10 sm:grid-cols-3">
                <div className="grid col-span-2 mb-6">
                 <div className="my-auto">

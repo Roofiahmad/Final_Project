@@ -19,6 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
         </Switch>
+        <DiscoverJumbotron />
         <CategoryButton />
         <Newest />
        <MostUrgent />

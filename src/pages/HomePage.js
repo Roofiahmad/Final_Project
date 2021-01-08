@@ -5,7 +5,7 @@ function HomePage() {
     return (
         <div>
             <NavbarComp/>
-            This is HomePage
+            {/* This is HomePage */}
         </div>
     )
 };
