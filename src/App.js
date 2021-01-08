@@ -10,6 +10,8 @@ import DiscoverJumbotron from "./components/DiscoverJumbotron"
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from "react-router-dom";
 import SearchResult from './components/SearchResult';
+import MyProfile from './components/MyProfile';
+import EditProfile from './components/EditProfile';
 
 
 
@@ -20,6 +22,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
         </Switch>
+        <EditProfile />
+        <MyProfile />
         <SearchResult />
         <DiscoverJumbotron />
         <CategoryButton />
