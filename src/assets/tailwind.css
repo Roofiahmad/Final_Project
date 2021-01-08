@@ -50,3 +50,7 @@
 .bg-copper {
     background-color: #A87B14;
 }
+
+.bg-modal {
+    background-image: url(../assets/modalbg.png);
+}
