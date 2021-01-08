@@ -8,6 +8,10 @@ function NavbarComp() {
         setToggleLogin(!ToggleLogin);
         setToggleRegister(!ToggleRegister);
     }
+
+    localStorage.setItem("login", "yes");
+
+    const isLogged = localStorage.getItem("login");
     
     return (
         <div className="bg-white h-20 shadow-md">
@@ -26,6 +30,16 @@ function NavbarComp() {
                     </div>
                 </div>
                 <div className={`${isMobile ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row items-center lg:mx-20 z-10 lg:z-0 bg-white shadow-md rounded lg:rounded-none lg:shadow-none py-10 lg:py-0 w-full lg:w-auto`}>
+                    {isLogged ? (
+                    <div className="block px-3 ">
+                        <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> CREATE CAMPAIGN </button>
+                    </div>
+                    ) :null}
+                    {isLogged ? (
+                    <div className="block px-3 ">
+                        <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> DONATE </button>
+                    </div>
+                    ) :null}
                     <div className="block px-3">
                         <button className="block h-5 w-5 text-tosca focus:outline-none focus:text-gray-500">
                             <svg className="" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,14 +50,30 @@ function NavbarComp() {
                     <div className="text-tosca text-xl font-light">
                         <h1>Search</h1>
                     </div>
+                    {!isLogged ? (
                     <div className="block px-3 text-sky text-sm lg:text-xl ">|</div>
+                    ) :null}
+                    {!isLogged ? (
                     <div className="block px-3 ">
                         <button onClick={() => setToggleLogin(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> Login </button>
                     </div>
+                    ) :null}
+                    {!isLogged ? (
                     <div className="block px-3 text-sky text-sm lg:text-xl">|</div>
+                    ) :null}
+                    {!isLogged ? (
                     <div className="block px-3 ">
                         <button onClick={() => setToggleRegister(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> Register </button>
                     </div>
+                    ) :null}
+                    {isLogged ? (
+                    <div className="block px-3 text-sky text-sm lg:text-xl">|</div>
+                    ) :null}
+                    {isLogged ? (
+                    <div className="block px-3 ">
+                        <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> My Profile </button>
+                    </div>
+                    ) :null}
                 </div>
             </div>
 
