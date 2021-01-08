@@ -2,11 +2,18 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 .btn-primary {
-    @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
 }
 
 .btn-primary:hover {
-    @apply bg-blue-700 text-blue-700;
+  @apply bg-blue-700 text-blue-700;
+}
+
+.btn-red {
+  @apply bg-red-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+}
+
+.btn-red:hover {
+  @apply bg-red-700 text-white;
 }
