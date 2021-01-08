@@ -6,17 +6,7 @@ import MostUrgent from "./components/MostUrgent"
 import GainedMomentum from "./components/GainedMomentum"
 import DiscoverJumbotron from "./components/DiscoverJumbotron"
 
-// function App() {
-//   return (
-//     <div className="container mx-auto mt-12 px-3 lg:px-0">
-//       {/* <PhotoCard />
-//       <button onClick={ () => {window.location.reload()} } className="btn-primary mb-2">Generate</button> */}
-//       <DiscoverJumbotron />
-//       <CategoryButton />
-//       <Newest />
-//       <MostUrgent />
-//       <GainedMomentum />
-//     </div>
+
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from "react-router-dom";
 
@@ -29,9 +19,25 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
         </Switch>
+        <CategoryButton />
+        <Newest />
+       <MostUrgent />
+       <GainedMomentum />
       </div>
     </Router>
   );
 }
 
 export default App;
+
+{/*function App() {
+  return (
+    <div className="container mx-auto mt-12 px-3 lg:px-0">
+      <PhotoCard />
+      <button onClick={ () => {window.location.reload()} } className="btn-primary mb-2">Generate</button>
+      <DiscoverJumbotron />
+      <CategoryButton />
+      <Newest />
+      <MostUrgent />
+      <GainedMomentum />
+  </div>*/}
