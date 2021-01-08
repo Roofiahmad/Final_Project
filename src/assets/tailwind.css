@@ -54,3 +54,7 @@
 .bg-modal {
     background-image: url(../assets/modalbg.png);
 }
+
+.border-rose {
+    border-color: #A43F3C;
+}
