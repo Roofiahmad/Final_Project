@@ -6,7 +6,7 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomePage} />
           <Route
             exact
             path="/fundraiser"
