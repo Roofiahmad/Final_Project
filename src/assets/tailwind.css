@@ -1,7 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 .btn-primary {
     @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
@@ -55,6 +55,38 @@
     background-image: url(../assets/modalbg.png);
 }
 
+.bg-jumbotron {
+    background-image: url(../assets/bg-jumbo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .border-rose {
     border-color: #A43F3C;
+}
+
+h1, h2, h3 button, a {
+    font-family: 'Nunito', sans-serif;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot:focus {
+  height: 0px;
+  width: 0px;
+  background-color: #A87B14;
+  border: none;
+  padding: 7.5px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  outline: none;
 }
