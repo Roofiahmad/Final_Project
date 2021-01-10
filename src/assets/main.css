@@ -29128,6 +29128,8 @@ video {
   animation: bounce 1s infinite;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 .btn-primary {
   --tw-bg-opacity: 1;
   background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
@@ -29197,8 +29199,40 @@ video {
   background-image: url(../assets/modalbg.png);
 }
 
+.bg-jumbotron {
+  background-image: url(../assets/bg-jumbo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .border-rose {
   border-color: #A43F3C;
+}
+
+h1, h2, h3 button, a {
+  font-family: 'Nunito', sans-serif;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot:focus {
+  height: 0px;
+  width: 0px;
+  background-color: #A87B14;
+  border: none;
+  padding: 7.5px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  outline: none;
 }
 
 @media (min-width: 640px) {

@@ -1,9 +1,10 @@
 import React from 'react';
+import HomeJumbotron from '../components/HomeJumbotron';
 
 function HomePage() {
     return (
         <div>
-            This is HomePage
+            <HomeJumbotron/>
         </div>
     )
 };
