@@ -2,7 +2,7 @@ import React from 'react';
 import card from '../assets/card.png';
 
 
-const CategoryButton = () => {
+const Newest = () => {
     return (
         <div className="w-10/12 mt-28 mb-5 mx-auto">
            <h4 className="font-bold underline mb-4">Newest</h4>
@@ -78,4 +78,4 @@ const CategoryButton = () => {
     )
 }
 
-export default CategoryButton;
+export default Newest
