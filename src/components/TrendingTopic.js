@@ -6,7 +6,7 @@ import close from "../assets/close.png"
 function TrendingTopic() {
     return (
         <div>
-            <div className="container lg:mx-auto">
+            <div className="w-10/12 mt-28 mb-5 mx-auto">
                 <div className="">
                     <h1 className="font-thin text-xl text-rose">
                         Trending Topic

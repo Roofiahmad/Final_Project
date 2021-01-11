@@ -1,10 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-<<<<<<< HEAD
-=======
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
->>>>>>> 03f36ffea461deb0ab0c5824deac7f36728fe82c
 
 .btn-primary {
   @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
@@ -21,8 +18,9 @@
 .btn-red:hover {
   @apply bg-red-700 text-white;
 }
+
 .btn-outline-red {
-  @apply bg-transparent	rounded text-tosca transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-transparent rounded text-tosca transition duration-300 cursor-pointer px-8 py-2 mt-2;
   border: 1px solid #1d94a8;
 }
 
@@ -32,12 +30,14 @@
   transform: translateY(-5px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
+
 .btn-outline-red:active {
   border: 1px solid #a43f3c;
   outline: none;
   transform: translateY(-3px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
+
 .btn-outline-red:focus {
   outline: none;
 }
@@ -55,6 +55,7 @@
   transform: translateY(-5px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
+
 .btn-outline-tosca:active {
   border-color: #1d94a8;
   outline: none;
@@ -69,8 +70,9 @@
 .campaign-text-setting {
   @apply mb-1 p-1;
 }
+
 .campaign-text-setting:hover {
-  @apply text-red-600  bg-gray-50 rounded-sm transition duration-300 cursor-pointer;
+  @apply text-red-600 bg-gray-50 rounded-sm transition duration-300 cursor-pointer;
 }
 
 .text-tosca {
@@ -122,26 +124,29 @@
 }
 
 .bg-jumbotron {
-    background-image: url(../assets/bg-jumbo.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(../assets/bg-jumbo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .border-rose {
-    border-color: #A43F3C;
+  border-color: #A43F3C;
 }
 
-h1, h2, h3 button, a {
-    font-family: 'Nunito', sans-serif;
+h1,
+h2,
+h3 button,
+a {
+  font-family: 'Nunito', sans-serif;
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .dot:focus {
