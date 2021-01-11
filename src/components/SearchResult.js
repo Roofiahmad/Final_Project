@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import arrow from '../assets/arrow.png';
 import card from '../assets/card.png';
 import iconsort from '../assets/sort.png';
+import { Link } from "react-router-dom";
 
 
 const SearchResult = () => {
   const [sort, setSort] = useState(false)
     return (
-        <div className="mt-20 mb-36">
+        <div className="mt-16 mb-36">
           <div className="w-10/12 mx-auto">
           <h1 className="font-bold text-3xl mb-6">Result for "medical help"</h1>
-          <a href="#" className="font-bold flex mb-24"><img src={arrow} alt="" width="20" className="mr-2"/>See all categories</a>
+          <Link to="/discover" className="font-bold flex mb-24"><img src={arrow} alt="" width="20" className="mr-2"/>See all categories</Link>
           <button className="font-bold flex mb-5 bg-white hover:bg-blue" onClick={() => setSort(!sort)}>Sort
           <img src={iconsort} alt="" width="20" className="ml-2"/>
           {sort ? (

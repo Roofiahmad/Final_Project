@@ -7,17 +7,18 @@ import humanity from '../assets/humanity.png';
 import medical from '../assets/medical.png';
 import religious from '../assets/religious.png';
 import sociopreneur from '../assets/sociopreneur.png';
+import { Link } from 'react-router-dom';
 
 const CategoryButton = () => {
     return (
-        <div className="w-11/12 mx-auto mb-32 sm:w-10/12">
+        <div className="w-11/12 mx-auto mt-16 mb-32 sm:w-10/12">
             <h1 className="font-bold text-2xl">Find Cause you truly care about</h1>
             <div className="flex flex-wrap justify-center items-end mx-auto mt-14 w-11/12 md:w-10/12">
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1 hover:bg-blue-100 cursor-pointer">
-                    <a href="#" className="m-auto">
+                    <Link to="discover-category" className="m-auto">
                         <img src={disability} alt="disability" className="mx-auto h-8"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Disability</p>
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1 hover:bg-blue-100 cursor-pointer">
                     <a href="#" className="m-auto">
