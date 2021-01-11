@@ -9,7 +9,7 @@ function NavbarComp() {
         setToggleRegister(!ToggleRegister);
     }
 
-    localStorage.setItem("login", "yes");
+    // localStorage.setItem("login", "yes");
 
     const isLogged = localStorage.getItem("login");
     
@@ -19,7 +19,7 @@ function NavbarComp() {
                 <div className="flex items-center justify-between mx-5 lg:mx-20">
                     <div className="text-tosca flex items-center justify-between">
                         <img className=" h-7 lg:h-10 my-5" src="https://drive.google.com/uc?export=view&id=1mFBGzM1N38-Pr51DVAWXk-BFPtCjFgMM" alt="tali-kasih-logo"/>
-                        <h1 className="font-medium text-2xl lg:text-3xl ml-2">TALI</h1> <span> <h1 className="font-light text-2xl lg:text-3xl">KASIH</h1></span>
+                        <h1 className="text-2xl lg:text-3xl ml-2 font-semibold">TALI</h1> <span> <h1 className="font-light text-2xl lg:text-3xl">KASIH</h1></span>
                     </div>
                     <div>
                         <button onClick={() => setisMobile(!isMobile)} className="h-7 w-7 text-tosca focus:outline-none focus:text-gray-500 lg:hidden">
