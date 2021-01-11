@@ -69,7 +69,7 @@ export default function JumbotronCampaignDetail(props) {
               onClick={props.toggleHandler}
               className="btn-outline-red uppercase"
             >
-              New Progress
+              {props.role == "fundraiser" ? "New Progress " : "Donate"}
             </button>
           </div>
         </div>

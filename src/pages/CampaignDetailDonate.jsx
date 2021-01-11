@@ -4,22 +4,17 @@ import CampaignTimeline from "../components/CampaignTimeline";
 import CommentCampaignDetail from "../components/CommentCampaignDetail";
 import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
-import ModalsCampaignUpdate from "../components/ModalsCampaignUpdate";
+import PostComment from "../components/PostComment";
 
-export default function CampaignDetailFundraiser() {
-  const role = "fundraiser";
-  const [modal, setModal] = useState(false);
-  const toggleHandler = () => {
-    setModal(!modal);
-  };
+export default function CampaignDetailDonate() {
+  const role = "donatur";
   return (
     <div className="w-11/12 mx-auto relative">
-      <JumbotronCampaignDetail role={role} toggleHandler={toggleHandler} />
+      <JumbotronCampaignDetail role={role} />
       <CampaignStory />
       <CampaignTimeline />
       <DonaturTimeline />
-      <CommentCampaignDetail />
-      {modal ? <ModalsCampaignUpdate toggleHandler={toggleHandler} /> : null}
+      <CommentCampaignDetail role={role} />
     </div>
   );
 }

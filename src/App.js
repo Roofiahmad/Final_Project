@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComp from "../src/components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
+import CampaignDetailDonate from "./pages/CampaignDetailDonate";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             path="/fundraiser"
             component={CampaignDetailFundraiser}
           />
+          <Route exact path="/donate" component={CampaignDetailDonate} />
         </Switch>
       </div>
     </Router>
