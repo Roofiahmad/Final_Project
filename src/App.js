@@ -13,6 +13,9 @@ import EditProfile from './components/EditProfile';
 import NavbarComp from './components/NavbarComp';
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
+import ResetPassword from './components/ResetPassword';
+import MyDonation from './components/MyDonation';
+import MyCampaign from './components/MyCampaign';
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
             component={CampaignDetailFundraiser}
           />
         </Switch>
+        <MyCampaign />
+        <MyDonation />
+        <ResetPassword />
         <EditProfile />
         <MyProfile />
         <SearchResult />

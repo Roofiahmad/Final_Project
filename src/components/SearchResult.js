@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import arrow from '../assets/arrow.png';
 import card from '../assets/card.png';
-import sort from '../assets/sort.png';
+import iconsort from '../assets/sort.png';
 
 
 const SearchResult = () => {
+  const [sort, setSort] = useState(false)
     return (
         <div className="mt-20 mb-36">
           <div className="w-10/12 mx-auto">
           <h1 className="font-bold text-3xl mb-6">Result for "medical help"</h1>
           <a href="#" className="font-bold flex mb-24"><img src={arrow} alt="" width="20" className="mr-2"/>See all categories</a>
-          <a href="#" className="font-bold flex mb-5">Sort<img src={sort} alt="" width="20" className="ml-2"/></a>
+          <button className="font-bold flex mb-5 bg-white hover:bg-blue" onClick={() => setSort(!sort)}>Sort
+          <img src={iconsort} alt="" width="20" className="ml-2"/>
+          {sort ? (
+            <div className="z-10 absolute shadow-md bg-white py-2 px-3 font-normal text-md text-left mt-8">
+              <ul className="hover:">
+                <li className="campaign-text-setting text-md">Newest</li>
+                <li className="campaign-text-setting text-md">Most urgent</li>
+                <li className="campaign-text-setting text-md">Popular</li>
+                <li className="campaign-text-setting text-md">Less donation</li>
+              </ul>
+            </div>
+          ) : null}
+          </button>
             <div className="grid grid-cols-1 gap-5 justify-between md:gap-14 sm:grid-cols-3">
               <div className="shadow-md">
                 <img src={card} alt=""/>
