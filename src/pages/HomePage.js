@@ -4,7 +4,7 @@ import HomeJumbotron from '../components/HomeJumbotron';
 function HomePage() {
     return (
         <div>
-            <NavbarComp/>
+            {/* <NavbarComp/> */}
             {/* This is HomePage */}
             <HomeJumbotron/>
         </div>

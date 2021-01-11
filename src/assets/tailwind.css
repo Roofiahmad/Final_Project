@@ -66,7 +66,10 @@
     border-color: #A43F3C;
 }
 
-h1, h2, h3 button, a {
+h1,
+h2,
+h3 button,
+a {
     font-family: 'Nunito', sans-serif;
 }
 
@@ -79,14 +82,14 @@ h1, h2, h3 button, a {
 }
 
 .dot:focus {
-  height: 0px;
-  width: 0px;
-  background-color: #A87B14;
-  border: none;
-  padding: 7.5px 20px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 16px;
-  outline: none;
+    height: 0px;
+    width: 0px;
+    background-color: #A87B14;
+    border: none;
+    padding: 7.5px 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 16px;
+    outline: none;
 }

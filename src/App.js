@@ -5,22 +5,19 @@ import Newest from "./components/Newest"
 import MostUrgent from "./components/MostUrgent"
 import GainedMomentum from "./components/GainedMomentum"
 import DiscoverJumbotron from "./components/DiscoverJumbotron"
-
-
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from "react-router-dom";
 import SearchResult from './components/SearchResult';
 import MyProfile from './components/MyProfile';
 import EditProfile from './components/EditProfile';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import NavbarComp from '../src/components/NavbarComp';
+import NavbarComp from './components/NavbarComp';
 
 
 
 function App() {
   return (
     <Router>
-    <NavbarComp/>
+    <NavbarComp />
       <div>
         <Switch>
           <Route exact path="/" component={HomePage} />

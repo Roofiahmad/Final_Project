@@ -55,49 +55,49 @@ const CategoryButton = () => {
             <div className="flex flex-wrap justify-center items-end mx-auto mt-14 w-11/12 md:w-8/12">
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={disability} alt="disability" width="40" className="mx-auto"/>
+                        <img src={disability} alt="disability" height="40" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Disability</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={disaster} alt="disaster" width="50" className="mx-auto"/>
+                        <img src={disaster} alt="disaster" height="50" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Disaster</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={education} alt="education" width="50" className="mx-auto"/>
+                        <img src={education} alt="education" height="50" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Education</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={environment} alt="environment" width="40" className="mx-auto"/>
+                        <img src={environment} alt="environment" height="40" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Environment</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={humanity} alt="humanity" width="40" className="mx-auto"/>
+                        <img src={humanity} alt="humanity" height="40" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Humanity</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={medical} alt="medical" width="40" className="mx-auto"/>
+                        <img src={medical} alt="medical" height="40" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Medical</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={religious} alt="religious" width="40" className="mx-auto"/>
+                        <img src={religious} alt="religious" height="40" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Religious</p>
                     </a>
                 </div>
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1">
                     <a href="#" className="my-auto mx-auto">
-                        <img src={sociopreneur} alt="sociopreneur" width="40" className="mx-auto"/>
+                        <img src={sociopreneur} alt="sociopreneur" height="40" className="mx-auto"/>
                         <p className="pt-2 pb-0 text-xs text-gray-700">Sociopreneur</p>
                     </a>
                 </div>

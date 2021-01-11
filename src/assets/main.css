@@ -29210,7 +29210,10 @@ video {
   border-color: #A43F3C;
 }
 
-h1, h2, h3 button, a {
+h1,
+h2,
+h3 button,
+a {
   font-family: 'Nunito', sans-serif;
 }
 
