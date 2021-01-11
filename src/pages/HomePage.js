@@ -1,13 +1,7 @@
-import React from 'react';
-import NavbarComp from '../components/NavbarComp';
+import React from "react";
 
 function HomePage() {
-    return (
-        <div>
-            <NavbarComp/>
-            This is HomePage
-        </div>
-    )
-};
+  return <div>This is HomePage</div>;
+}
 
 export default HomePage;

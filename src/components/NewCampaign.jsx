@@ -22,9 +22,9 @@ export default function NewCampaign() {
     console.log(e.target.story.value);
   };
   return (
-    <div className="w-10/12 mx-auto relative">
+    <div className="w-10/12 mx-auto relative ">
       <div className="pb-4">
-        <h2>New Campaign</h2>
+        <h2 className="text-3xl font-medium my-4">New Campaign</h2>
       </div>
       <hr className="border-b-3 border-gray-400 pb-3" />
       <hr />
@@ -57,10 +57,11 @@ export default function NewCampaign() {
           />
           <hr className="border-b-3 border-gray-400 pb-3" />
         </div>
-        <button type="submit" className="btn-red absolute right-0 -bottom-15">
+        <button type="submit" className="btn-red float-right">
           Submit
         </button>
       </form>
+      <div className="h-40"></div>
     </div>
   );
 }
