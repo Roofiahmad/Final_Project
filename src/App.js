@@ -11,8 +11,6 @@ import SearchResult from './components/SearchResult';
 import MyProfile from './components/MyProfile';
 import EditProfile from './components/EditProfile';
 import NavbarComp from './components/NavbarComp';
-import HomePage from "./pages/HomePage";
-import NavbarComp from "../src/components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 
