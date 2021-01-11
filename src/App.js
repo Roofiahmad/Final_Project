@@ -11,16 +11,24 @@ import SearchResult from './components/SearchResult';
 import MyProfile from './components/MyProfile';
 import EditProfile from './components/EditProfile';
 import NavbarComp from './components/NavbarComp';
-
-
+import HomePage from "./pages/HomePage";
+import NavbarComp from "../src/components/NavbarComp";
+import NewCampaign from "./components/NewCampaign";
+import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 
 function App() {
   return (
     <Router>
-    <NavbarComp />
+      <NavbarComp />
       <div>
         <Switch>
+          <Route exact path="/newcampaign" component={NewCampaign} />
           <Route exact path="/" component={HomePage} />
+          <Route
+            exact
+            path="/fundraiser"
+            component={CampaignDetailFundraiser}
+          />
         </Switch>
         <EditProfile />
         <MyProfile />
