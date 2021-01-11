@@ -1,58 +1,124 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+<<<<<<< HEAD
+=======
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+>>>>>>> 03f36ffea461deb0ab0c5824deac7f36728fe82c
 
 .btn-primary {
-    @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
 }
 
 .btn-primary:hover {
-    @apply bg-blue-700 text-blue-700;
+  @apply bg-blue-700 text-blue-700;
+}
+
+.btn-red {
+  @apply bg-red-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+}
+
+.btn-red:hover {
+  @apply bg-red-700 text-white;
+}
+.btn-outline-red {
+  @apply bg-transparent	rounded text-tosca transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  border: 1px solid #1d94a8;
+}
+
+.btn-outline-red:hover {
+  @apply bg-red-700 text-white;
+  border: 1px solid #a43f3c;
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn-outline-red:active {
+  border: 1px solid #a43f3c;
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.btn-outline-red:focus {
+  outline: none;
+}
+
+.btn-outline-tosca {
+  @apply border rounded px-8 py-2 transition duration-300 cursor-pointer;
+  border-color: #1d94a8;
+  color: #1d94a8;
+}
+
+.btn-outline-tosca:hover {
+  @apply border text-white;
+  border-color: #1d94a8;
+  background-color: #1d94a8;
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn-outline-tosca:active {
+  border-color: #1d94a8;
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-tosca:focus {
+  outline: none;
+}
+
+.campaign-text-setting {
+  @apply mb-1 p-1;
+}
+.campaign-text-setting:hover {
+  @apply text-red-600  bg-gray-50 rounded-sm transition duration-300 cursor-pointer;
 }
 
 .text-tosca {
-    color: #1D94A8;
+  color: #1d94a8;
 }
 
 .text-silk {
-    color: #F1EDE4;
+  color: #f1ede4;
 }
 
 .text-rose {
-    color: #A43F3C;
+  color: #a43f3c;
 }
 
 .text-sky {
-    color: #A6DEE8;
+  color: #a6dee8;
 }
 
 .text-copper {
-    color: #A87B14;
+  color: #a87b14;
 }
 
 .bg-tosca {
-    background-color: #1D94A8;
+  background-color: #1d94a8;
 }
 
 .bg-silk {
-    background-color: #F1EDE4;
+  background-color: #f1ede4;
 }
 
 .bg-rose {
-    background-color: #A43F3C;
+  background-color: #a43f3c;
 }
 
 .bg-sky {
-    background-color: #A6DEE8;
+  background-color: #a6dee8;
 }
 
 .bg-copper {
-    background-color: #A87B14;
+  background-color: #a87b14;
+}
+
+.border-tosca {
+  border-color: #1d94a8;
 }
 
 .bg-modal {
-    background-image: url(../assets/modalbg.png);
+  background-image: url(../assets/modalbg.png);
 }
 
 .bg-jumbotron {
