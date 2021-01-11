@@ -112,3 +112,11 @@
 .border-tosca {
   border-color: #1d94a8;
 }
+
+.bg-modal {
+  background-image: url(../assets/modalbg.png);
+}
+
+.border-rose {
+  border-color: #a43f3c;
+}

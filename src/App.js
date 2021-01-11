@@ -1,21 +1,15 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavbarComp from "../src/components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
-import NavbarComp from "./components/NavbarComp";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <NavbarComp />
+    <Router>
+      <NavbarComp />
+      <div>
         <Switch>
           <Route exact path="/newcampaign" component={NewCampaign} />
           <Route exact path="/" component={HomePage} />
@@ -25,8 +19,8 @@ function App() {
             component={CampaignDetailFundraiser}
           />
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

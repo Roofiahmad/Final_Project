@@ -29315,6 +29315,14 @@ video {
   border-color: #1d94a8;
 }
 
+.bg-modal {
+  background-image: url(../assets/modalbg.png);
+}
+
+.border-rose {
+  border-color: #A43F3C;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
