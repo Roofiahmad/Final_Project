@@ -3,7 +3,7 @@ import card2 from '../assets/card.png';
 
 const MyCampaign = () => {
   return (
-    <div className="w-10/12 mt-96 mb-36 mx-auto border border-solid p-5">
+    <div className="w-11/12 mt-96 mb-36 mx-auto border border-solid p-5">
       <h2 className="font-bold text-xl mb-5">My Campaign (23)</h2>
       <div className="grid grid-cols-1 gap-10 w-9/12 mx-auto mb-12 lg:grid-cols-2 w-11/12">
         <div className="shadow-md max-w-md mx-auto">

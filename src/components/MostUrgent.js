@@ -6,7 +6,7 @@ const MostUrgent = () => {
     return (
         <div className="w-10/12 mt-24 mb-5 mx-auto">
            <h4 className="font-bold underline mb-4">Most Urgent</h4>
-           <div className="grid grid-cols-1 gap-5 justify-between md:gap-14 sm:grid-cols-3">
+           <div className="grid grid-cols-1 gap-10 justify-between xl:grid-cols-3 md:grid-cols-2">
                <div className="shadow-md">
                    <img src={card} alt=""/>
                    <div className="w-5/6 mx-auto pb-4 pt-2">

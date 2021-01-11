@@ -10,7 +10,7 @@ import sociopreneur from '../assets/sociopreneur.png';
 
 const CategoryButton = () => {
     return (
-        <div className="w-10/12 mx-auto mb-32">
+        <div className="w-11/12 mx-auto mb-32 sm:w-10/12">
             <h1 className="font-bold text-2xl">Find Cause you truly care about</h1>
             <div className="flex flex-wrap justify-center items-end mx-auto mt-14 w-11/12 md:w-10/12">
                 <div className="flex-shrink-0 text-center flex shadow-md h-24 w-24 m-1 hover:bg-blue-100 cursor-pointer">
