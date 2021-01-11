@@ -29128,6 +29128,8 @@ video {
   animation: bounce 1s infinite;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 .btn-primary {
   --tw-bg-opacity: 1;
   background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
@@ -29153,44 +29155,209 @@ video {
   color: rgba(29, 78, 216, var(--tw-text-opacity));
 }
 
+.btn-red {
+  --tw-bg-opacity: 1;
+  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 300ms;
+}
+
+.btn-red:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-outline-red {
+  background-color: transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 300ms;
+  color: #1d94a8;
+  border: 1px solid #1d94a8;
+}
+
+.btn-outline-red:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  border: 1px solid #a43f3c;
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-red:active {
+  border: 1px solid #a43f3c;
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-red:focus {
+  outline: none;
+}
+
+.btn-outline-tosca {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 300ms;
+  border-color: #1d94a8;
+  color: #1d94a8;
+}
+
+.btn-outline-tosca:hover {
+  border-width: 1px;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  border-color: #1d94a8;
+  background-color: #1d94a8;
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-tosca:active {
+  border-color: #1d94a8;
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-tosca:focus {
+  outline: none;
+}
+
+.campaign-text-setting {
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+}
+
+.campaign-text-setting:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+  border-radius: 0.125rem;
+  cursor: pointer;
+  --tw-text-opacity: 1;
+  color: rgba(220, 38, 38, var(--tw-text-opacity));
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 300ms;
+}
+
 .text-tosca {
-  color: #1D94A8;
+  color: #1d94a8;
 }
 
 .text-silk {
-  color: #F1EDE4;
+  color: #f1ede4;
 }
 
 .text-rose {
-  color: #A43F3C;
+  color: #a43f3c;
 }
 
 .text-sky {
-  color: #A6DEE8;
+  color: #a6dee8;
 }
 
 .text-copper {
-  color: #A87B14;
+  color: #a87b14;
 }
 
 .bg-tosca {
-  background-color: #1D94A8;
+  background-color: #1d94a8;
 }
 
 .bg-silk {
-  background-color: #F1EDE4;
+  background-color: #f1ede4;
 }
 
 .bg-rose {
-  background-color: #A43F3C;
+  background-color: #a43f3c;
 }
 
 .bg-sky {
-  background-color: #A6DEE8;
+  background-color: #a6dee8;
 }
 
 .bg-copper {
+  background-color: #a87b14;
+}
+
+.border-tosca {
+  border-color: #1d94a8;
+}
+
+.bg-modal {
+  background-image: url(../assets/modalbg.png);
+}
+
+.bg-jumbotron {
+  background-image: url(../assets/bg-jumbo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.border-rose {
+  border-color: #A43F3C;
+}
+
+h1,
+h2,
+h3 button,
+a {
+  font-family: 'Nunito', sans-serif;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot:focus {
+  height: 0px;
+  width: 0px;
   background-color: #A87B14;
+  border: none;
+  padding: 7.5px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  outline: none;
 }
 
 @media (min-width: 640px) {

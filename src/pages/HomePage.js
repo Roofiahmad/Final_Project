@@ -1,11 +1,12 @@
-import React from 'react';
-import NavbarComp from '../components/NavbarComp';
+import React from "react";
+import HomeJumbotron from "../components/HomeJumbotron";
 
 function HomePage() {
     return (
         <div>
-            <NavbarComp/>
+            {/* <NavbarComp/> */}
             {/* This is HomePage */}
+            <HomeJumbotron/>
         </div>
     )
 };
