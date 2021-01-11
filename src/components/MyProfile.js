@@ -4,7 +4,7 @@ import profile from '../assets/profile.png'
 
 const MyProfile = () => {
     return (
-      <div className="w-11/12 mt-96 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
+      <div className="w-11/12 mt-40 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
         <div className="flex justify-between mb-5">
           <h2 className="font-bold text-xl">My Profile</h2>
           <a href="#" className="text-red-800 underline font-bold">Logout</a>

@@ -5,7 +5,7 @@ import profile from '../assets/profile.png'
 
 const EditProfile = () => {
     return (
-        <div className="w-11/12 mt-96 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
+        <div className="w-11/12 mt-40 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
            <h2 className="font-bold text-xl mb-5">Edit Profile</h2>
            <img src={profile} alt="" className="mx-auto"/>
            <a href="#" className="text-tosca underline font-bold flex justify-center mt-3">Change Image Profile</a>

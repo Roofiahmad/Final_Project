@@ -81,7 +81,7 @@ const SearchResult = () => {
               </div>
               </div>
               <div className="w-10/12 mx-auto mt-20">
-            <nav className="flex justify-end shadow-sm" aria-label="Pagination">
+            <nav className="flex justify-end" aria-label="Pagination">
               <a href="#" className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                 <span className="sr-only">Previous</span>
                 <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
