@@ -12,12 +12,15 @@ import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from "re
 import SearchResult from './components/SearchResult';
 import MyProfile from './components/MyProfile';
 import EditProfile from './components/EditProfile';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavbarComp from '../src/components/NavbarComp';
 
 
 
 function App() {
   return (
     <Router>
+    <NavbarComp/>
       <div>
         <Switch>
           <Route exact path="/" component={HomePage} />
