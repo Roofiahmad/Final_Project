@@ -3,7 +3,7 @@ import React from "react";
 export default function UploadFile() {
   return (
     <div className="mx-auto flex w-full h-96 items-center justify-center bg-gray-300 rounded-md">
-      <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-gray-700 cursor-pointer hover:bg-gray-400 hover:text-gray-100">
+      <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-700 rounded-lg shadow-lg tracking-wide uppercase border border-gray-700 cursor-pointer hover:bg-gray-400 transform duration-500 hover:-translate-y-2 hover:text-gray-100">
         <svg
           className="w-8 h-8"
           fill="currentColor"
