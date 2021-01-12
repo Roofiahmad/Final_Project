@@ -13,6 +13,7 @@ import EditProfile from './components/EditProfile';
 import NavbarComp from './components/NavbarComp';
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -28,14 +29,7 @@ function App() {
             component={CampaignDetailFundraiser}
           />
         </Switch>
-        <EditProfile />
-        <MyProfile />
-        <SearchResult />
-        <DiscoverJumbotron />
-        <CategoryButton />
-        <Newest />
-       <MostUrgent />
-       <GainedMomentum />
+       <Footer/>
       </div>
     </Router>
   );

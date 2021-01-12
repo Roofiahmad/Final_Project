@@ -1,6 +1,6 @@
 import React from 'react';
 import jumbotron from '../assets/jumbotron.png';
-import profile from '../assets/profile.png'
+import profile from '../assets/profile.png';
 
 
 const EditProfile = () => {
