@@ -7,7 +7,7 @@ export default function PostComment() {
         <div className="grid grid-cols-1">
           <textarea
             name="story"
-            className="h-40 bg-gray-50 mb-4"
+            className="h-40 bg-gray-50 mb-4 focus:outline-none p-4"
             id="story"
             type="text"
             placeholder="Give them support..."

@@ -50,7 +50,7 @@ export default function NewCampaign() {
           <label>Story</label>
           <textarea
             name="story"
-            className="h-40 bg-gray-50"
+            className="h-40 bg-gray-50 focus:outline-none p-4"
             id="story"
             type="text"
             placeholder="Input Story Here"

@@ -3,7 +3,7 @@ import PostComment from "./PostComment";
 
 export default function CommentCampaignDetail(props) {
   return (
-    <div className="border border-gray-300 shadow px-4 py-2 my-10">
+    <div className="border border-gray-300 shadow px-10 py-4 my-10">
       <p className="text-xl font-semibold mt-4 mb-8 ">Comments(11)</p>
       {props.role == "donatur" ? <PostComment /> : null}
       <div className="border-t-2 border-gray-300  px-5 py-8  ">

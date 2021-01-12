@@ -29128,7 +29128,7 @@ video {
   animation: bounce 1s infinite;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 .btn-primary {
   --tw-bg-opacity: 1;
@@ -29178,6 +29178,18 @@ video {
   background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-red:active {
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-red:focus {
+  outline: none;
 }
 
 .btn-outline-red {
@@ -29329,11 +29341,14 @@ video {
 }
 
 .border-rose {
-  border-color: #A43F3C;
+  border-color: #a43f3c;
 }
 
-h1, h2, h3 button, a {
-  font-family: 'Nunito', sans-serif;
+h1,
+h2,
+h3 button,
+a {
+  font-family: "Nunito", sans-serif;
 }
 
 .dot {
@@ -29347,7 +29362,7 @@ h1, h2, h3 button, a {
 .dot:focus {
   height: 0px;
   width: 0px;
-  background-color: #A87B14;
+  background-color: #a87b14;
   border: none;
   padding: 7.5px 20px;
   text-align: center;
@@ -29355,6 +29370,24 @@ h1, h2, h3 button, a {
   cursor: pointer;
   border-radius: 16px;
   outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.outline-tosca {
+  outline: 2px solid ##1d94a8;
 }
 
 @media (min-width: 640px) {

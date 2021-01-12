@@ -4,7 +4,7 @@ import CampaignTimeline from "../components/CampaignTimeline";
 import CommentCampaignDetail from "../components/CommentCampaignDetail";
 import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
-import PostComment from "../components/PostComment";
+import RelatedCampaign from "../components/RelatedCampaign";
 
 export default function CampaignDetailDonate() {
   const role = "donatur";
@@ -15,6 +15,7 @@ export default function CampaignDetailDonate() {
       <CampaignTimeline />
       <DonaturTimeline />
       <CommentCampaignDetail role={role} />
+      <RelatedCampaign />
     </div>
   );
 }
