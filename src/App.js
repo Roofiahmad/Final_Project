@@ -21,6 +21,9 @@ import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 import CampaignDetailDonate from "./pages/CampaignDetailDonate";
 import CreateDonation from "./pages/CreateDonation";
+import ResetPassword from "./components/ResetPassword";
+import MyDonation from "./components/MyDonation";
+import MyCampaign from "./components/MyCampaign";
 
 function App() {
   return (
@@ -38,14 +41,17 @@ function App() {
           <Route exact path="/donate" component={CampaignDetailDonate} />
           <Route exact path="/createdonation" component={CreateDonation} />
         </Switch>
-        {/* <EditProfile />
+        {/* <MyCampaign />
+        <MyDonation />
+        <ResetPassword />
+        <EditProfile />
         <MyProfile />
         <SearchResult />
         <DiscoverJumbotron />
         <CategoryButton />
         <Newest />
         <MostUrgent />
-        <GainedMomentum /> */}
+        <GainedMomentum />  */}
       </div>
     </Router>
   );
