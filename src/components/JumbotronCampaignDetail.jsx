@@ -17,7 +17,7 @@ export default function JumbotronCampaignDetail(props) {
           <i className="fas fa-cog text-2xl "></i>
           <i className="fas fa-caret-down text-xl mx-2"></i>
           {dropdown ? (
-            <div className="absolute w-max p-2 -right-0 rounded-md z-10 bg-white shadow">
+            <div className="absolute w-max p-2 -right-0 rounded-md z-10 bg-white shadow fromtop-animation ">
               <p className="campaign-text-setting text-md">Edit</p>
               <p className="campaign-text-setting text-md">Close Campaign</p>
               <p className="campaign-text-setting text-md">Delete</p>
@@ -66,10 +66,11 @@ export default function JumbotronCampaignDetail(props) {
               Share
             </button>
             <button
-              onClick={props.toggleHandler}
+              onClick={(e) => props.jumbotronButtonValue(e.target.value)}
               className="btn-outline-red uppercase"
+              value={props.role === "fundraiser" ? "New Progress " : "Donate"}
             >
-              {props.role == "fundraiser" ? "New Progress " : "Donate"}
+              {props.role === "fundraiser" ? "New Progress " : "Donate"}
             </button>
           </div>
         </div>

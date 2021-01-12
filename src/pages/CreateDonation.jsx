@@ -13,7 +13,7 @@ export default function CreateDonation() {
     setCredit(false);
   };
   return (
-    <div className=" px-10">
+    <div className=" px-10 fromtop-animation">
       <div className="mt-8 w-10/12 mx-auto  px-10">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
           Donation
@@ -112,7 +112,7 @@ export default function CreateDonation() {
           </div>
         </div>
         {creditCard ? (
-          <div className="grid grid-cols-10 gap-10 mb-10">
+          <div className="grid grid-cols-10 gap-10 mb-10 frombottom-animation">
             <div className="col-span-5">
               <label className="block">
                 Card Number<span className="text-red-700">*</span>
@@ -146,7 +146,7 @@ export default function CreateDonation() {
           </div>
         ) : null}
         {bank ? (
-          <div className="bg-gray-100 p-6 w-1/3 rounded">
+          <div className="bg-gray-100 p-6 w-1/3 rounded frombottom-animation ">
             <p className="text-xl font-medium text-tosca">Transfer to</p>
             <div className="my-2">
               <p>Account Number</p>
@@ -164,7 +164,7 @@ export default function CreateDonation() {
         ) : null}
         <button
           type="submit"
-          className={`uppercase  float-right mb-16 ${
+          className={` uppercase  float-right mb-16 ${
             creditCard || bank
               ? "btn-red"
               : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"

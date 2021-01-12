@@ -12,7 +12,7 @@
 }
 
 .btn-red {
-  @apply bg-red-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-red-500 rounded text-white transition duration-500 cursor-pointer px-8 py-2 mt-2;
 }
 
 .btn-red:hover {
@@ -31,7 +31,7 @@
 }
 
 .btn-outline-red {
-  @apply bg-transparent rounded text-tosca transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-transparent rounded text-tosca transition duration-500 cursor-pointer px-8 py-2 mt-2;
   border: 1px solid #1d94a8;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .btn-outline-tosca {
-  @apply border rounded px-8 py-2 transition duration-300 cursor-pointer;
+  @apply border rounded px-8 py-2 transition duration-500 cursor-pointer;
   border-color: #1d94a8;
   color: #1d94a8;
 }
@@ -187,4 +187,87 @@ input[type="number"] {
 
 .outline-tosca {
   outline: 2px solid ##1d94a8;
+}
+
+.fromtop-animation {
+  animation: top 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes top {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.frombottom-animation {
+  animation: bottom 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.fromleft-animation {
+  animation: left 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes left {
+  0% {
+    transform: translate(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.fromright-animation {
+  animation: right 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes right {
+  0% {
+    transform: translate(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.appear-animation {
+  animation: appear 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

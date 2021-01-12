@@ -29170,7 +29170,7 @@ video {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  transition-duration: 300ms;
+  transition-duration: 500ms;
 }
 
 .btn-red:hover {
@@ -29204,7 +29204,7 @@ video {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  transition-duration: 300ms;
+  transition-duration: 500ms;
   color: #1d94a8;
   border: 1px solid #1d94a8;
 }
@@ -29241,7 +29241,7 @@ video {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  transition-duration: 300ms;
+  transition-duration: 500ms;
   border-color: #1d94a8;
   color: #1d94a8;
 }
@@ -29388,6 +29388,94 @@ input[type="number"] {
 
 .outline-tosca {
   outline: 2px solid ##1d94a8;
+}
+
+.fromtop-animation {
+  animation: top 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes top {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.frombottom-animation {
+  animation: bottom 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.fromleft-animation {
+  animation: left 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes left {
+  0% {
+    transform: translate(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.fromright-animation {
+  animation: right 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes right {
+  0% {
+    transform: translate(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.appear-animation {
+  animation: appear 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 640px) {
