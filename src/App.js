@@ -19,11 +19,7 @@ import EditProfile from "./components/EditProfile";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
-import CampaignDetailDonate from "./pages/CampaignDetailDonate";
-import CreateDonation from "./pages/CreateDonation";
-import ResetPassword from "./components/ResetPassword";
-import MyDonation from "./components/MyDonation";
-import MyCampaign from "./components/MyCampaign";
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -38,20 +34,8 @@ function App() {
             path="/fundraiser"
             component={CampaignDetailFundraiser}
           />
-          <Route exact path="/donate" component={CampaignDetailDonate} />
-          <Route exact path="/createdonation" component={CreateDonation} />
         </Switch>
-        {/* <MyCampaign />
-        <MyDonation />
-        <ResetPassword />
-        <EditProfile />
-        <MyProfile />
-        <SearchResult />
-        <DiscoverJumbotron />
-        <CategoryButton />
-        <Newest />
-        <MostUrgent />
-        <GainedMomentum />  */}
+       <Footer/>
       </div>
     </Router>
   );

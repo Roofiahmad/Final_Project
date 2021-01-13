@@ -29305,6 +29305,10 @@ video {
   color: #a87b14;
 }
 
+.text-grey {
+  color: #9F9F9F;
+}
+
 .bg-tosca {
   background-color: #1d94a8;
 }
@@ -29335,6 +29339,20 @@ video {
 
 .bg-jumbotron {
   background-image: url(../assets/bg-jumbo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-jumbotron2 {
+  background-image: url(../assets/bg2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-jumbotron3 {
+  background-image: url(../assets/bg3.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
