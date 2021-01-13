@@ -1,7 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 .btn-primary {
   @apply bg-blue-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
@@ -12,15 +12,26 @@
 }
 
 .btn-red {
-  @apply bg-red-500 rounded text-white transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-red-500 rounded text-white transition duration-500 cursor-pointer px-8 py-2 mt-2;
 }
 
 .btn-red:hover {
   @apply bg-red-700 text-white;
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-red:active {
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.btn-red:focus {
+  outline: none;
 }
 
 .btn-outline-red {
-  @apply bg-transparent rounded text-tosca transition duration-300 cursor-pointer px-8 py-2 mt-2;
+  @apply bg-transparent rounded text-tosca transition duration-500 cursor-pointer px-8 py-2 mt-2;
   border: 1px solid #1d94a8;
 }
 
@@ -43,7 +54,7 @@
 }
 
 .btn-outline-tosca {
-  @apply border rounded px-8 py-2 transition duration-300 cursor-pointer;
+  @apply border rounded px-8 py-2 transition duration-500 cursor-pointer;
   border-color: #1d94a8;
   color: #1d94a8;
 }
@@ -149,14 +160,14 @@
 }
 
 .border-rose {
-  border-color: #A43F3C;
+  border-color: #a43f3c;
 }
 
 h1,
 h2,
 h3 button,
 a {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .dot {
@@ -170,7 +181,7 @@ a {
 .dot:focus {
   height: 0px;
   width: 0px;
-  background-color: #A87B14;
+  background-color: #a87b14;
   border: none;
   padding: 7.5px 20px;
   text-align: center;
@@ -178,4 +189,103 @@ a {
   cursor: pointer;
   border-radius: 16px;
   outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.outline-tosca {
+  outline: 2px solid ##1d94a8;
+}
+
+.fromtop-animation {
+  animation: top 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes top {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.frombottom-animation {
+  animation: bottom 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.fromleft-animation {
+  animation: left 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes left {
+  0% {
+    transform: translate(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.fromright-animation {
+  animation: right 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes right {
+  0% {
+    transform: translate(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.appear-animation {
+  animation: appear 1s;
+  animation-fill-mode: backwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

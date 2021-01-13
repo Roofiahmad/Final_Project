@@ -22,7 +22,7 @@ export default function NewCampaign() {
     console.log(e.target.story.value);
   };
   return (
-    <div className="w-10/12 mx-auto relative ">
+    <div className="w-10/12 mx-auto relative fromtop-animation  ">
       <div className="pb-4">
         <h2 className="text-3xl font-medium my-4">New Campaign</h2>
       </div>
@@ -50,7 +50,7 @@ export default function NewCampaign() {
           <label>Story</label>
           <textarea
             name="story"
-            className="h-40 bg-gray-50"
+            className="h-40 bg-gray-50 focus:outline-none p-4"
             id="story"
             type="text"
             placeholder="Input Story Here"

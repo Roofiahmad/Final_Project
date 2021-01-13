@@ -1,20 +1,24 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import CampaignStory from "../components/CampaignStory";
 import CampaignTimeline from "../components/CampaignTimeline";
 import CommentCampaignDetail from "../components/CommentCampaignDetail";
 import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
-import ModalsCampaignUpdate from "../components/ModalsCampaignUpdate";
+import RelatedCampaign from "../components/RelatedCampaign";
 
-export default function CampaignDetailFundraiser() {
-  const role = "fundraiser";
-  const [modal, setModal] = useState(false);
+export default function CampaignDetailDonate() {
+  const role = "donatur";
+  const [redirect, setDirect] = useState(false);
+
   const jumbotronButtonValue = (e) => {
-    console.log(e);
-    setModal(!modal);
+    console.log("from campaign detail donate");
+    setDirect(true);
   };
+
   return (
     <div className="w-11/12 mx-auto relative fromtop-animation ">
+      {redirect ? <Redirect to="/createdonation" /> : null};
       <JumbotronCampaignDetail
         role={role}
         jumbotronButtonValue={jumbotronButtonValue}
@@ -22,10 +26,8 @@ export default function CampaignDetailFundraiser() {
       <CampaignStory />
       <CampaignTimeline />
       <DonaturTimeline />
-      <CommentCampaignDetail />
-      {modal ? (
-        <ModalsCampaignUpdate jumbotronButtonValue={jumbotronButtonValue} />
-      ) : null}
+      <CommentCampaignDetail role={role} />
+      <RelatedCampaign />
     </div>
   );
 }
