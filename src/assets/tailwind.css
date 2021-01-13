@@ -134,6 +134,20 @@
   background-size: cover;
 }
 
+.bg-jumbotron2 {
+  background-image: url(../assets/bg2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-jumbotron3 {
+  background-image: url(../assets/bg3.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .border-rose {
   border-color: #A43F3C;
 }
