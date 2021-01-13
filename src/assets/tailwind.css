@@ -138,22 +138,22 @@
   background-image: url(../assets/modalbg.png);
 }
 
-.bg-jumbotron {
-  background-image: url(../assets/bg-jumbo.png);
+.bg-jumbotron1{
+  background-image: url(../assets/bg1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .bg-jumbotron2 {
-  background-image: url(../assets/bg2.png);
+  background-image: url(../assets/bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .bg-jumbotron3 {
-  background-image: url(../assets/bg3.png);
+  background-image: url(../assets/bg3.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
