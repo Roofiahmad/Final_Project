@@ -29156,8 +29156,6 @@ video {
 }
 
 .btn-red {
-  --tw-bg-opacity: 1;
-  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
   border-radius: 0.25rem;
   cursor: pointer;
   margin-top: 0.5rem;
@@ -29171,6 +29169,7 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   transition-duration: 500ms;
+  background-color: #a43f3c;
 }
 
 .btn-red:hover {

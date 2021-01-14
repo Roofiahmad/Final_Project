@@ -14,7 +14,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import SearchResult from "./components/SearchResult";
-import MyProfile from "./components/MyProfile";
+import MyProfilePage from "./pages/MyProfilePage";
 import EditProfile from "./components/EditProfile";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
@@ -34,6 +34,8 @@ function App() {
             path="/fundraiser"
             component={CampaignDetailFundraiser}
           />
+          <Route exact path="/myprofile" component={MyProfilePage} />
+          <Route exact path="/editprofile" component={EditProfile} />
         </Switch>
        <Footer/>
       </div>
@@ -42,17 +44,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /*function App() {
-  return (
-    <div className="container mx-auto mt-12 px-3 lg:px-0">
-      <PhotoCard />
-      <button onClick={ () => {window.location.reload()} } className="btn-primary mb-2">Generate</button>
-      <DiscoverJumbotron />
-      <CategoryButton />
-      <Newest />
-      <MostUrgent />
-      <GainedMomentum />
-  </div>*/
-}
