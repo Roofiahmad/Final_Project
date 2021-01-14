@@ -29156,8 +29156,6 @@ video {
 }
 
 .btn-red {
-  --tw-bg-opacity: 1;
-  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
   border-radius: 0.25rem;
   cursor: pointer;
   margin-top: 0.5rem;
@@ -29171,6 +29169,7 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   transition-duration: 500ms;
+  background-color: #a43f3c;
 }
 
 .btn-red:hover {
@@ -29337,22 +29336,22 @@ video {
   background-image: url(../assets/modalbg.png);
 }
 
-.bg-jumbotron {
-  background-image: url(../assets/bg-jumbo.png);
+.bg-jumbotron1{
+  background-image: url(../assets/bg1.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .bg-jumbotron2 {
-  background-image: url(../assets/bg2.png);
+  background-image: url(../assets/bg2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .bg-jumbotron3 {
-  background-image: url(../assets/bg3.png);
+  background-image: url(../assets/bg3.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

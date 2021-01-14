@@ -6,7 +6,7 @@ import TrendingTopic from '../components/TrendingTopic';
 
 function HomePage() {
     return (
-        <div>
+        <div  className="fromtop-animation">
             <HomeJumbotron/>
             <TrendingTopic/>
             <NewCampaignHome/>

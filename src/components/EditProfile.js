@@ -10,8 +10,8 @@ const EditProfile = () => {
            <a href="#" className="text-tosca underline font-bold flex justify-center mt-3">Change Image Profile</a>
            <div className="flex flex-wrap content-end w-11/12 mx-auto mt-10 mb-5">
             <div className="w-full p-1 mb-2 sm:w-1/2">
-              <label for="name" className="text-md font-medium">Name<sup className="text-red-500 font-bold">&#x2217;</sup></label><br/>
-              <input className="border-blue-400 border-b-2 px-4 py-2 bg-gray-100 w-full text-md text-gray-700" type="text" id="fname" name="fname" value="Luna"/><br/>
+                <label for="name" className="text-md font-medium">Name<sup className="text-red-500 font-bold">&#x2217;</sup></label><br/>
+                <input className="border-blue-400 border-b-2 px-4 py-2 bg-gray-100 w-full text-md text-gray-700" type="text" id="fname" name="fname" value="Luna"/><br/>
             </div>
             <div className="w-full p-1 mb-2 sm:w-1/2">
                 <label for="email" className="text-md font-medium">Email<sup className="text-red-500 font-bold">&#x2217;</sup></label><br/>

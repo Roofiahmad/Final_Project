@@ -14,7 +14,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import SearchResult from "./components/SearchResult";
-import MyProfile from "./components/MyProfile";
+import MyProfilePage from "./pages/MyProfilePage";
 import EditProfile from "./components/EditProfile";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
@@ -34,6 +34,8 @@ function App() {
             path="/fundraiser"
             component={CampaignDetailFundraiser}
           />
+          <Route exact path="/myprofile" component={MyProfilePage} />
+          <Route exact path="/editprofile" component={EditProfile} />
         </Switch>
        <Footer/>
       </div>
