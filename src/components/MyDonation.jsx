@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyDonation = () => {
   return (
-    <div className="w-11/12 mt-96 mb-36 mx-auto border border-solid p-5">
+    <div className="w-11/12 mt-20 mb-20 mx-auto border border-solid p-5">
       <h2 className="font-bold text-xl mb-5">My Donation (23)</h2>
       <div className="grid grid-cols-1 gap-8 w-11/12 mx-auto md:grid-cols-2">
         <div className="shadow-md p-5">

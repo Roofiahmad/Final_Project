@@ -20,6 +20,8 @@ import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 import Footer from './components/Footer';
+import ResetPassword from './components/ResetPassword';
+
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
           />
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/editprofile" component={EditProfile} />
+          <Route exact path="/resetpassword" component={ResetPassword} />
         </Switch>
        <Footer/>
       </div>
