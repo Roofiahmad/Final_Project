@@ -62,15 +62,16 @@ const MyProfile = () => {
   localStorage.setItem("email", email);
   localStorage.setItem("bank_name", bankName);
   localStorage.setItem("bank_number", bankNumber);
+  localStorage.setItem("image", image);
   
 
     return (
-      <div className="w-11/12 mt-40 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
+      <div className="w-11/12 mt-20 mb-20 mx-auto border border-solid p-1 md:w-3/5 p-5">
         <div className="flex justify-between mb-5">
           <h2 className="font-bold text-xl">My Profile</h2>
           <a onClick={signOutHandler} className="text-red-800 underline font-bold cursor-pointer">Logout</a>
         </div>
-        <img src={image} alt="" className="mx-auto"/>
+        <img src={image} alt="" className="mx-auto rounded w-52"/>
         <Link to="/editprofile">
           <a className="text-tosca underline font-bold flex justify-center mt-3">Edit Profile</a>
         </Link>
