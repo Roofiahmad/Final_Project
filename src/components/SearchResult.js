@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import arrow from '../assets/arrow.png';
 import card from '../assets/card.png';
 import iconsort from '../assets/sort.png';
 
@@ -9,8 +8,6 @@ const SearchResult = () => {
     return (
         <div className="mt-20 mb-36">
           <div className="w-10/12 mx-auto">
-          <h1 className="font-bold text-3xl mb-6">Result for "medical help"</h1>
-          <a href="#" className="font-bold flex mb-24"><img src={arrow} alt="" width="20" className="mr-2"/>See all categories</a>
           <button className="font-bold flex mb-5 bg-white hover:bg-blue" onClick={() => setSort(!sort)}>Sort
           <img src={iconsort} alt="" width="20" className="ml-2"/>
           {sort ? (
