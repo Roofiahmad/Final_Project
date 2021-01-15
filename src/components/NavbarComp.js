@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function NavbarComp() {
     const [isMobile, setisMobile] = useState(false);
@@ -11,7 +13,64 @@ function NavbarComp() {
 
     // localStorage.setItem("login", "yes");
 
-    const isLogged = localStorage.getItem("login");
+    const isLogged = localStorage.getItem("token");
+    const handleSubmitLogin = async (e) => {
+        e.preventDefault();
+        console.log("email :", e.target.email.value);
+        console.log("password :", e.target.password.value);
+    
+        const sendaDataLogin = {
+          email: e.target.email.value,
+          password: e.target.password.value,
+        };
+    
+        await axios.post(
+          "https://talikasih.kuyrek.com:3000/user/login",
+          sendaDataLogin
+        )
+        .then((response) => {
+            console.log(response);
+            localStorage.setItem("token", response.data.token);
+            console.log(response, "login success"); 
+            window.location.reload();
+        })
+        .catch((err) => {
+            console.log("INI PESAN ERROR", err.response);
+            alert("Sorry, email or password is incorrect");
+        })
+      };
+
+      const handleSubmitSignup = async (e) => {
+        e.preventDefault();
+        console.log("fullname :", e.target.name.value);
+        console.log("email :", e.target.email.value);
+        console.log("password :", e.target.password.value);
+        console.log("password :", e.target.passwordConfirmation.value);
+    
+        const sendaDataSignUp = {
+          name: e.target.name.value,
+          email: e.target.email.value,
+          password: e.target.password.value,
+          passwordConfirmation: e.target.passwordConfirmation.value,
+        };
+    
+        await axios.post(
+            "https://talikasih.kuyrek.com:3000/user/signup",
+          sendaDataSignUp
+        )
+        .then(response => {
+            console.log(response, "signup success");
+            localStorage.setItem("token", response.data.token);
+            window.location.reload();
+        })
+        .catch(err => {
+            console.log("INI TUH ERROR MESSAGE", err.response);
+            alert(err.response.data.errors.email.msg);
+        })
+        // setTimeout(function() { window.location.reload(); }, 3000);
+      };
+    
+    
     
     return (
         <div className="bg-white h-20 shadow-md">
@@ -71,7 +130,9 @@ function NavbarComp() {
                     ) :null}
                     {isLogged ? (
                     <div className="block px-3 ">
-                        <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> My Profile </button>
+                        <Link to="/myprofile">
+                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> My Profile </button>
+                        </Link>
                     </div>
                     ) :null}
                 </div>
@@ -81,7 +142,7 @@ function NavbarComp() {
             {ToggleLogin ? (
             <div>
                 <div>
-                    <div className="bg-black opacity-50 absolute inset-0 flex flex-row justify-center items-center"></div>
+                    <div className="bg-black opacity-50 absolute inset-0 flex flex-row justify-center items-center z-10"></div>
                 </div>
                 <div className="absolute inset-0 flex flex-row justify-center items-center">
                     <div className="rounded bg-modal w-3/4 lg:w-1/3 opacity-100 h-3/4 lg:h-4/5 z-10">
@@ -90,10 +151,10 @@ function NavbarComp() {
                             New user? <span className="text-tosca">Create an account</span>
                         </a>
                         <div className="flex flex-col justify-center items-center lg:mx-10" >
-                            <form action="">
-                                <input className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-10" type="text" placeholder="Email"/>
-                                <input className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96" type="password" placeholder="Password"/>
-                                <button className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">LOGIN</button>
+                            <form onSubmit={(e) => handleSubmitLogin(e)}>
+                                <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-10" type="text" placeholder="Email"/>
+                                <input name="password" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96" type="password" placeholder="Password"/>
+                                <button type="submit" className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">LOGIN</button>
                             </form>
                         </div>
                         <div onClick={() => setToggleLogin(false)} className="cursor-pointer h-9 text-rose flex flex-col justify-center items-center lg:mx-10">
@@ -110,7 +171,7 @@ function NavbarComp() {
             {ToggleRegister ? (
             <div>
                 <div>
-                    <div className="bg-black opacity-50 absolute inset-0 flex flex-row justify-center items-center"></div>
+                    <div className="bg-black opacity-50 absolute inset-0 flex flex-row justify-center items-center z-10"></div>
                 </div>
                 <div className="absolute inset-0 flex flex-row justify-center items-center">
                     <div className="rounded bg-modal w-3/4 lg:w-1/3 opacity-100 h-3/4 lg:h-4/5 z-10">
@@ -119,12 +180,12 @@ function NavbarComp() {
                             Already have an account? <span className="text-tosca">Login</span>
                         </a>
                         <div className="flex flex-col justify-center items-center lg:mx-10" >
-                            <form action="">
-                                <input className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="text" placeholder="Name"/>
-                                <input className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="text" placeholder="Email"/>
-                                <input className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="password" placeholder="Password"/>
-                                <input className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="password" placeholder="Confirm Password"/>
-                                <button className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">REGISTER</button>
+                            <form onSubmit={(e) => handleSubmitSignup(e)}>
+                                <input name="name" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="text" placeholder="Name"/>
+                                <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="text" placeholder="Email"/>
+                                <input name="password" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="password" placeholder="Password"/>
+                                <input name="passwordConfirmation" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="password" placeholder="Confirm Password"/>
+                                <button type="submit" className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">REGISTER</button>
                             </form>
                         </div>
                         <div onClick={() => setToggleRegister(false)} className="cursor-pointer h-9 text-rose flex flex-col justify-center items-center lg:mx-10">
