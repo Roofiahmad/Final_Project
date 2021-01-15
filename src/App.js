@@ -7,7 +7,6 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import SearchResult from "./components/SearchResult";
 import MyProfilePage from "./pages/MyProfilePage";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
@@ -19,6 +18,8 @@ import Discover from "./pages/Discover";
 import DiscoverCategory from "./pages/DiscoverCategory";
 import DiscoverSearchResult from "./pages/DiscoverSearchResult";
 import EditProfile from "./components/EditProfile";
+import ResetPassword from './components/ResetPassword';
+
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/editprofile" component={EditProfile} />
+          <Route exact path="/resetpassword" component={ResetPassword} />
         </Switch>
        <Footer/>
     </Router>

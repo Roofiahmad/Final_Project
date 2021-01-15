@@ -50,11 +50,15 @@ const MyProfile = () => {
         setName(response.data.data.name);
         setEmail(response.data.data.email);
         let bankAccount = response.data.data.bank_account_number;
-        let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
-        let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
-        setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
-        setBankName(response.data.data.bank_name);
-        setBankNumber(response.data.data.bank_account_number);
+        if (bankAccount != null) {
+          let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
+          let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
+          setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
+          setBankName(response.data.data.bank_name);
+          setBankNumber(response.data.data.bank_account_number);
+        } else {
+          setBank("null")
+        }
     })
   }
 
@@ -62,15 +66,16 @@ const MyProfile = () => {
   localStorage.setItem("email", email);
   localStorage.setItem("bank_name", bankName);
   localStorage.setItem("bank_number", bankNumber);
+  localStorage.setItem("image", image);
   
 
     return (
-      <div className="w-11/12 mt-40 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
+      <div className="w-11/12 mt-20 mb-20 mx-auto border border-solid p-1 md:w-3/5 p-5">
         <div className="flex justify-between mb-5">
           <h2 className="font-bold text-xl">My Profile</h2>
           <a onClick={signOutHandler} className="text-red-800 underline font-bold cursor-pointer">Logout</a>
         </div>
-        <img src={image} alt="" className="mx-auto"/>
+        <img src={image} alt="" className="mx-auto rounded w-52"/>
         <Link to="/editprofile">
           <a className="text-tosca underline font-bold flex justify-center mt-3">Edit Profile</a>
         </Link>
