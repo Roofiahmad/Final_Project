@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import SearchResult from "./components/SearchResult";
 import MyProfilePage from "./pages/MyProfilePage";
-import EditProfile from "./components/EditProfile";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
