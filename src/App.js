@@ -8,7 +8,7 @@ import Newest from "./components/Newest";
 import MostUrgent from "./components/MostUrgent";
 import GainedMomentum from "./components/GainedMomentum";
 import DiscoverJumbotron from "./components/DiscoverJumbotron";
-// import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,7 +32,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/newcampaign" component={NewCampaign} />
-          {/* <Route exact path="/" component={HomePage} /> */}
+          <Route exact path="/" component={HomePage} />
           <Route
             exact
             path="/fundraiser"
