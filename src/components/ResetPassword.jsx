@@ -19,11 +19,11 @@ const ResetPassword = () => {
         </div>
         <div className="w-full p-1 mb-2 sm:w-1/2">
           <label for="email" className="text-md font-medium">New Password<sup className="text-red-500 font-bold">&#x2217;</sup></label><br />
-          <input className="border-blue-400 border-b-2 px-4 py-2 bg-gray-100 w-full text-md text-gray-700" type="email" id="fname" name="fname" value="**********" /><br />
+          <input className="border-blue-400 border-b-2 px-4 py-2 bg-gray-100 w-full text-md text-gray-700" type="password" id="fname" name="fname" /><br />
         </div>
         <div className="w-full p-1 mb-2 sm:w-1/2">
           <label for="email" className="text-md font-medium">Confirm New Password<sup className="text-red-500 font-bold">&#x2217;</sup></label><br />
-          <input className="border-blue-400 border-b-2 px-4 py-2 bg-gray-100 w-full text-md text-gray-700" type="email" id="fname" name="fname" value="**********" /><br />
+          <input className="border-blue-400 border-b-2 px-4 py-2 bg-gray-100 w-full text-md text-gray-700" type="password" id="fname" name="fname" /><br />
         </div>
         <div className="w-full mt-8">
           <p className="text-sm text-yellow-800 mb-2">We need your bank account for campaign purpose</p>
