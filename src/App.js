@@ -2,7 +2,6 @@ import React from "react";
 import PhotoCard from "./components/PhotoCard";
 import Discover from './pages/Discover';
 import DiscoverCategory from './pages/DiscoverCategory';
-import ResetPassword from './components/ResetPassword';
 import CategoryButton from "./components/CategoryButton";
 import Newest from "./components/Newest";
 import MostUrgent from "./components/MostUrgent";
@@ -24,6 +23,8 @@ import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 import Footer from './components/Footer';
+import ResetPassword from './components/ResetPassword';
+
 
 function App() {
   return (
@@ -44,7 +45,8 @@ function App() {
           <Route exact path="/profile" component={MyProfile} />
           <Route exact path="/reset-password" component={ResetPassword} /> 
           <Route exact path="/myprofile" component={MyProfilePage} />
-          <Route exact path="/edit-profile" component={EditProfile} />
+          <Route exact path="/editprofile" component={EditProfile} />
+          <Route exact path="/resetpassword" component={ResetPassword} />
         </Switch>
         <Footer/>
       </div>

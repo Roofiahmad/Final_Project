@@ -23,6 +23,8 @@ const MyProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [bank, setBank] = useState("");
+  const [bankName, setBankName] = useState("");
+  const [bankNumber, setBankNumber] = useState("");
 
   // Get user data
   useEffect(() => {
@@ -48,12 +50,19 @@ const MyProfile = () => {
         setName(response.data.data.name);
         setEmail(response.data.data.email);
         let bankAccount = response.data.data.bank_account_number;
-        let bankAccounReversedtArray = bankAccount.toString().replace(/\d(?=\d{3})/g, "*");
-        // let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
-        // bankAccounReversedtArray
-        setBank(response.data.data.bank_name + " - " + bankAccounReversedtArray);
+        let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
+        let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
+        setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
+        setBankName(response.data.data.bank_name);
+        setBankNumber(response.data.data.bank_account_number);
     })
   }
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("bank_name", bankName);
+  localStorage.setItem("bank_number", bankNumber);
+  localStorage.setItem("image", image);
   
 
     return (
