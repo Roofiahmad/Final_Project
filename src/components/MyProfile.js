@@ -23,6 +23,8 @@ const MyProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [bank, setBank] = useState("");
+  const [bankName, setBankName] = useState("");
+  const [bankNumber, setBankNumber] = useState("");
 
   // Get user data
   useEffect(() => {
@@ -51,8 +53,15 @@ const MyProfile = () => {
         let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
         let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
         setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
+        setBankName(response.data.data.bank_name);
+        setBankNumber(response.data.data.bank_account_number);
     })
   }
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("bank_name", bankName);
+  localStorage.setItem("bank_number", bankNumber);
   
 
     return (
