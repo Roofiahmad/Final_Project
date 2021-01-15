@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import SearchResult from "./components/SearchResult";
 import MyProfile from "./pages/MyProfile";
+import MyProfilePage from "./pages/MyProfilePage";
 import EditProfile from "./components/EditProfile";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
@@ -41,8 +42,9 @@ function App() {
           <Route exact path="/discover-category" component={DiscoverCategory} />
           <Route exact path="/discover-search" component={SearchResult} />
           <Route exact path="/profile" component={MyProfile} />
+          <Route exact path="/reset-password" component={ResetPassword} /> 
+          <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/edit-profile" component={EditProfile} />
-          <Route exact path="/reset-password" component={ResetPassword} />
         </Switch>
         <Footer/>
       </div>
@@ -51,17 +53,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /*function App() {
-  return (
-    <div className="container mx-auto mt-12 px-3 lg:px-0">
-      <PhotoCard />
-      <button onClick={ () => {window.location.reload()} } className="btn-primary mb-2">Generate</button>
-      <DiscoverJumbotron />
-      <CategoryButton />
-      <Newest />
-      <MostUrgent />
-      <GainedMomentum />
-  </div>*/
-}
