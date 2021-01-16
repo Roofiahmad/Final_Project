@@ -1,46 +1,65 @@
-import React from 'react';
-import image from "../assets/trending.png"
+import React, { useState, useEffect } from 'react';
 import open from "../assets/open.png"
 import close from "../assets/close.png"
-import ava from "../assets/ava.png"
+import axios from 'axios'
 
-function TrendingTopic() {
+const TrendingTopic = () => {
+    const [trendingCampaign, setTrendingCampaign] = useState([]);
+    
+
+    useEffect(() => {
+        getTrending()
+    }, []);
+
+    function getTrending() {
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?page=1&limit=1')
+        .then((res) => {
+            setTrendingCampaign(res.data.posts)
+        })
+    }
+
     return (
         <div>
-            <div className="flex flex-col sm:flex-wrap w-10/12 mt-28 mb-5 mx-auto">
-                <div className="">
-                    <h1 className="font-thin text-xl text-rose">
-                        Trending Topic
-                    </h1>
-                </div>
-                <div className="mb-3">
-                    <h1 className="font-bold text-3xl">
-                        Clean Water For Country Side Region
-                    </h1>
-                </div>
-                <div className="flex flex-wrap lg:flex-nowrap flex-row">
-                    <div className="flex lg:mr-10">
-                        <img src={image} alt=""/>
-                    </div>
-                    <div className="flex w-1/2">
-                        <div className="flex-col justify-between">
-                            <div className="">
-                                <img src={open} alt=""/>
-                                <h1 className="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum neque nihil eos, beatae iste esse qui quod animi autem non pariatur quas placeat eligendi. Enim cum ea consequatur laboriosam laborum.</h1>
-                                <img className="float-right" src={close} alt=""/>
+            {
+                trendingCampaign.map(campaign => {
+                    return (
+                        <div className="flex flex-col gap-2 sm:flex-wrap w-10/12 mt-28 mb-5 mx-auto">
+                        <div className="">
+                            <h1 className="font-thin text-xl text-rose">
+                                Trending Topic
+                            </h1>
+                        </div>
+                        <div className="mb-3">
+                            <h1 className="font-bold text-3xl">
+                                {campaign.title}
+                            </h1>
+                        </div>
+                        <div className="flex gap-6 flex-wrap lg:flex-nowrap flex-row">
+                            <div className="flex">
+                                <img src={campaign.images} alt=""/>
                             </div>
-                            <div className="flex flex-row lg:mt-36">
-                                <img src={ava} width="80px" alt=""/>
-                                <div className="ml-5">
-                                    <h1 className="font-semibold lg:text-xl">Dian Endang</h1>
-                                    <h1 className="text-grey">Fundraiser</h1>
+                            <div className="flex w-full lg:w-1/2">
+                                <div className="flex-col justify-between">
+                                    <div className="space-y-2 mb-8">
+                                        <img src={open} alt=""/>
+                                        <h1 className="text-lg sm:text-xl">{campaign.story}</h1>
+                                        <img className="float-right" src={close} alt=""/>
+                                    </div>
+                                    <div className="flex flex-row lg:mt-52">
+                                        <img src={campaign.user.profile_image} className="w-32 h-32" alt=""/>
+                                        <div className="ml-5">
+                                            <h1 className="font-semibold lg:text-xl">{campaign.user.name}</h1>
+                                            <h1 className="text-grey">Fundraiser</h1>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
-                        
                     </div>
-                </div>
-            </div>
+                    )
+                })
+            }
         </div>
     )
 }
