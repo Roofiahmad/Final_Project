@@ -4,7 +4,6 @@ import open from "../assets/open.png"
 import close from "../assets/close.png"
 import ava from "../assets/ava.png"
 import card from '../assets/card.png';
-import CardLoading from './CardLoading';
 
 function NewCampaignHome() {
     return (
@@ -21,7 +20,6 @@ function NewCampaignHome() {
                     </h1>
                 </div>
                 <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
-                    <CardLoading />
                     <div className="shadow-md">
                         <img src={card} alt=""/>
                         <div className="w-5/6 mx-auto pb-4 pt-2">
