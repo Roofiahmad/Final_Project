@@ -18,7 +18,7 @@ export default function CampaignDetailDonate() {
 
   return (
     <div className="w-11/12 mx-auto relative fromtop-animation ">
-      {redirect ? <Redirect to="/createdonation" /> : null};
+      {redirect ? <Redirect to="/createdonation" /> : null}
       <JumbotronCampaignDetail
         role={role}
         jumbotronButtonValue={jumbotronButtonValue}

@@ -70,7 +70,7 @@ const MyProfile = () => {
   
 
     return (
-      <div className="w-11/12 mt-16 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
+      <div className="w-11/12 mt-16 mb-20 mx-auto border border-solid p-1 md:w-3/5 p-5">
         <div className="flex justify-between mb-5">
           <h2 className="font-bold text-xl">My Profile</h2>
           <a onClick={signOutHandler} className="text-red-800 underline font-bold cursor-pointer">Logout</a>
