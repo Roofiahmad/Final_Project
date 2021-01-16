@@ -6,7 +6,7 @@ export default function DiscoverSearchResult() {
 
   return (
     <div>
-      <div className="mt-20 mb-36">
+      <div className="mt-16 mb-40">
         <div className="w-10/12 mx-auto">
           <h1 className="font-bold text-3xl mb-6">Result for "medical help"</h1>
           <a href="/discoverall" className="font-bold flex mb-24 ">

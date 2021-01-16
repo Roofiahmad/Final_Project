@@ -7,7 +7,7 @@ import ava from "../assets/ava.png"
 function TrendingTopic() {
     return (
         <div>
-            <div className="flex flex-col gap-4 sm:flex-wrap w-10/12 mt-28 mb-5 mx-auto">
+            <div className="flex flex-col gap-2 sm:flex-wrap w-10/12 mt-16 mx-auto">
                 <div className="">
                     <h1 className="font-thin text-xl text-rose">
                         Trending Topic
@@ -18,9 +18,9 @@ function TrendingTopic() {
                         Clean Water For Country Side Region
                     </h1>
                 </div>
-                <div className="flex flex-wrap gap-4 lg:flex-nowrap flex-row">
-                    <div className="flex lg:mr-6">
-                        <img src={image} alt=""/>
+                <div className="flex flex-wrap gap-8 lg:flex-nowrap flex-row">
+                    <div className="flex">
+                        <img src={image} alt="" />
                     </div>
                     <div className="flex w-full lg:w-1/2">
                         <div className="flex-col justify-between">

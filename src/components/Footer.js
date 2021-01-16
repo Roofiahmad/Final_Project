@@ -32,7 +32,7 @@ function Footer() {
             </div>
             <div>
                 <hr/>
-                <h1 className="font-light text-sm w-10/12 my-6 mb-5 mx-auto">TaliKasih &copy; 2020. All rights reserved</h1>
+                <h1 className="font-light text-sm w-10/12 my-6 mx-auto">TaliKasih &copy; 2020. All rights reserved</h1>
             </div>
         </div>
     )

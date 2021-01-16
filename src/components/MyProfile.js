@@ -75,7 +75,7 @@ const MyProfile = () => {
           <h2 className="font-bold text-xl">My Profile</h2>
           <a onClick={signOutHandler} className="text-red-800 underline font-bold cursor-pointer">Logout</a>
         </div>
-        <img src={image} alt="" className="mx-auto max-w-sm"/>
+        <img src={image} alt="" className="mx-auto w-52 h-52"/>
         <Link to="/editprofile">
           <a className="text-tosca underline font-bold flex justify-center mt-3">Edit Profile</a>
         </Link>
