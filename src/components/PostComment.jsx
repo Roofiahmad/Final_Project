@@ -5,6 +5,7 @@ export default function PostComment() {
     <div>
       <form>
         <div className="grid grid-cols-1">
+        <form>
           <textarea
             name="story"
             className="h-40 bg-gray-50 mb-4 focus:outline-none p-4"
@@ -12,6 +13,7 @@ export default function PostComment() {
             type="text"
             placeholder="Give them support..."
           />
+        </form>
         </div>
         <button type="submit" className="btn-red float-right uppercase">
           Post

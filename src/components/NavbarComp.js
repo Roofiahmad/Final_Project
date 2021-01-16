@@ -114,7 +114,7 @@ function NavbarComp() {
                         </button>
                     </div>
                     {ToggleSearch ? null :(
-                    <div onClick={() => {setToggleSearch(!ToggleSearch)}} className="text-tosca text-xl font-light">
+                    <div onClick={() => {setToggleSearch(!ToggleSearch)}} className="cursor-pointer text-tosca text-xl font-light">
                         <h1>Search</h1>
                     </div>
                     )}
