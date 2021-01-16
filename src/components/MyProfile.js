@@ -50,11 +50,15 @@ const MyProfile = () => {
         setName(response.data.data.name);
         setEmail(response.data.data.email);
         let bankAccount = response.data.data.bank_account_number;
-        let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
-        let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
-        setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
-        setBankName(response.data.data.bank_name);
-        setBankNumber(response.data.data.bank_account_number);
+        if (bankAccount != null) {
+          let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
+          let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
+          setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
+          setBankName(response.data.data.bank_name);
+          setBankNumber(response.data.data.bank_account_number);
+        } else {
+          setBank("null")
+        }
     })
   }
 

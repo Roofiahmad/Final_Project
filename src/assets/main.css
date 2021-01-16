@@ -29465,16 +29465,17 @@ input[type="number"] {
   animation: right 1s;
   animation-fill-mode: backwards;
   animation-delay: 0.1s;
+  transform-origin: 100% 50%;
 }
 
 @keyframes right {
   0% {
-    transform: translate(100px);
+    transform: scaleX(0);
     opacity: 0;
   }
 
   100% {
-    transform: translate(0);
+    transform: scaleX(1);
     opacity: 1;
   }
 }

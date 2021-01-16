@@ -41,7 +41,7 @@ export default class UpdateAvaModal extends Component {
   
   render() {
   return (
-    <div>
+    <div className="fromtop-animation">
         <div className="flex justify-center mt-3">       
           <form onSubmit={(e) => {this.handleSubmit(e);}}> 
                 <input className="rounded" onChange={(e) => this.handleUpdateImage(e)} type={"file"} name={"image"} id="exampleFile" />
