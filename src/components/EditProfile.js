@@ -61,7 +61,7 @@ const EditProfile = () => {
     const isImage = localStorage.getItem("image");
 
     return (
-        <div className="w-11/12 mt-36 mb-36 mx-auto border border-solid p-1 md:w-3/5 p-5">
+        <div className="fromtop-animation w-11/12 mt-20 mb-20 mx-auto border border-solid p-1 md:w-3/5 p-5">
            <h2 className="font-bold text-xl mb-5">Edit Profile</h2>
            <img src={image} alt="" className="mx-auto rounded w-52 h-52"/>
            <a onClick={() => setToggleImageUp(!ToggleImageUp)} className="cursor-pointer text-tosca underline font-bold flex justify-center mt-3">Change Image Profile</a>

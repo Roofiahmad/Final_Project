@@ -5,7 +5,7 @@ import MyCampaign from '../components/MyCampaign';
 
 function MyProfilePage() {
     return (
-        <div>
+        <div className="fromtop-animation">
             <MyProfile/>
             <MyDonation/>
             <MyCampaign/>

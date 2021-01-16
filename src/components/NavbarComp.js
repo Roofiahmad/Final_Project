@@ -6,6 +6,7 @@ function NavbarComp() {
     const [isMobile, setisMobile] = useState(false);
     const [ToggleLogin, setToggleLogin] = useState(false);
     const [ToggleRegister, setToggleRegister] = useState(false);
+    const [ToggleSearch, setToggleSearch] = useState(false);
     const ToggleSwitch = () => {
         setToggleLogin(!ToggleLogin);
         setToggleRegister(!ToggleRegister);
@@ -76,10 +77,12 @@ function NavbarComp() {
         <div className="bg-white h-20 shadow-md">
             <div className="flex flex-col lg:flex-row justify-between">
                 <div className="flex items-center justify-between mx-5 lg:mx-20">
-                    <div className="text-tosca flex items-center justify-between">
-                        <Link to="/"><img className=" h-7 lg:h-10 my-5" src="https://drive.google.com/uc?export=view&id=1mFBGzM1N38-Pr51DVAWXk-BFPtCjFgMM" alt="tali-kasih-logo"/></Link>
-                        <h1 className="text-2xl lg:text-3xl ml-2 font-semibold">TALI</h1> <span> <h1 className="font-light text-2xl lg:text-3xl">KASIH</h1></span>
-                    </div>
+                    <Link to="/">      
+                        <div className="text-tosca flex items-center justify-between">
+                            <img className=" h-7 lg:h-10 my-5" src="https://drive.google.com/uc?export=view&id=1mFBGzM1N38-Pr51DVAWXk-BFPtCjFgMM" alt="tali-kasih-logo"/>
+                            <h1 className="text-2xl lg:text-3xl ml-2 font-semibold">TALI</h1> <span> <h1 className="font-light text-2xl lg:text-3xl">KASIH</h1></span>
+                        </div>
+                    </Link>
                     <div>
                         <button onClick={() => setisMobile(!isMobile)} className="h-7 w-7 text-tosca focus:outline-none focus:text-gray-500 lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,26 +92,37 @@ function NavbarComp() {
                     </div>
                 </div>
                 <div className={`${isMobile ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row items-center lg:mx-20 z-10 lg:z-0 bg-white shadow-md rounded lg:rounded-none lg:shadow-none py-10 lg:py-0 w-full lg:w-auto`}>
-                    {isLogged ? (
+                    {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
-                        <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> CREATE CAMPAIGN </button>
+                        <Link to="newcampaign">
+                            <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> CREATE CAMPAIGN </h1> </button>
+                        </Link>
                     </div>
                     ) :null}
-                    {isLogged ? (
+                    {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
-                        <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> DONATE </button>
+                        <Link to="discoverall">
+                            <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> DONATE </h1> </button>
+                        </Link>
                     </div>
                     ) :null}
                     <div className="block px-3">
-                        <button className="block h-5 w-5 text-tosca focus:outline-none focus:text-gray-500">
+                        <button onClick={() => {setToggleSearch(!ToggleSearch)}} className="block h-5 w-5 text-tosca focus:outline-none focus:text-gray-500">
                             <svg className="" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </button>
                     </div>
-                    <div className="text-tosca text-xl font-light">
+                    {ToggleSearch ? null :(
+                    <div onClick={() => {setToggleSearch(!ToggleSearch)}} className="text-tosca text-xl font-light">
                         <h1>Search</h1>
                     </div>
+                    )}
+                    {ToggleSearch ? (
+                    <div className="fromright-animation">
+                        <input placeholder="search here..." className="rounded-full bg-gray-100 px-4 py-1 focus:outline-none" name="search" type="search"/>
+                    </div>
+                    ) :null}
                     {!isLogged ? (
                     <div className="block px-3 text-sky text-sm lg:text-xl ">|</div>
                     ) :null}
@@ -126,12 +140,12 @@ function NavbarComp() {
                     </div>
                     ) :null}
                     {isLogged ? (
-                    <div className="block px-3 text-sky text-sm lg:text-xl">|</div>
+                    <div className="block px-3 text-sky text-sm lg:text-xl font">|</div>
                     ) :null}
                     {isLogged ? (
-                    <div className="block px-3 ">
+                    <div className="block px-3">
                         <Link to="/myprofile">
-                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> My Profile </button>
+                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> <h1 className="font-bold">My Profile</h1>  </button>
                         </Link>
                     </div>
                     ) :null}
@@ -144,7 +158,7 @@ function NavbarComp() {
                 <div>
                     <div className="bg-black opacity-50 absolute inset-0 flex flex-row justify-center items-center z-10"></div>
                 </div>
-                <div className="absolute inset-0 flex flex-row justify-center items-center">
+                <div className="fromtop-animation absolute inset-0 flex flex-row justify-center items-center z-10">
                     <div className="rounded bg-modal w-3/4 lg:w-1/3 opacity-100 h-3/4 lg:h-4/5 z-10">
                         <h1 className="text-tosca font-medium text-4xl lg:text-5xl mx-10 mt-14 lg:mt-20 lg:mb-3">LOGIN</h1>
                         <a onClick={() => ToggleSwitch()} className="cursor-pointer underline text-sm lg:text-md mx-10 mt-14 lg:mt-24">
@@ -173,7 +187,7 @@ function NavbarComp() {
                 <div>
                     <div className="bg-black opacity-50 absolute inset-0 flex flex-row justify-center items-center z-10"></div>
                 </div>
-                <div className="absolute inset-0 flex flex-row justify-center items-center">
+                <div className="fromtop-animation z-10 absolute inset-0 flex flex-row justify-center items-center">
                     <div className="rounded bg-modal w-3/4 lg:w-1/3 opacity-100 h-3/4 lg:h-4/5 z-10">
                         <h1 className="text-tosca font-medium text-4xl lg:text-5xl mx-10 mt-14 lg:mt-5 lg:mb-3">REGISTER</h1>
                         <a onClick={() => ToggleSwitch()} className="cursor-pointer underline text-sm lg:text-md mx-10 mt-14 lg:mt-24">
