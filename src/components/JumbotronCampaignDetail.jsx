@@ -62,11 +62,13 @@ export default function JumbotronCampaignDetail(props) {
             </div>
           </div>
           <div className="grid grid-cols-1 my-2">
-            <button className="btn-outline-red uppercase border-tosca">
+            <button 
+            onClick={(e) => props.modalShare(e.target.value)}
+            className="btn-outline-red uppercase border-tosca">
               Share
             </button>
             <button
-              onClick={(e) => props.jumbotronButtonValue(e.target.value)}
+              onClick={(e) => props.modalCampaignUpdate(e.target.value)}
               className="btn-outline-red uppercase"
               value={props.role === "fundraiser" ? "New Progress " : "Donate"}
             >
