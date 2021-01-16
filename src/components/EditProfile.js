@@ -63,7 +63,7 @@ const EditProfile = () => {
     return (
         <div className="fromtop-animation w-11/12 mt-20 mb-20 mx-auto border border-solid p-1 md:w-3/5 p-5">
            <h2 className="font-bold text-xl mb-5">Edit Profile</h2>
-           <img src={image} alt="" className="mx-auto rounded w-52"/>
+           <img src={image} alt="" className="mx-auto rounded w-52 h-52"/>
            <a onClick={() => setToggleImageUp(!ToggleImageUp)} className="cursor-pointer text-tosca underline font-bold flex justify-center mt-3">Change Image Profile</a>
            {ToggleImageUp ? (
             <UpdateAvaModal/>

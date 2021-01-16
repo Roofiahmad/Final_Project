@@ -37,10 +37,9 @@ function App() {
           <Route exact path="/createdonation" component={CreateDonation} />
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
           <Route exact path="/myprofile" component={MyProfilePage} />
-          <Route exact path="/editprofile" component={EditProfile} />
           <Route exact path="/resetpassword" component={ResetPassword} />
         </Switch>
-       <Footer/>
+        <Footer/>
     </Router>
   );
 }
