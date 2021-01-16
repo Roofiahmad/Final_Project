@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 export default class UpdateAvaModal extends Component {
   state = {
@@ -24,7 +25,8 @@ export default class UpdateAvaModal extends Component {
       .then((response) => {
         console.log(response);
         alert("Profile Image Updated Successfully");
-        window.location.reload();
+        let history = useHistory();
+        history.push("/myprofile")
       })
       .catch((err) => console.log(err));
   };
@@ -36,6 +38,7 @@ export default class UpdateAvaModal extends Component {
       image: file,
     });
   };
+  
   render() {
   return (
     <div>
