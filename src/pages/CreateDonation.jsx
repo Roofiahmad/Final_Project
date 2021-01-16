@@ -98,7 +98,7 @@ export default function CreateDonation() {
               creditCard ? "bg-blue-200" : null
             }`}
           >
-            <i class="far fa-credit-card text-5xl"></i>
+            <i className="far fa-credit-card text-5xl"></i>
             <p>Credit Card</p>
           </div>
           <div
@@ -107,7 +107,7 @@ export default function CreateDonation() {
               bank ? "bg-blue-200" : null
             }`}
           >
-            <i class="fas fa-university text-5xl"></i>
+            <i className="fas fa-university text-5xl"></i>
             <p>Bank Transfer</p>
           </div>
         </div>

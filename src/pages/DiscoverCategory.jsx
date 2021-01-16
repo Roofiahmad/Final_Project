@@ -1,15 +1,12 @@
-import React from 'react';
-import DiscoverJumbotron from '../components/DiscoverJumbotron';
-import DiscoverSearch from '../components/DiscoverSearch';
+import React from 'react'
+import DiscoverJumbotron from '../components/DiscoverJumbotron'
+import SearchResult from '../components/SearchResult'
 
-
-const DiscoverCategory = () => {
-  return (
-    <div>
-      <DiscoverJumbotron />
-      <DiscoverSearch />
-    </div>
-  )
+export default function DiscoverCategory() {
+    return (
+        <div>
+            <DiscoverJumbotron/>
+            <SearchResult/>
+        </div>
+    )
 }
-
-export default DiscoverCategory;

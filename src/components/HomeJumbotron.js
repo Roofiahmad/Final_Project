@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import JumbotronContent from './JumbotronContent';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
