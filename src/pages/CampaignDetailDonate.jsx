@@ -10,18 +10,19 @@ import RelatedCampaign from "../components/RelatedCampaign";
 export default function CampaignDetailDonate() {
   const role = "donatur";
   const [redirect, setDirect] = useState(false);
+  const id=1
 
-  const jumbotronButtonValue = (e) => {
+  const donateHandlerButton = (e) => {
     console.log("from campaign detail donate");
     setDirect(true);
   };
 
   return (
     <div className="w-11/12 mx-auto relative fromtop-animation ">
-      {redirect ? <Redirect to="/createdonation" /> : null};
+      {redirect ? <Redirect to={`/createdonation/${id}`} /> : null};
       <JumbotronCampaignDetail
         role={role}
-        jumbotronButtonValue={jumbotronButtonValue}
+        donateHandlerButton={donateHandlerButton}
       />
       <CampaignStory />
       <CampaignTimeline />

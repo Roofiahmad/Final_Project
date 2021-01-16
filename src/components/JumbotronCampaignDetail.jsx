@@ -10,7 +10,7 @@ export default function JumbotronCampaignDetail(props) {
         <h2 className=" inline-block text-3xl font-medium my-4">
           Aid for necessary item to help our country
         </h2>
-        <div
+{        props.role === "fundraiser" ? <div
           className="relative inline-block top-5 right-8"
           onClick={() => setDropdown(!dropdown)}
         >
@@ -23,7 +23,7 @@ export default function JumbotronCampaignDetail(props) {
               <p className="campaign-text-setting text-md">Delete</p>
             </div>
           ) : null}
-        </div>
+        </div> : null}
       </div>
       <div className="grid grid-cols-10 gap-0">
         <img
@@ -67,13 +67,17 @@ export default function JumbotronCampaignDetail(props) {
             className="btn-outline-red uppercase border-tosca">
               Share
             </button>
-            <button
+            { props.role === "fundraiser" ? <button
               onClick={(e) => props.modalCampaignUpdate(e.target.value)}
               className="btn-outline-red uppercase"
-              value={props.role === "fundraiser" ? "New Progress " : "Donate"}
-            >
-              {props.role === "fundraiser" ? "New Progress " : "Donate"}
+            > New Progress
             </button>
+            :
+            <button
+              onClick={props.donateHandlerButton}
+              className="btn-outline-red uppercase"
+            > Donate
+            </button>}
           </div>
         </div>
       </div>

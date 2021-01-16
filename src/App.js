@@ -6,6 +6,7 @@ import {
   Route,
   useHistory,
   Redirect,
+  useParams
 } from "react-router-dom";
 import MyProfilePage from "./pages/MyProfilePage";
 import NavbarComp from "./components/NavbarComp";
@@ -34,7 +35,7 @@ function App() {
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser} />
           <Route exact path="/donate" component={CampaignDetailDonate}/>
-          <Route exact path="/createdonation" component={CreateDonation} />
+          <Route  path="/createdonation/id" component={CreateDonation} />
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
