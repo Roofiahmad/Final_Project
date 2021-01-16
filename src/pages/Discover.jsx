@@ -7,7 +7,7 @@ import GainedMomentum from "../components/GainedMomentum";
 
 export default function Discover() {
     return (
-        <div>
+        <div className="mt-6 fromtop-animation">
             <CategoryButton/>
             <Newest />
             <MostUrgent />
