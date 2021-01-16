@@ -1,5 +1,6 @@
 import React from 'react';
 import card from '../assets/card.png';
+import card2 from '../assets/campaign-image.png';
 import CardLoading from './CardLoading'
 
 
@@ -7,12 +8,12 @@ const Newest = () => {
     return (
         <div className="w-10/12 mt-28 mb-5 mx-auto">
             <h4 className="font-bold underline mb-4">Newest</h4>
-            <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
+            <div className="grid grid-rows-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
                 <CardLoading />
                 <CardLoading />
                 <CardLoading />
                 <div className="shadow-md">
-                    <img src={card} alt=""/>
+                    <img src={card2} alt=""/>
                     <div className="w-5/6 mx-auto pb-4 pt-2">
                     <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">Medical</p>
                     <a href="#" className="font-bold mt-4">Aid for necessary items to help our country</a>
