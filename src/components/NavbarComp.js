@@ -33,11 +33,28 @@ function NavbarComp() {
             console.log(response);
             localStorage.setItem("token", response.data.token);
             console.log(response, "login success"); 
-            window.location.reload();
         })
         .catch((err) => {
             console.log("INI PESAN ERROR", err.response);
             alert("Sorry, email or password is incorrect");
+        })
+
+        const token = localStorage.getItem("token");
+        
+        const config = {
+            headers: {
+              'Authorization': 'Bearer ' + token, 
+            },
+        };
+
+        await axios.get(
+            "https://talikasih.kuyrek.com:3000/user/authorization",
+            config
+        )
+        .then(response => {
+            console.log(response, "AUTHORIZED");
+            localStorage.setItem("id", response.data.user.id);
+            window.location.reload();
         })
       };
 
@@ -68,8 +85,9 @@ function NavbarComp() {
             console.log("INI TUH ERROR MESSAGE", err.response);
             alert(err.response.data.errors.email.msg);
         })
+        
         // setTimeout(function() { window.location.reload(); }, 3000);
-      };
+    };
     
     
     
@@ -114,7 +132,7 @@ function NavbarComp() {
                         </button>
                     </div>
                     {ToggleSearch ? null :(
-                    <div onClick={() => {setToggleSearch(!ToggleSearch)}} className="text-tosca text-xl font-light">
+                    <div onClick={() => {setToggleSearch(!ToggleSearch)}} className="cursor-pointer text-tosca text-xl font-light">
                         <h1>Search</h1>
                     </div>
                     )}
