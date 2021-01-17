@@ -57,7 +57,7 @@ const MyProfile = () => {
           setBankName(response.data.data.bank_name);
           setBankNumber(response.data.data.bank_account_number);
         } else {
-          setBank("null")
+          setBank("not set")
         }
     })
   }
