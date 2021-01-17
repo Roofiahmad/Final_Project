@@ -18,7 +18,7 @@ function HomeJumbotron() {
                 </div>
                 </div>
             </div>
-            <div className=" bg-jumbotron3 lg:h-full h-full">
+            <div className=" bg-jumbotron2 lg:h-full h-full">
             <div className=" w-1/2 lg:pt-60 pt-32 mx-5 lg:mx-10">
                 <div className=" text-tosca text-left">
                     <h1 className="lg:text-4xl text-2xl">#HealthCareForEveryone</h1>
