@@ -19,6 +19,7 @@ function NavbarComp() {
         e.preventDefault();
         console.log("email :", e.target.email.value);
         console.log("password :", e.target.password.value);
+        alert(e.target.email.value);
     
         const sendaDataLogin = {
           email: e.target.email.value,
@@ -64,6 +65,8 @@ function NavbarComp() {
         console.log("email :", e.target.email.value);
         console.log("password :", e.target.password.value);
         console.log("password :", e.target.passwordConfirmation.value);
+        alert(e.target.email.value);
+
     
         const sendaDataSignUp = {
           name: e.target.name.value,
@@ -184,7 +187,7 @@ function NavbarComp() {
                         </a>
                         <div className="flex flex-col justify-center items-center lg:mx-10" >
                             <form onSubmit={(e) => handleSubmitLogin(e)}>
-                                <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-10" type="text" placeholder="Email"/>
+                                <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-10" type="email" placeholder="Email"/>
                                 <input name="password" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96" type="password" placeholder="Password"/>
                                 <button type="submit" className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">LOGIN</button>
                             </form>
@@ -214,7 +217,7 @@ function NavbarComp() {
                         <div className="flex flex-col justify-center items-center lg:mx-10" >
                             <form onSubmit={(e) => handleSubmitSignup(e)}>
                                 <input name="name" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="text" placeholder="Name"/>
-                                <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="text" placeholder="Email"/>
+                                <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="email" placeholder="Email"/>
                                 <input name="password" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="password" placeholder="Password"/>
                                 <input name="passwordConfirmation" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-5" type="password" placeholder="Confirm Password"/>
                                 <button type="submit" className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">REGISTER</button>
