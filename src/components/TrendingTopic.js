@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import open from "../assets/open.png"
 import close from "../assets/close.png"
 import axios from 'axios'
+import profileImage from '../assets/blank_profile.png'
 
 const TrendingTopic = () => {
     const [trendingCampaign, setTrendingCampaign] = useState([]);
-    
 
     useEffect(() => {
         getTrending()
@@ -36,17 +36,17 @@ const TrendingTopic = () => {
                         </div>
                         <div className="flex gap-6 flex-wrap lg:flex-nowrap flex-row">
                             <div className="flex">
-                                <img src={campaign.images} alt=""/>
+                                <img src={campaign.images} alt="" className="w-full h-auto"/>
                             </div>
                             <div className="flex w-full lg:w-1/2">
                                 <div className="flex-col justify-between">
                                     <div className="space-y-2 mb-8">
                                         <img src={open} alt=""/>
-                                        <h1 className="text-lg sm:text-xl">{campaign.story}</h1>
+                                        <h1 className="clamp text-lg overflow-ellipsis overflow-hidden sm:text-md">{campaign.story}</h1>
                                         <img className="float-right" src={close} alt=""/>
                                     </div>
-                                    <div className="flex flex-row lg:mt-52">
-                                        <img src={campaign.user.profile_image} className="w-32 h-32" alt=""/>
+                                    <div className="flex flex-row">
+                                        <img src={campaign.user.profile_image === "https://talikasih.kuyrek.com:3000/img/null" ? profileImage : campaign.user.profile_image} className="w-24 h-24" alt=""/>
                                         <div className="ml-5">
                                             <h1 className="font-semibold lg:text-xl">{campaign.user.name}</h1>
                                             <h1 className="text-grey">Fundraiser</h1>
