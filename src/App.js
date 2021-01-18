@@ -23,6 +23,7 @@ import ResetPassword from './components/ResetPassword';
 
 
 function App() {
+  const id = localStorage.getItem('id');
   return (
     <Router>
       <NavbarComp />
@@ -33,9 +34,10 @@ function App() {
           <Route exact path="/discoverall" component={Discover} />
           <Route exact path="/discoverbycategory" component={DiscoverCategory} />
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
-          <Route exact path="/campaigndetail" component={CampaignDetail}/>
+          <Route exact path="/campaigndetail/:id" component={CampaignDetail}/>
           <Route exact path="/createdonation/:id" component={CreateDonation} />
-          <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
+          <Route exact path="/donate/:id" component={CampaignDetailDonate}/>
+          <Route exact path="/createdonation" component={CreateDonation} />
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
         </Switch>

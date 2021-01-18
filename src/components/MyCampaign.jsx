@@ -10,17 +10,17 @@ const MyCampaign = () => {
         getData();
       }, []);
 
-      function getData() {
+    function getData() {
     
-        axios.get(
-          `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=1`
-        )
-        .then((response) => {
-            console.log("INI CAMPAIGN BY USER", response);
-            setMyCampaigns(response.data.data);
-            console.log("myCampaigns", myCampaigns);
-        })
-      }
+      axios.get(
+        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=1`
+      )
+      .then((response) => {
+          console.log("INI CAMPAIGN BY USER", response);
+          setMyCampaigns(response.data.data);
+          console.log("myCampaigns", myCampaigns);
+      })
+    }
   return (
     <div className="w-11/12 mt-20 mb-20 mx-auto border border-solid p-5">
       <h2 className="font-bold text-xl mb-5">My Campaign ({myCampaigns.length})</h2>
