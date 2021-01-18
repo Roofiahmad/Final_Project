@@ -14,7 +14,7 @@ import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 import CreateDonation from "./pages/CreateDonation";
 import Footer from './components/Footer';
-import CampaignDetailDonate from "./pages/CampaignDetailDonate";
+import CampaignDetail from "./pages/CampaignDetail";
 import Discover from "./pages/Discover";
 import DiscoverCategory from "./pages/DiscoverCategory";
 import DiscoverSearchResult from "./pages/DiscoverSearchResult";
@@ -33,9 +33,8 @@ function App() {
           <Route exact path="/discoverall" component={Discover} />
           <Route exact path="/discoverbycategory" component={DiscoverCategory} />
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
-          <Route exact path="/fundraiser" component={CampaignDetailFundraiser} />
-          <Route exact path="/donate" component={CampaignDetailDonate}/>
-          <Route  path="/createdonation/id" component={CreateDonation} />
+          <Route exact path="/campaigndetail" component={CampaignDetail}/>
+          <Route exact path="/createdonation/:id" component={CreateDonation} />
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
