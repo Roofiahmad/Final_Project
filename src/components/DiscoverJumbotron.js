@@ -22,7 +22,8 @@ const DiscoverJumbotron = (props) => {
         'humanity': humanity,
         'medical': medical,
         'religious': religious,
-        'sociopreneur': sociopreneur}
+        'sociopreneur': sociopreneur
+    }
     
     return (
         <div className="w-10/12 mt-16 mb-32 mx-auto">
