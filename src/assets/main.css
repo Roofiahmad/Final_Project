@@ -29499,7 +29499,7 @@ input[type="number"] {
 .clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 8;
 }
 
 @media (min-width: 640px) {

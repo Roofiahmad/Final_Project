@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/editprofile" component={EditProfile} />
           <Route exact path="/newcampaign" component={NewCampaign} />
           <Route exact path="/discoverall" component={Discover} />
-          <Route exact path="/discoverbycategory" component={DiscoverCategory} />
+          <Route exact path="/discoverbycategory/:category" component={DiscoverCategory} />
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser} />
           <Route exact path="/donate/:id" component={CampaignDetailDonate}/>

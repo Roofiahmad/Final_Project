@@ -4,9 +4,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
-const Newest = () => {
+const Newest = (props) => {
     const [newestCampaign, setNewestCampaign] = useState([]);
 
+    console.log(props)
     useEffect(() => {
         getNewestCampaign();
     }, [])

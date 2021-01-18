@@ -20,7 +20,7 @@ function DownloadSection() {
                     <div className="flex h-full">
                         <img src={download} alt=""/>
                     </div>
-                    <div className="flex w-full lg:w-1/2">
+                    <div className="flex w-full mt-0 lg:w-1/2 lg:mt-16">
                         <div className="flex-col justify-between">
                             <div className="">
                                 <h1 className="text-xl font-semibold">Available Now</h1>
@@ -30,7 +30,6 @@ function DownloadSection() {
                                 <img src={googleplay} alt="" className="w-32 cursor-pointer"/>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
