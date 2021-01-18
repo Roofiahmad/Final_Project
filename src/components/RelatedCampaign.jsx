@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 export default function RelatedCampaign(props) {
-  const initialrelatedCampaign = {}
+  // const initialrelatedCampaign = {''}
   const [relatedCampaignData, setRelatedCampaignData] = useState('')
 
   useEffect(() => {

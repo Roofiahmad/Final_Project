@@ -6,6 +6,7 @@ import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
 import RelatedCampaign from "../components/RelatedCampaign";
 import axios from 'axios'
+import { useParams } from "react-router-dom";
 
 export default function CampaignDetail() {
   const token = localStorage.getItem("token");
@@ -38,7 +39,8 @@ export default function CampaignDetail() {
 }
   const [fundraiserId, setFundraiserId] = useState('');
   const [campaignData, setCampaignData] = useState(initialCampaignData)
-  const campaignId = '6002b9c479dfba6f3e925ce4';
+  const campaignId = useParams().campaignId; 
+  
   let role = '';
 
   const donateHandlerButton = (e) => {
