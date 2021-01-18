@@ -5,10 +5,11 @@ import CommentCampaignDetail from "../components/CommentCampaignDetail";
 import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
 import RelatedCampaign from "../components/RelatedCampaign";
-import axios from 'axios'
-import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function CampaignDetail() {
+  let { id } = useParams();
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem('id');
   const initialCampaignData = {
@@ -49,7 +50,7 @@ export default function CampaignDetail() {
 
   useEffect(() => {
     console.log('useeffect work');
-    axios.get(`https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`)
+    axios.get(`https://talikasih.kuyrek.com:3001/campaign/get/${id}`)
         .then(response => {
             console.log(response.data.data);
             setCampaignData(response.data.data);
