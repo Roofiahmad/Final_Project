@@ -17,7 +17,7 @@ const DiscoverCategory = () => {
     }, []);
 
     function getCampaingByCategory() {
-        axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}&page=1&limit=12`)
+        axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}&limit=12`)
         .then((res) => {
             // console.log(res.data.data)
             setCampaignCategory(res.data.data)

@@ -19,20 +19,20 @@ const Discover = () => {
     const [campaignCategory, setCampaignCategory] = useState('');
 
     const ListCategory = [
-        {category: 'Disability', image: disability},
-        {category: 'Disaster', image: disaster},
-        {category: 'Education', image: education},
-        {category: 'Environment', image: environment},
-        {category: 'Humanity', image: humanity},
-        {category: 'Medical', image: medical},
-        {category: 'Religious', image: religious},
-        {category: 'Sociopreneur', image: sociopreneur}
+        {category: 'disability', image: disability},
+        {category: 'disaster', image: disaster},
+        {category: 'education', image: education},
+        {category: 'environment', image: environment},
+        {category: 'humanity', image: humanity},
+        {category: 'medical', image: medical},
+        {category: 'religious', image: religious},
+        {category: 'sociopreneur', image: sociopreneur}
     ];
     
     const HandleClick = (inputCategory) => {
         setCategory(inputCategory)
         for (const category in ListCategory) {
-            setCampaignCategory(`https://talikasih.kuyrek.com:3001/campaign/category?category=${inputCategory}&limit=3`)
+            // setCampaignCategory(`https://talikasih.kuyrek.com:3001/campaign/category?category=${inputCategory}&limit=3`)
         }
     }
 
@@ -44,19 +44,21 @@ const Discover = () => {
             {
                 ListCategory.map((button, index) => {
                     return (
-                        <div key={index} id={button.category} onClick={(e) => {HandleClick(e.target.id)}} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24">
-                            <Link to={`discoverbycategory/${button.category}`} className="m-auto">
-                                <img src={button.image} alt="disability" className="mx-auto h-8"/>
-                                <p className="pt-2 pb-0 text-xs text-gray-700">{button.category}</p>
-                            </Link>
-                        </div>
+                        <Link to={`discoverbycategory/${button.category}`}>
+                            <div key={index} id={button.category} onClick={(e) => {HandleClick(e.target.id)}} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24">
+                                <div className="m-auto">
+                                    <img src={button.image} alt="disability" className="mx-auto h-8"/>
+                                    <p className="pt-2 pb-0 text-xs text-gray-700">{button.category[0].toUpperCase()+button.category.substring(1).toLowerCase()}</p>
+                                </div>
+                            </div>
+                        </Link>
                     )
                 })
             }
             
                 </div>
             </div>
-            <Newest category={ListCategory}/>
+            <Newest />
             <MostUrgent />
             <GainedMomentum />
         </div>
