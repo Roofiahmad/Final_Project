@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import card2 from '../assets/card.png';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const MyCampaign = () => {
     const id = localStorage.getItem("id");
@@ -27,7 +27,7 @@ const MyCampaign = () => {
       <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
         {myCampaigns.length > 0 ? myCampaigns.map((campaigns) => {
           return (
-        <Link to={`/donate/${campaigns.id}`}>
+        <Link to={`/campaigndetail/${campaigns.id}`}>
         <div key={campaigns.id} className="shadow-md max-w-md mx-auto">
           <img src={campaigns.images} alt="" />
           <div className="w-5/6 mx-auto pb-4 pt-2">

@@ -29,7 +29,7 @@ const Newest = () => {
                                 <img src={campaign.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaign.images} alt="" className="w-full h-52"/>
                                 <div className="w-5/6 mx-auto pb-4 pt-2">
                                     <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaign.category}</p>
-                                    <Link to={`/donate/${campaign._id}`} className="font-bold mt-4">{campaign.title}</Link>
+                                    <Link to={`/campaigndetail/${campaign._id}`} className="font-bold mt-4">{campaign.title}</Link>
                                     <p className="text-sm mb-8 mt-1">{campaign.user.name}</p>                   
                                     <div className="h-3 relative max-w-xl rounded-full overflow-hidden mb-8">
                                         <div className="w-full h-full bg-gray-200 absolute"></div>
