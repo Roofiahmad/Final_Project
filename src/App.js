@@ -19,6 +19,7 @@ import DiscoverCategory from "./pages/DiscoverCategory";
 import DiscoverSearchResult from "./pages/DiscoverSearchResult";
 import EditProfile from "./components/EditProfile";
 import ResetPassword from './components/ResetPassword';
+import PageNotFound from "./pages/PageNotFound";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
+          <Route component={PageNotFound} />
         </Switch>
         <Footer/>
     </Router>

@@ -29404,7 +29404,7 @@ input[type="number"] {
 }
 
 .outline-tosca {
-  outline: 2px solid ##1d94a8;
+  outline: 2px solid #1d94a8;
 }
 
 .fromtop-animation {
@@ -29494,6 +29494,12 @@ input[type="number"] {
   100% {
     opacity: 1;
   }
+}
+
+.clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 
 @media (min-width: 640px) {

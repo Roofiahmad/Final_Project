@@ -21,6 +21,8 @@ export default function CommentCampaignDetail(props) {
       .then((response) => {
           console.log("INI GET COMMENT", response);
           setComments(response.data.data);
+          let stringdate = new Date;
+          console.log("STRING DATE", stringdate.toDateString())
           console.log(arrayComments);
       })
     }
@@ -49,7 +51,7 @@ export default function CommentCampaignDetail(props) {
           }}
         >
           <p className="">{comments.user.name}</p>
-          <p className="text-gray-400">15 minutes ago</p>
+          <p className="text-gray-400">{comments.created_at}</p>
         </div>
         <p className="mt-4">
           {comments.comment}
