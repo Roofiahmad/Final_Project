@@ -8,6 +8,7 @@ import iconsort from '../assets/sort.png';
 
 const DiscoverCategory = () => {
     let { category } = useParams();
+    // console.log(category)
     const [campaingByCategory, setCampaignCategory] = useState([]);
     const [sort, setSort] = useState(false);
 
@@ -16,16 +17,16 @@ const DiscoverCategory = () => {
     }, []);
 
     function getCampaingByCategory() {
-        axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=medical&page=1&limit=12`)
+        axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}&page=1&limit=12`)
         .then((res) => {
-            console.log(res.data.data)
+            // console.log(res.data.data)
             setCampaignCategory(res.data.data)
         })
     }
 
     return (
         <div>
-            <DiscoverJumbotron/>
+            <DiscoverJumbotron category={category}/>
             <div className="mt-16 mb-36">
                 <div className="w-10/12 mx-auto">
                     <button className="font-bold flex mb-5 bg-white hover:bg-blue" onClick={() => setSort(!sort)}>Sort

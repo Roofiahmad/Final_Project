@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CategoryButton from "../components/CategoryButton";
+// import CategoryButton from "../components/CategoryButton";
 import Newest from "../components/Newest";
 import MostUrgent from "../components/MostUrgent";
 import GainedMomentum from "../components/GainedMomentum";
@@ -11,7 +11,7 @@ import humanity from '../assets/humanity.png';
 import medical from '../assets/medical.png';
 import religious from '../assets/religious.png';
 import sociopreneur from '../assets/sociopreneur.png';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 const Discover = () => {
