@@ -296,3 +296,22 @@ input[type="number"] {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
 }
+
+.card-outline:hover {
+  @apply border-2 animate-bounce;
+  border-color: #1d94a8;
+}
+
+.appear-animation {
+  animation: appear 1s;
+  animation-delay: 0.1s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

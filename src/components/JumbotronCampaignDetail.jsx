@@ -8,7 +8,7 @@ export default function JumbotronCampaignDetail(props) {
   const [dropdown, setDropdown] = useState(false);
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  }
   const end = props.campaignData.due_date.split('T'); 
   const calc = end[0].split('-');
   const newDay = new Date();

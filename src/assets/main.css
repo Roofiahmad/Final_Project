@@ -29502,6 +29502,27 @@ input[type="number"] {
   -webkit-line-clamp: 5;
 }
 
+.card-outline:hover {
+  border-width: 2px;
+  animation: bounce 1s infinite;
+  border-color: #1d94a8;
+}
+
+.appear-animation {
+  animation: appear 1s;
+  animation-delay: 0.1s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
