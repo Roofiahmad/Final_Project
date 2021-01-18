@@ -6,12 +6,30 @@ import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
 import RelatedCampaign from "../components/RelatedCampaign";
 import axios from 'axios';
+import ModalsCampaignUpdate from "../components/ModalsCampaignUpdate";
+import ModalsShare from "../components/ModalsShare";
 import { useParams } from 'react-router-dom';
 
 export default function CampaignDetail() {
-  let { id } = useParams();
-  const token = localStorage.getItem("token");
+  let role = '';
+  const campaignId = useParams().campaignId; 
   const userId = localStorage.getItem('id');
+  const [fundraiserId, setFundraiserId] = useState('');
+  const [modalUpdate, setModalUpdate] = useState(false)
+  const [modalshare, setModalShare] = useState(false)
+
+  const newProgressModal = () =>{
+    setModalUpdate(!modalUpdate)
+    setModalShare(false)
+  }
+
+  const modalShareHandler = () =>{
+    setModalUpdate(false)
+    setModalShare(!modalshare)
+  }
+
+
+
   const initialCampaignData = {
     "images": "https://talikasih.kuyrek.com:3001/img/c8ff9fa0f60691ea5ae7a2c5a9e97cfc.jpg",
     "view": 76,
@@ -38,21 +56,12 @@ export default function CampaignDetail() {
     "updated_at": "2021-01-18T02:17:20.159Z",
     "id": "6002b9c479dfba6f3e925ce4"
 }
-  const [fundraiserId, setFundraiserId] = useState('');
-  const [campaignData, setCampaignData] = useState(initialCampaignData)
-  const campaignId = useParams().campaignId; 
-  
-  let role = '';
 
-  const donateHandlerButton = (e) => {
-    console.log("from campaign detail donate");
-  };
+const [campaignData, setCampaignData] = useState(initialCampaignData)
 
   useEffect(() => {
-    console.log('useeffect work');
-    axios.get(`https://talikasih.kuyrek.com:3001/campaign/get/${id}`)
+    axios.get(`https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`)
         .then(response => {
-            console.log(response.data.data);
             setCampaignData(response.data.data);
             setFundraiserId(response.data.data.user.id);
         })
@@ -61,16 +70,16 @@ export default function CampaignDetail() {
         })
   }, [])
 
-  console.log(fundraiserId);
   userId === fundraiserId ? role = 'fundraiser' : role = 'donatur';
-  console.log(role)
+
 
   return (
     <div className="w-11/12 mx-auto relative fromtop-animation ">
       <JumbotronCampaignDetail
         role={role}
-        donateHandlerButton={donateHandlerButton}
-        id= {campaignId}
+        newProgressModal={newProgressModal}
+        modalShareHandler={modalShareHandler}
+        campaignId= {campaignId}
         campaignData={campaignData}
       />
       <CampaignStory campaignData={campaignData} />
@@ -78,6 +87,12 @@ export default function CampaignDetail() {
       <DonaturTimeline campaignId={campaignId}  />
       <CommentCampaignDetail role={role} />
       {role === 'donatur' ?  <RelatedCampaign category={campaignData.category} campaignId={campaignId}/>: null}
+      {modalUpdate ? (
+        <ModalsCampaignUpdate newProgressModal={newProgressModal} />
+      ) : null}
+      {modalshare ? (
+        <ModalsShare modalShareHandler={modalShareHandler} campaignId={campaignId} share={campaignData.total_share} />
+      ) : null}
     </div>
   );
 }
