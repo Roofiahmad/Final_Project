@@ -6,6 +6,7 @@ import {
   Route,
   useHistory,
   Redirect,
+  useParams
 } from "react-router-dom";
 import MyProfilePage from "./pages/MyProfilePage";
 import NavbarComp from "./components/NavbarComp";
@@ -13,7 +14,7 @@ import NewCampaign from "./components/NewCampaign";
 import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 import CreateDonation from "./pages/CreateDonation";
 import Footer from './components/Footer';
-import CampaignDetailDonate from "./pages/CampaignDetailDonate";
+import CampaignDetail from "./pages/CampaignDetail";
 import Discover from "./pages/Discover";
 import DiscoverCategory from "./pages/DiscoverCategory";
 import DiscoverSearchResult from "./pages/DiscoverSearchResult";
@@ -33,10 +34,10 @@ function App() {
           <Route exact path="/discoverall" component={Discover} />
           <Route exact path="/discoverbycategory" component={DiscoverCategory} />
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
-          <Route exact path="/fundraiser" component={CampaignDetailFundraiser} />
+          <Route exact path="/campaigndetail/:id" component={CampaignDetail}/>
+          <Route exact path="/createdonation/:id" component={CreateDonation} />
           <Route exact path="/donate/:id" component={CampaignDetailDonate}/>
           <Route exact path="/createdonation" component={CreateDonation} />
-          <Route exact path="/fundraiser" component={CampaignDetailFundraiser}/>
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
         </Switch>
