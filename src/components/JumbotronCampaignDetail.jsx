@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios'
 
 
 export default function JumbotronCampaignDetail(props) {
+  let {id} = useParams();
   const [dropdown, setDropdown] = useState(false);
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+  }
   const end = props.campaignData.due_date.split('T'); 
   const calc = end[0].split('-');
   const newDay = new Date();
@@ -100,7 +101,7 @@ export default function JumbotronCampaignDetail(props) {
             </button>
             :
             <Link
-            to={`/createdonation/${props.id}`}
+            to={`/createdonation/${id}`}
             className="btn-outline-red uppercase text-center"
             > 
             Donate

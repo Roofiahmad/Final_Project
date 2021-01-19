@@ -31,7 +31,7 @@ const TrendingTopic = () => {
                             </h1>
                         </div>
                         <div className="mb-3">
-                            <Link to={`/donate/${campaign._id}`} className="font-bold text-3xl">
+                            <Link to={`/campaigndetail/${campaign._id}`} className="font-bold text-3xl">
                                 {campaign.title}
                             </Link>
                         </div>

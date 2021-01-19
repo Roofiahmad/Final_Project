@@ -54,7 +54,7 @@ export default class NewCampaign extends Component {
       console.log(response);
       // window.location.reload();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err.response));
   };
 
   render() {
