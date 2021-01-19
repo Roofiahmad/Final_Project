@@ -1,6 +1,24 @@
 import React from 'react'
+import axios from 'axios'
 
 export default function ModalsShare(props) {
+  
+  const handleShare = () => {
+    const data = {
+      total_share : props.share + 1,
+      campaignId: props.campaignId
+    };
+    axios.put(`https://talikasih.kuyrek.com:3001/campaign/update/share/${props.campaignId}`,data)
+        .then(response => {
+            console.log(response);
+            window.location.reload()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
+  }
+
     return (
           <div className="fixed z-10 inset-0 overflow-y-auto">
             <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -28,21 +46,19 @@ export default function ModalsShare(props) {
                       Help by sharing
                     </h3>
                     <h3
-                      onClick={props.jumbotronButtonValue}
+                      onClick={props.modalShareHandler}
                       className="text-lg leading-6  font-medium text-gray-900 inline-block absolute right-6 cursor-pointer	"
                     >
                       X
                     </h3>
                   </div>
                   <div className="mt-2 border-t border-gray-500 p-4">
-                <div className="mt-2 w-full">
-                    <input
-                      className="w-full"
-                      type="text"
-                      name="shareLink"
-                      value="https://talikasih.com/aid-for-necessary-items-to-help-our-country"
-                    />
+                <div className="mt-2 w-full grid grid-rows-2	justify-around">
+                  <div className="text-sm">
+                  https://talikasih.com/aid-for-necessary-items-to-help-our-country
+                  </div>
                   <button
+                    onClick={handleShare}
                     type="button"
                     className="float-right w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
                   >

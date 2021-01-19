@@ -5,16 +5,34 @@ import axios from 'axios'
 
 
 export default function JumbotronCampaignDetail(props) {
+<<<<<<< HEAD
+  const token = localStorage.getItem("token");
+=======
   let {id} = useParams();
+>>>>>>> d9cc20c6a21e623832ab8d992e418e7a5907396a
   const [dropdown, setDropdown] = useState(false);
+  // function to add thousand separator value of IDR
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+<<<<<<< HEAD
+
+  const countday = (dueDate) => {
+    const end = dueDate.split('T'); 
+    const calc = end[0].split('-');
+    const today = [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()];
+    return (Number(calc[0])-today[0])*365 + (Number(calc[1])-today[1])*30 +(Number(calc[2])-today[2]);
+
+  }
+  
+  let dayRemain = countday (props.campaignData.due_date)
+=======
   const end = props.campaignData.due_date.split('T'); 
   const calc = end[0].split('-');
   const newDay = new Date();
   const today = [newDay.getFullYear(), newDay.getMonth()+1, newDay.getDate()];
   let dayRemain = (Number(calc[0])-today[0])*365 + (Number(calc[1])-today[1])*30 +(Number(calc[2])-today[2]);
+>>>>>>> d9cc20c6a21e623832ab8d992e418e7a5907396a
   // pevent days remain have negative value
   if(dayRemain <0){
     dayRemain= 0;
@@ -22,9 +40,13 @@ export default function JumbotronCampaignDetail(props) {
 
 
   const handleDelete = () => {
-    axios.delete(`https://talikasih.kuyrek.com:3001/campaign/delete/${props.id}`)
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+  };
+    axios.delete(`https://talikasih.kuyrek.com:3001/campaign/delete/${props.campaignId}`,config)
         .then(response => {
             console.log(response);
+            window.location.reload();
         })
         .catch(err => {
           console.log(err)
@@ -47,7 +69,7 @@ export default function JumbotronCampaignDetail(props) {
             <div className="absolute w-max p-2 -right-0 rounded-md z-10 bg-white shadow fromtop-animation ">
               <p className="campaign-text-setting text-md">Edit</p>
               <p className="campaign-text-setting text-md">Close Campaign</p>
-              <p onClick={() => handleDelete} className="campaign-text-setting text-md">Delete</p>
+              <p onClick={handleDelete} className="campaign-text-setting text-md">Delete</p>
             </div>
           ) : null}
         </div> : null}
@@ -61,7 +83,7 @@ export default function JumbotronCampaignDetail(props) {
         <div className="w-10/12 rounded border-2 border-gray-200 ml-12 p-5 col-span-4">
           <p className="text-red-600 text-2xl">IDR {numberWithCommas(props.campaignData.total_donation_rupiah)}</p>
           <p className="text-md text-gray-400">IDR {numberWithCommas(props.campaignData.goal - props.campaignData.total_donation_rupiah)} remaining</p>
-          <ProgressBar />
+          <ProgressBar totalDonation={props.campaignData.total_donation_rupiah} donationGoal={props.campaignData.goal} />
           <p>from IDR {numberWithCommas(props.campaignData.goal)} goal</p>
           <div className="fundraiser-profil grid grid-cols-12">
             <img
@@ -90,12 +112,12 @@ export default function JumbotronCampaignDetail(props) {
           </div>
           <div className="grid grid-cols-1 my-2">
             <button 
-            onClick={(e) => props.modalShare(e.target.value)}
+            onClick={(e) => props.modalShareHandler(e.target.value)}
             className="btn-outline-red uppercase border-tosca">
               Share
             </button>
             { props.role === "fundraiser" ? <button
-              onClick={(e) => props.modalCampaignUpdate(e.target.value)}
+              onClick={(e) => props.newProgressModal(e.target.value)}
               className="btn-outline-red uppercase"
             > New Progress
             </button>

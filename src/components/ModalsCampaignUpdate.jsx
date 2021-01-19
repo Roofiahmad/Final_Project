@@ -1,16 +1,51 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 export default function ModalsCampaignUpdate(props) {
+
+  const token = localStorage.getItem("token");
   const [recepient, setRecepient] = useState(true);
   const [withdrawal, setWithdrawal] = useState(false);
+
   const recepientHandler = () => {
     setRecepient(!recepient);
     setWithdrawal(!withdrawal);
   };
+
   const withdrawalHandler = () => {
     setRecepient(!recepient);
     setWithdrawal(!withdrawal);
   };
+
+  const handleSubmitWithdrawal = (e) => {
+    e.preventDefault();
+    const data = {
+      amount: e.target.amount.value,
+      message: e.target.story.value,
+      campaign_id: props.campaignId,
+    }
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token, 
+      },
+    };
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const API= "https://talikasih.kuyrek.com:3003/update/create"
+    axios
+      .post(proxy + API, data, config) 
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleSubmitrecepient = (e) => {
+    e.preventDefault();
+    console.log(e.target.recepientStory.value);
+  };
+
   return (
     <div>
       <div className="fixed z-10 inset-0 overflow-y-auto">
@@ -39,7 +74,7 @@ export default function ModalsCampaignUpdate(props) {
                   Campaign Update
                 </h3>
                 <h3
-                  onClick={props.modalCampaignUpdate}
+                  onClick={props.newProgressModal}
                   className="text-lg leading-6  font-medium text-gray-900 inline-block absolute right-6 cursor-pointer	"
                 >
                   X
@@ -53,6 +88,7 @@ export default function ModalsCampaignUpdate(props) {
                       className="form-radio"
                       name="campaignUpdate"
                       value="recepient"
+                      checked={recepient}
                       onClick={recepientHandler}
                     />
                     <span className="ml-2">Recipient Update</span>
@@ -63,65 +99,84 @@ export default function ModalsCampaignUpdate(props) {
                       className="form-radio"
                       name="campaignUpdate"
                       value="withdrawal"
+                      checked={withdrawal}
                       onClick={withdrawalHandler}
                     />
                     <span className="ml-2">Withdrawal</span>
                   </label>
 
                   {withdrawal ? (
-                    <div className="frombottom-animation ">
-                      <label className="block items-center mt-3 mb-3">
-                        Amount<span className="text-red-700">*</span>
-                      </label>
-                      <input
-                        className="bg-gray-50 border-b border-tosca w-10/12"
-                        type="number"
-                      />
-                      <label className="block items-center mt-3 mb-3">
-                        Withdrawal purpose
-                        <span className="text-red-700">*</span>
-                      </label>
-                      <textarea
-                        name="story"
-                        className="h-40 bg-gray-50 w-10/12"
-                        id="story"
-                        type="text"
-                        placeholder="Tell Your Story..."
-                      />
-                    </div>
+                    <form onSubmit={(e) => handleSubmitWithdrawal(e)}>
+                      <div className="frombottom-animation ">
+                        <label className="block items-center mt-3 mb-3">
+                          Amount<span className="text-red-700">*</span>
+                        </label>
+                        <input
+                          className="bg-gray-50 border-b border-tosca w-10/12"
+                          type="number"
+                          name="amount"
+                        />
+                        <label className="block items-center mt-3 mb-3">
+                          Withdrawal purpose
+                          <span className="text-red-700">*</span>
+                        </label>
+                        <textarea
+                          name="story"
+                          className="h-40 bg-gray-50 w-10/12"
+                          id="story"
+                          type="text"
+                          placeholder="Tell Your Story..."
+                        />
+                      </div>
+                      <div className="bg-gray-50 my-3 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button
+                          type="submit"
+                          className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                        >
+                          Submit
+                        </button>
+                        <button
+                          onClick={props.newProgressModal}
+                          className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
                   ) : null}
 
                   {recepient ? (
-                    <div className="frombottom-animation">
-                      <label className="block items-center mt-3 mb-3">
-                        Update<span className="text-red-700">*</span>
-                      </label>
-                      <textarea
-                        name="story"
-                        className="h-40 bg-gray-50 w-10/12"
-                        id="story"
-                        type="text"
-                        placeholder="Tell Your Story..."
-                      />
-                    </div>
+                    <form onSubmit={(e) => handleSubmitrecepient(e)}>
+                      <div className="frombottom-animation">
+                        <label className="block items-center mt-3 mb-3">
+                          Update<span className="text-red-700">*</span>
+                        </label>
+                        <textarea
+                          name="recepientStory"
+                          className="h-40 bg-gray-50 w-10/12"
+                          id="story"
+                          type="text"
+                          placeholder="Tell Your Story..."
+                        />
+                      </div>
+                      <div className="bg-gray-50 my-3 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button
+                          type="submit"
+                          className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                        >
+                          Submit
+                        </button>
+                        <button
+                          onClick={props.newProgressModal}
+                          className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
                   ) : null}
                 </div>
               </div>
-            </div>
-            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button
-                type="button"
-                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-              >
-                Submit
-              </button>
-              <button
-                onClick={props.modalCampaignUpdate}
-                type="button"
-                className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-              >
-                Cancel
-              </button>
             </div>
           </div>
         </div>

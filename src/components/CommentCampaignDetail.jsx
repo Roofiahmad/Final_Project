@@ -5,34 +5,33 @@ import { useParams } from 'react-router-dom';
 import { comment } from "postcss";
 
 export default function CommentCampaignDetail(props) {
-    let { id } = useParams();
+    let campaignId = useParams().campaignId;
     const [arrayComments, setComments] = useState("");
     useEffect(() => {
-      // getParams();
       getData();
     }, []);
 
     async function getData() {
-      console.log("WOYYYY", id)
-
       await axios.get(
-        `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${id}&page=1&limit=10`
+        `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${campaignId}&page=1&limit=10`
       )
       .then((response) => {
-          console.log("INI GET COMMENT", response);
+          // console.log("INI GET COMMENT", response);
           setComments(response.data.data);
           let stringdate = new Date;
-          console.log("STRING DATE", stringdate.toDateString())
-          console.log(arrayComments);
+          // console.log("STRING DATE", stringdate.toDateString())
+          // console.log(arrayComments);
       })
+      .catch((err) => console.log(err))
     }
+    
   return (
     <div className="border border-gray-300 shadow px-10 py-4 my-10">
       <p className="text-xl font-semibold mt-4 mb-8 ">Comments({arrayComments.length})</p>
       {props.role == "donatur" ? <PostComment /> : null}
-      {arrayComments.length > 0 ? arrayComments.map((comments) => {
+      {arrayComments.length > 0 ? arrayComments.map((comments, index) => {
         return (
-      <div className="border-t-2 border-gray-300  px-5 py-8  ">
+      <div key={index} className="border-t-2 border-gray-300  px-5 py-8  ">
         <div style={{ display: "inline-block", width: "100px" }}>
           <img
             src={comments.user.profile_image}
