@@ -29,12 +29,6 @@ const Discover = () => {
         {category: 'sociopreneur', image: sociopreneur}
     ];
     
-    // const HandleClick = (inputCategory) => {
-    //     setCategory(inputCategory)
-    //     for (const category in ListCategory) {
-    //         // setCampaignCategory(`https://talikasih.kuyrek.com:3001/campaign/category?category=${inputCategory}&limit=3`)
-    //     }
-    // }
 
     return (
         <div className="mt-6 fromtop-animation">
