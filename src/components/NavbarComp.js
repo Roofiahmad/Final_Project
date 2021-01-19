@@ -115,14 +115,14 @@ function NavbarComp() {
                 <div className={`${isMobile ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row items-center lg:mx-20 z-10 lg:z-0 bg-white shadow-md rounded lg:rounded-none lg:shadow-none py-10 lg:py-0 w-full lg:w-auto`}>
                     {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
-                        <Link to="newcampaign">
+                        <Link to="/newcampaign">
                             <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> CREATE CAMPAIGN </h1> </button>
                         </Link>
                     </div>
                     ) :null}
                     {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
-                        <Link to="discoverall">
+                        <Link to="/discoverall">
                             <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> DONATE </h1> </button>
                         </Link>
                     </div>
