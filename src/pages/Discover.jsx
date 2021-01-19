@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import CategoryButton from "../components/CategoryButton";
 import Newest from "../components/Newest";
 import MostUrgent from "../components/MostUrgent";
@@ -29,12 +29,12 @@ const Discover = () => {
         {category: 'sociopreneur', image: sociopreneur}
     ];
     
-    const HandleClick = (inputCategory) => {
-        setCategory(inputCategory)
-        for (const category in ListCategory) {
-            // setCampaignCategory(`https://talikasih.kuyrek.com:3001/campaign/category?category=${inputCategory}&limit=3`)
-        }
-    }
+    // const HandleClick = (inputCategory) => {
+    //     setCategory(inputCategory)
+    //     for (const category in ListCategory) {
+    //         // setCampaignCategory(`https://talikasih.kuyrek.com:3001/campaign/category?category=${inputCategory}&limit=3`)
+    //     }
+    // }
 
     return (
         <div className="mt-6 fromtop-animation">
@@ -45,7 +45,7 @@ const Discover = () => {
                 ListCategory.map((button, index) => {
                     return (
                         <Link to={`discoverbycategory/${button.category}`}>
-                            <div key={index} id={button.category} onClick={(e) => {HandleClick(e.target.id)}} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24">
+                            <div key={index} id={button.category} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24">
                                 <div className="m-auto">
                                     <img src={button.image} alt="disability" className="mx-auto h-8"/>
                                     <p className="pt-2 pb-0 text-xs text-gray-700">{button.category[0].toUpperCase()+button.category.substring(1).toLowerCase()}</p>

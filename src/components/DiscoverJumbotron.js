@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import disability from '../assets/disability-image.png';
 import disaster from '../assets/disaster-image.png';
 import education from '../assets/education-image.png';
