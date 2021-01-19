@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function NavbarComp() {
     const [isMobile, setisMobile] = useState(false);
@@ -11,6 +11,8 @@ function NavbarComp() {
         setToggleLogin(!ToggleLogin);
         setToggleRegister(!ToggleRegister);
     }
+
+    let history = useHistory();
 
     // localStorage.setItem("login", "yes");
 
@@ -91,7 +93,19 @@ function NavbarComp() {
         
         // setTimeout(function() { window.location.reload(); }, 3000);
     };
+
+    const handleInputChange = (e) => {
+        e.target.name = e.target.value
+        console.log(e.target.name)
+    }
     
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            localStorage.setItem("titleCampaign", e.target.name);
+            history.push("/searchresult");
+            window.location.reload();
+        }
+    }
     
     
     return (
@@ -141,7 +155,7 @@ function NavbarComp() {
                     )}
                     {ToggleSearch ? (
                     <div className="fromright-animation">
-                        <input placeholder="search here..." className="rounded-full bg-gray-100 px-4 py-1 focus:outline-none" name="search" type="search"/>
+                        <input placeholder="search here..." className="rounded-full bg-gray-100 px-4 py-1 focus:outline-none" name="search" type="search" onChange={handleInputChange} onKeyPress={handleKeyPress}/>
                     </div>
                     ) :null}
                     {!isLogged ? (

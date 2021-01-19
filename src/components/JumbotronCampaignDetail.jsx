@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios'
 
 
 export default function JumbotronCampaignDetail(props) {
+<<<<<<< HEAD
   const token = localStorage.getItem("token");
+=======
+  let {id} = useParams();
+>>>>>>> d9cc20c6a21e623832ab8d992e418e7a5907396a
   const [dropdown, setDropdown] = useState(false);
   // function to add thousand separator value of IDR
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+<<<<<<< HEAD
 
   const countday = (dueDate) => {
     const end = dueDate.split('T'); 
@@ -21,6 +26,13 @@ export default function JumbotronCampaignDetail(props) {
   }
   
   let dayRemain = countday (props.campaignData.due_date)
+=======
+  const end = props.campaignData.due_date.split('T'); 
+  const calc = end[0].split('-');
+  const newDay = new Date();
+  const today = [newDay.getFullYear(), newDay.getMonth()+1, newDay.getDate()];
+  let dayRemain = (Number(calc[0])-today[0])*365 + (Number(calc[1])-today[1])*30 +(Number(calc[2])-today[2]);
+>>>>>>> d9cc20c6a21e623832ab8d992e418e7a5907396a
   // pevent days remain have negative value
   if(dayRemain <0){
     dayRemain= 0;
@@ -111,7 +123,7 @@ export default function JumbotronCampaignDetail(props) {
             </button>
             :
             <Link
-            to={`/createdonation/${props.id}`}
+            to={`/createdonation/${id}`}
             className="btn-outline-red uppercase text-center"
             > 
             Donate

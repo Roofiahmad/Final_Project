@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 
 const MyCampaign = () => {
     const id = localStorage.getItem("id");
+    const numberWithCommas = (x) => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     const [myCampaigns, setMyCampaigns] = useState("");
     useEffect(() => {
         getData();
@@ -13,7 +16,7 @@ const MyCampaign = () => {
     function getData() {
     
       axios.get(
-        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=1`
+        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=3`
       )
       .then((response) => {
           console.log("INI CAMPAIGN BY USER", response);
@@ -28,7 +31,7 @@ const MyCampaign = () => {
         {myCampaigns.length > 0 ? myCampaigns.map((campaigns) => {
           return (
         <Link to={`/campaigndetail/${campaigns.id}`}>
-        <div key={campaigns.id} className="shadow-md max-w-md mx-auto">
+        <div key={campaigns.id} className="shadow-md max-w-md mx-auto card-outline">
           <img src={campaigns.images} alt="" />
           <div className="w-5/6 mx-auto pb-4 pt-2">
             <p className="border border-solid border-red-600 text-red-800 text-sm w-14 text-center my-2 rounded-sm">{campaigns.category}</p>
@@ -36,16 +39,16 @@ const MyCampaign = () => {
             <p className="text-sm mb-8 mt-1">{campaigns.user.name}</p>
             <div className="h-3 relative max-w-xl rounded-full overflow-hidden mb-8">
               <div className="w-full h-full bg-gray-200 absolute"></div>
-              <div className="h-full bg-tosca absolute" style={{ width: "70%" }}></div>
+              <div className="h-full bg-tosca absolute" style={{ width: campaigns.total_donation_rupiah/campaigns.goal*100 + '%' }}></div>
             </div>
             <div className="grid grid-cols-2">
               <div>
                 <p className="text-sm">Raised</p>
-                <p className="font-bold text-tosca">IDR {campaigns.total_donation_rupiah}</p>
+                <p className="font-bold text-tosca">IDR {numberWithCommas(campaigns.total_donation_rupiah)}</p>
               </div>
               <div className="text-right">
                 <p className="text-sm">Goal</p>
-                <p>IDR {campaigns.goal}</p>
+                <p>IDR {numberWithCommas(campaigns.goal)}</p>
               </div>
             </div>
           </div>

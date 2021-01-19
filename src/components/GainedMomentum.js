@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 
 
 const GainedMomentum = () => {
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+
     const [gainedMomentumCampaign, setGainedMomentumCampaign] = useState([]);
 
     useEffect(() => {
@@ -27,7 +31,7 @@ const GainedMomentum = () => {
                     gainedMomentumCampaign.map(campaign => {
                         return (
                             <Link to={`/campaigndetail/${campaign._id}`}>
-                                <div className="shadow-md" key={campaign._id}>
+                                <div className="shadow-md h-full hover:shadow-xl" key={campaign._id}>
                                     <img src={campaign.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaign.images} alt="" className="w-full h-52"/>
                                     <div className="w-5/6 mx-auto pb-4 pt-2">
                                         <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaign.category}</p>
@@ -40,11 +44,11 @@ const GainedMomentum = () => {
                                         <div className="grid grid-cols-2">
                                             <div>
                                                 <p className="text-sm text-grey">Raised</p>
-                                                <p className="font-bold text-tosca">{campaign.total_donation_rupiah}</p>
+                                                <p className="font-bold text-tosca">IDR {numberWithCommas(campaign.total_donation_rupiah)}</p>
                                             </div>
                                             <div className="text-right">
                                                 <p className="text-sm text-grey">Goal</p>
-                                                <p>{campaign.goal}</p>
+                                                <p>IDR {numberWithCommas(campaign.goal)}</p>
                                             </div>
                                         </div>
                                     </div>
