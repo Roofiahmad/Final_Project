@@ -1,19 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import card from "../assets/card.png";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 export default function CreateDonation() {
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  const token = localStorage.getItem('token');
   const [creditCard, setCredit] = useState(false);
   const [bank, setBank] = useState(false);
+  let {id} = useParams();
+  //DataOneCampaign
+  let [images, setImages] = useState("");
+  let [category, setCategory] = useState("");
+  let [title, setTitle] = useState("");
+  let [name, setName] = useState("");
+  let [raised, setRaised] = useState("");
+  let [goal, setGoal] = useState("");
+
   const handleCredit = () => {
     setCredit(!creditCard);
     setBank(false);
   };
+
   const handleBank = () => {
     setBank(!bank);
     setCredit(false);
   };
+
+  //Get One Campaign
+  useEffect(() => {
+    getData();
+  }, []);
+
+  function getData() {
+
+    axios.get(
+      `https://talikasih.kuyrek.com:3001/campaign/get/${id}`
+    )
+    .then((response) => {
+        console.log("INI GET ONE CAMPAIGN", response);
+        setImages(response.data.data.images);
+        setCategory(response.data.data.category);
+        setTitle(response.data.data.title);
+        setName(response.data.data.user.name);
+        setRaised(response.data.data.total_donation_rupiah);
+        setGoal(response.data.data.goal);
+    })
+  }
+
+
+  //Post Donation Data
+  const handleDonate = async (e) => {
+    e.preventDefault();
+    
+    const sendDonate = {
+      campaign: id,
+      amount: e.target.amount.value,
+      message: e.target.message.value,
+      name: e.target.name.value,
+    };
+
+    const config = {
+      headers: {
+          'Authorization': 'Bearer ' + token,
+      },
+    };
+
+    await axios.post(
+      "https://talikasih.kuyrek.com:3002/donation/create",
+      sendDonate, config
+    )
+    .then((response) => {
+        console.log(response);
+        console.log(response, "Donation sent"); 
+        alert("Yass, you successfully donate to this campaign");
+        window.location.reload();
+    })
+    .catch((err) => {
+        console.log("INI PESAN ERROR", err.response);
+        alert("Sorry, there is something wrong");
+    })
+  };
+
   return (
     <div className=" px-10 fromtop-animation">
+      <form onSubmit={(e) => handleDonate(e)}>
       <div className="mt-8 w-10/12 mx-auto  px-10">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
           Donation
@@ -25,14 +99,15 @@ export default function CreateDonation() {
             </label>
             <input
               className="bg-gray-50 border-b border-tosca w-10/12"
-              type="number"
+              type="number" name="amount"
             />
             <label className="block items-center mt-4 mb-4">
               Name<span className="text-red-700">*</span>
             </label>
             <input
               className="bg-gray-50 border-b border-tosca w-10/12"
-              type="text"
+              type="text" defaultValue={localStorage.getItem('name')}
+              name="name"
             />
             <label className="block items-center mt-4 mb-4 ">
               <input
@@ -46,7 +121,7 @@ export default function CreateDonation() {
               Message <span className="text-gray-400">(Optional)</span>
             </label>
             <textarea
-              name="story"
+              name="message"
               className="h-64 outline-none p-2 border-b border-tosca bg-gray-50 w-10/12"
               id="story"
               type="text"
@@ -54,30 +129,30 @@ export default function CreateDonation() {
             />
           </div>
           <div className="shadow-md  col-span-4 w-full">
-            <img src={card} alt="" />
+            <img src={images} alt="" />
             <div className="w-5/6 mx-auto pb-4 pt-2">
-              <p className="border border-solid border-red-600 text-red-800 text-sm w-14 text-center my-2 rounded-sm">
-                Medical
+              <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">
+                {category}
               </p>
               <p className="font-bold mt-4">
-                Aid for necessary items to help our country
+                {title}
               </p>
-              <p className="text-sm mb-8 mt-1">Aksi Cepat Tanggap</p>
+              <p className="text-sm mb-8 mt-1">{name}</p>
               <div className="h-3 relative max-w-xl rounded-full overflow-hidden mb-8">
                 <div className="w-full h-full bg-gray-200 absolute"></div>
                 <div
                   className="h-full bg-tosca absolute"
-                  style={{ width: "70%" }}
+                  style={{ width: raised/goal*100 + '%' }}
                 ></div>
               </div>
               <div className="grid grid-cols-2">
                 <div>
                   <p className="text-sm">Raised</p>
-                  <p className="font-bold text-tosca">IDR 30.000.000</p>
+                  <p className="font-bold text-tosca">IDR {numberWithCommas(raised)}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-sm">Goal</p>
-                  <p>IDR 50.000.000</p>
+                  <p>IDR {numberWithCommas(goal)}</p>
                 </div>
               </div>
             </div>
@@ -173,6 +248,7 @@ export default function CreateDonation() {
           donate
         </button>
       </div>
+      </form>
     </div>
   );
 }
