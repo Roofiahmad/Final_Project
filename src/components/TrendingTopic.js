@@ -3,6 +3,7 @@ import open from "../assets/open.png"
 import close from "../assets/close.png"
 import axios from 'axios'
 import profileImage from '../assets/blank_profile.png'
+import { Link } from 'react-router-dom'
 
 const TrendingTopic = () => {
     const [trendingCampaign, setTrendingCampaign] = useState([]);
@@ -12,7 +13,7 @@ const TrendingTopic = () => {
     }, []);
 
     function getTrending() {
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?page=1&limit=1')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?limit=1')
         .then((res) => {
             setTrendingCampaign(res.data.posts)
         })
@@ -30,9 +31,9 @@ const TrendingTopic = () => {
                             </h1>
                         </div>
                         <div className="mb-3">
-                            <h1 className="font-bold text-3xl">
+                            <Link to={`/campaigndetail/${campaign._id}`} className="font-bold text-3xl">
                                 {campaign.title}
-                            </h1>
+                            </Link>
                         </div>
                         <div className="flex gap-6 flex-wrap lg:flex-nowrap flex-row">
                             <div className="flex">

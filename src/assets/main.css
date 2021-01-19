@@ -29499,13 +29499,11 @@ input[type="number"] {
 .clamp {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 8;
 }
 
-.card-outline:hover {
-  border-width: 2px;
-  animation: bounce 1s infinite;
-  border-color: #1d94a8;
+.card-campaign:hover {
+  background-color: #d5dcdd;
 }
 
 .appear-animation {

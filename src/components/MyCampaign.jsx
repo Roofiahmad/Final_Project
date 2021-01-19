@@ -16,7 +16,7 @@ const MyCampaign = () => {
     function getData() {
     
       axios.get(
-        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=1`
+        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=3`
       )
       .then((response) => {
           console.log("INI CAMPAIGN BY USER", response);
@@ -39,7 +39,7 @@ const MyCampaign = () => {
             <p className="text-sm mb-8 mt-1">{campaigns.user.name}</p>
             <div className="h-3 relative max-w-xl rounded-full overflow-hidden mb-8">
               <div className="w-full h-full bg-gray-200 absolute"></div>
-              <div className="h-full bg-tosca absolute" style={{ width: "70%" }}></div>
+              <div className="h-full bg-tosca absolute" style={{ width: campaigns.total_donation_rupiah/campaigns.goal*100 + '%' }}></div>
             </div>
             <div className="grid grid-cols-2">
               <div>
