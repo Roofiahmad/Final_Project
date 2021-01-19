@@ -26,11 +26,11 @@ const Newest = (props) => {
                 {
                     newestCampaign.map(campaign => {
                         const numberWithCommas = (x) => {
-                            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                           }
                         return (
                             <Link to={`/campaigndetail/${campaign._id}`}>
-                                <div className="shadow-md card-campaign" key={campaign._id}>
+                                <div className="shadow-md h-full hover:shadow-xl" key={campaign._id}>
                                     <img src={campaign.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaign.images} alt="" className="w-full h-52"/>
                                     <div className="w-5/6 mx-auto pb-4 pt-2">
                                         <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaign.category}</p>
