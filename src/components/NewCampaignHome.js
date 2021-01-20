@@ -4,6 +4,10 @@ import campaignImage from '../assets/campaign-image.png';
 import { Link, useParams } from 'react-router-dom';
 
 const NewCampaignHome = () => {
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    
     const [campaign, setCampaign] = useState([]);
 
     useEffect(() => {
@@ -49,17 +53,11 @@ const NewCampaignHome = () => {
                                     <div className="grid grid-cols-2">
                                         <div>
                                             <p className="text-sm text-grey">Raised</p>
-                                            <p className="font-bold text-tosca">{campaign.total_donation_rupiah}</p>
+                                            <p className="font-bold text-tosca">IDR {numberWithCommas(campaign.total_donation_rupiah)}</p>
                                         </div>
-                                        <div className="grid grid-cols-2">
-                                            <div>
-                                                <p className="text-sm text-grey">Raised</p>
-                                                <p className="font-bold text-tosca">{campaign.total_donation_rupiah}</p>
-                                            </div>
-                                            <div className="text-right">
-                                                <p className="text-sm text-grey">Goal</p>
-                                                <p>{campaign.goal}</p>
-                                            </div>
+                                        <div className="text-right">
+                                            <p className="text-sm text-grey">Goal</p>
+                                            <p>IDR {numberWithCommas(campaign.goal)}</p>
                                         </div>
                                     </div>
                                 </div>
