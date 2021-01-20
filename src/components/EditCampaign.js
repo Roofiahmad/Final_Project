@@ -3,7 +3,7 @@ import UploadFile from "./UploadFile";
 import axios from 'axios'
 
 
-export default class NewCampaign extends Component {
+export default class EditCampaign extends Component {
 
   state ={
     inputForm:[

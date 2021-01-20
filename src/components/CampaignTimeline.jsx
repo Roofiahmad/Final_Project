@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function CampaignTimeline() {
+export default function CampaignTimeline(props) {
+  const token = localStorage.getItem("token");
+  const campaignId = props.campaignId;
+  const [withdrawalData, setWithdrawalData] = useState([]);
+
+  const getWithdrawalData = () => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+    const API = `https://talikasih.kuyrek.com:3003/update/get/?campaign_id=${campaignId}`;
+    axios
+      .get(API, config)
+      .then((response) => {
+        setWithdrawalData(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getWithdrawalData();
+  }, [props]);
+
+  console.log(withdrawalData);
+
   return (
     <div className="border border-gray-300 shadow px-4 py-2 my-10">
-      <p className="text-xl font-semibold my-4">Updates(16)</p>
+      <p className="text-xl font-semibold my-4">Updates({withdrawalData.length})</p>
       <div>
         {/* <!-- component --> */}
         <div className="relative w-12/12  m-4">

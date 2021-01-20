@@ -59,7 +59,7 @@ export default function CampaignDetail() {
             campaignData={campaignData}
           />
           <CampaignStory campaignData={campaignData} />
-          <CampaignTimeline />
+          <CampaignTimeline campaignId={campaignId}  />
           <DonaturTimeline campaignId={campaignId} />
           <CommentCampaignDetail role={role} />
           {role === "donatur" ? (
