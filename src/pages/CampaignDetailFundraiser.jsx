@@ -4,8 +4,7 @@ import CampaignTimeline from "../components/CampaignTimeline";
 import CommentCampaignDetail from "../components/CommentCampaignDetail";
 import DonaturTimeline from "../components/DonaturTimeline";
 import JumbotronCampaignDetail from "../components/JumbotronCampaignDetail";
-import ModalsCampaignUpdate from "../components/ModalsCampaignUpdate";
-import ModalsShare from "../components/ModalsShare";
+
 
 export default function CampaignDetailFundraiser() {
   const role = "fundraiser";
@@ -31,12 +30,7 @@ export default function CampaignDetailFundraiser() {
       <CampaignTimeline />
       <DonaturTimeline />
       <CommentCampaignDetail />
-      {modalUpdate ? (
-        <ModalsCampaignUpdate modalCampaignUpdate={modalCampaignUpdate} />
-      ) : null}
-      {share ? (
-        <ModalsShare modalShare={modalShare} />
-      ) : null}
+
     </div>
   );
 }
