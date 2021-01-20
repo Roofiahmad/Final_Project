@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export default function PostComment() {
-  let {id} = useParams();
+  let {campaignId} = useParams();
   const token = localStorage.getItem('token');
   const handlePostComment = async (e) => {
     e.preventDefault();
+
+    console.log("INI IDNYA", campaignId)
     
     const sendComment = {
-      campaign_id: id,
+      campaign_id: campaignId,
       comment: e.target.comment.value,
     };
 

@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/discoverall" component={Discover} />
           <Route exact path="/discoverbycategory/:category" component={DiscoverCategory} />
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
-          <Route exact path="/campaigndetail/:id" component={CampaignDetail}/>
+          <Route exact path="/campaigndetail/:campaignId" component={CampaignDetail}/>
           <Route exact path="/createdonation/:id" component={CreateDonation} />
           <Route exact path="/createdonation" component={CreateDonation} />
           <Route exact path="/myprofile" component={MyProfilePage} />
