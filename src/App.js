@@ -21,6 +21,7 @@ import DiscoverSearchResult from "./pages/DiscoverSearchResult";
 import EditProfile from "./components/EditProfile";
 import ResetPassword from './components/ResetPassword';
 import PageNotFound from "./pages/PageNotFound";
+import EditCampaign from "./components/EditCampaign";
 
 
 function App() {
@@ -32,12 +33,12 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/editprofile" component={EditProfile} />
           <Route exact path="/newcampaign" component={NewCampaign} />
+          <Route exact path="/editcampaign/:campaignId" component={EditCampaign} />
           <Route exact path="/discoverall" component={Discover} />
           <Route exact path="/discoverbycategory/:category" component={DiscoverCategory} />
           <Route exact path="/searchresult" component={DiscoverSearchResult} />
           <Route exact path="/campaigndetail/:campaignId" component={CampaignDetail}/>
-          <Route exact path="/createdonation/:id" component={CreateDonation} />
-          <Route exact path="/createdonation" component={CreateDonation} />
+          <Route exact path="/createdonation/:campaignId" component={CreateDonation} />
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
           <Route component={PageNotFound} />

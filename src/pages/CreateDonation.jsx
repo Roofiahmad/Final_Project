@@ -11,7 +11,7 @@ export default function CreateDonation() {
   const token = localStorage.getItem('token');
   const [creditCard, setCredit] = useState(false);
   const [bank, setBank] = useState(false);
-  let {id} = useParams();
+  let {campaignId} = useParams();
   //DataOneCampaign
   let [images, setImages] = useState("");
   let [category, setCategory] = useState("");
@@ -38,7 +38,7 @@ export default function CreateDonation() {
   function getData() {
 
     axios.get(
-      `https://talikasih.kuyrek.com:3001/campaign/get/${id}`
+      `https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`
     )
     .then((response) => {
         console.log("INI GET ONE CAMPAIGN", response);
@@ -57,7 +57,7 @@ export default function CreateDonation() {
     e.preventDefault();
     
     const sendDonate = {
-      campaign: id,
+      campaign: campaignId,
       amount: e.target.amount.value,
       message: e.target.message.value,
       name: e.target.name.value,

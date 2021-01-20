@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import axios from 'axios'
 
 
 export default function JumbotronCampaignDetail(props) {
+  let history = useHistory();
   const token = localStorage.getItem("token");
-  let {id} = useParams();
+  let {campaignId} = useParams();
   const [dropdown, setDropdown] = useState(false);
   // function to add thousand separator value of IDR
   const numberWithCommas = (x) => {
@@ -30,7 +31,8 @@ export default function JumbotronCampaignDetail(props) {
     axios.delete(`https://talikasih.kuyrek.com:3001/campaign/delete/${props.campaignId}`,config)
         .then(response => {
             console.log(response);
-            window.location.reload();
+            alert("Campaign is deleted sucessfully");
+            history.push("/myprofile");
         })
         .catch(err => {
           console.log(err)
@@ -51,7 +53,9 @@ export default function JumbotronCampaignDetail(props) {
           <i className="fas fa-caret-down text-xl mx-2"></i>
           {dropdown ? (
             <div className="absolute w-max p-2 -right-0 rounded-md z-10 bg-white shadow fromtop-animation ">
+              <Link to={`/editcampaign/${props.campaignData.id}`}>
               <p className="campaign-text-setting text-md">Edit</p>
+              </Link>
               <p className="campaign-text-setting text-md">Close Campaign</p>
               <p onClick={handleDelete} className="campaign-text-setting text-md">Delete</p>
             </div>
@@ -107,7 +111,7 @@ export default function JumbotronCampaignDetail(props) {
             </button>
             :
             <Link
-            to={`/createdonation/${id}`}
+            to={`/createdonation/${campaignId}`}
             className="btn-outline-red uppercase text-center"
             > 
             Donate

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import card2 from '../assets/card.png';
 import axios from 'axios';
+import campaignImage from '../assets/campaign-image.png';
 import { Link, useParams } from 'react-router-dom';
 
 const MyCampaign = () => {
@@ -31,10 +32,10 @@ const MyCampaign = () => {
         {myCampaigns.length > 0 ? myCampaigns.map((campaigns) => {
           return (
         <Link to={`/campaigndetail/${campaigns.id}`}>
-        <div key={campaigns.id} className="shadow-md max-w-md mx-auto card-outline">
-          <img src={campaigns.images} alt="" />
+        <div key={campaigns.id} className="shadow-md max-w-md mx-auto hover:shadow-xl">
+          <img src={campaigns.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaigns.images} alt="" className="w-full h-52" alt="" />
           <div className="w-5/6 mx-auto pb-4 pt-2">
-            <p className="border border-solid border-red-600 text-red-800 text-sm w-14 text-center my-2 rounded-sm">{campaigns.category}</p>
+            <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaigns.category}</p>
             <a href="#" className="font-bold mt-4">{campaigns.title}</a>
             <p className="text-sm mb-8 mt-1">{campaigns.user.name}</p>
             <div className="h-3 relative max-w-xl rounded-full overflow-hidden mb-8">
