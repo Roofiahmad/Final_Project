@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 import DiscoverJumbotron from '../components/DiscoverJumbotron'
 import campaignImage from '../assets/campaign-image.png';
 import iconsort from '../assets/sort.png';
+import PaginationComp from '../components/PaginationComp'
 
 
 const DiscoverCategory = () => {
@@ -126,6 +127,7 @@ const DiscoverCategory = () => {
                     </div>
                 </div>
             </div>
+            <PaginationComp />
         </div>
     )
 }

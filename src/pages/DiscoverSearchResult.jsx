@@ -3,6 +3,7 @@ import SearchResult from "../components/SearchResult";
 import arrow from "../assets/arrow.png";
 import axios from "axios";
 import { Link } from "react-router-dom" 
+import PaginationComp from "../components/PaginationComp"
 
 const DiscoverSearchResult = () => {
   let title = localStorage.getItem("titleCampaign");
@@ -75,6 +76,7 @@ const handleLessDonation = (e) => {
         </div>
       </div>
       <SearchResult campaign={campaignByTitle} newest={handleNewest} urgent={handleMostUrgent} popular={handlePopular} lessDonation={handleLessDonation} />
+      <PaginationComp />
     </div>
   );
 }
