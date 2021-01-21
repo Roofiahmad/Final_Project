@@ -33,7 +33,7 @@ export default function CampaignDetail() {
 
   useEffect(() => {
     axios
-      .get(`https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`)
+      .get(`https://talikasih.kuyrek.com:3001/campaign/getone/${campaignId}`)
       .then((response) => {
         setCampaignData(response.data.data);
         setFundraiserId(response.data.data.user.id);
