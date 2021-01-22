@@ -41,13 +41,6 @@ export default class EditCampaign extends Component {
     let header = {
       Authorization: "Bearer " + this.state.token,
     };
-    let formData = new FormData();
-    // formData.append("images", this.state.image, this.state.image.name);
-    formData.append("title",e.target.title.value);
-    formData.append("category",e.target.category.value);
-    formData.append("goal",e.target.goal.value);
-    formData.append("due_date",e.target.due_date.value);
-    formData.append("story",e.target.story.value);
 
     const editData = {
       title: e.target.title.value,
