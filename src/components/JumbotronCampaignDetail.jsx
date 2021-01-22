@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import { Link, useParams, useHistory } from "react-router-dom";
+import campaignImage from '../assets/campaign-image.png';
 import axios from 'axios'
 
 
@@ -65,7 +66,7 @@ export default function JumbotronCampaignDetail(props) {
       <div className="grid grid-cols-10 gap-0">
         <img
           className="w-full h-full rounded col-span-6"
-          src={props.campaignData.images}
+          src={props.campaignData.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : props.campaignData.images}
           alt="Campaign Image"
         />
         <div className="w-10/12 rounded border-2 border-gray-200 ml-12 p-5 col-span-4">
@@ -75,7 +76,7 @@ export default function JumbotronCampaignDetail(props) {
           <p>from IDR {numberWithCommas(props.campaignData.goal)} goal</p>
           <div className="fundraiser-profil grid grid-cols-12">
             <img
-              src={props.campaignData.user.profile_image}
+              src={props.campaignData.user.profile_image === 'https://talikasih.kuyrek.com:3000/img/null' ?  campaignImage : props.campaignData.user.profile_image}
               alt="fundraiser-image"
               className="w-12 h-12 inline-block border border-gray-500 rounded-md col-span-2"
             />

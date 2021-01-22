@@ -23,6 +23,7 @@ const MyCampaign = () => {
           console.log("INI CAMPAIGN BY USER", response);
           setMyCampaigns(response.data.data);
           console.log("myCampaigns", myCampaigns);
+          localStorage.removeItem("campaign_id");
       })
     }
   return (

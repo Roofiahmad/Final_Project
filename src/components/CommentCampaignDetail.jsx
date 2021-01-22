@@ -3,6 +3,7 @@ import PostComment from "./PostComment";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { comment } from "postcss";
+import moment from 'moment';
 
 export default function CommentCampaignDetail(props) {
     let campaignId = useParams().campaignId;
@@ -50,7 +51,7 @@ export default function CommentCampaignDetail(props) {
           }}
         >
           <p className="">{comments.user.name}</p>
-          <p className="text-gray-400">{comments.created_at}</p>
+          <p className="text-gray-400">{moment(comments.created_at).startOf('hour').fromNow()}</p>
         </div>
         <p className="mt-4">
           {comments.comment}
