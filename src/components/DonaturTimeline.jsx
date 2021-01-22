@@ -15,7 +15,6 @@ export default function DonaturTimeline(props) {
   useEffect(() => {
     axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=4`)
         .then(response => {
-          console.log(response.data.data)
           setDonaturData(response.data.data);
         })
         .catch(err => {

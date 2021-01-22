@@ -17,17 +17,36 @@ export default function ModalsCampaignUpdate(props) {
     setWithdrawal(!withdrawal);
   };
 
-  const axiosPut= (data) => {
+
+  const axiosUpdateNoWithdrawal= (data) => {
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token, 
       },
     };
-    const API= "https://talikasih.kuyrek.com:3003/update/create"
+    const API= "https://talikasih.kuyrek.com:3003/update/create";
     axios
       .post(API, data, config) 
       .then((response) => {
         console.log(response, 'update success')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const axiosUpdateWithdrawal= (data) => {
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token, 
+      },
+    };
+    const API= "https://talikasih.kuyrek.com:3003/update/create/withdraw";
+    axios
+      .post(API, data, config) 
+      .then((response) => {
+        console.log(response, 'update success')
+        window.location.reload()
       })
       .catch((err) => {
         console.log(err);
@@ -41,7 +60,7 @@ export default function ModalsCampaignUpdate(props) {
       message: e.target.withdrawalPurpose.value,
       campaign_id: props.campaignId,
     }
-    axiosPut(data)
+    axiosUpdateWithdrawal(data)
   };
 
   const handleSubmitrecepient = (e) => {
@@ -50,7 +69,7 @@ export default function ModalsCampaignUpdate(props) {
       message: e.target.recepientStory.value,
       campaign_id: props.campaignId,
     }
-    axiosPut(data)
+    axiosUpdateNoWithdrawal(data)
   };
 
   return (
