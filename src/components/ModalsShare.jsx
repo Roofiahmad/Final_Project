@@ -55,7 +55,7 @@ export default function ModalsShare(props) {
                   <div className="mt-2 border-t border-gray-500 p-4">
                 <div className="mt-2 w-full grid grid-rows-2	justify-around">
                   <div className="text-sm">
-                  https://talikasih.com/{props.campaignId}
+                  https://talilove.herokuapp.com/{props.campaignId}
                   </div>
                   <button
                     onClick={handleShare}

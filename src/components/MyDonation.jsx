@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 const MyDonation = () => {
     const id = localStorage.getItem("id");
@@ -29,7 +30,7 @@ const MyDonation = () => {
       {myDonations.length > 0 ? myDonations.map((donations) => {
         return (
         <div className="shadow-md p-5">
-          <p className="text-right text-gray-400 text-sm m-1">12 minutes ago</p>
+          <p className="text-right text-gray-400 text-sm m-1">{moment(donations.createdAt).startOf('hour').fromNow()}</p>
           <a href="#" className="font-bold underline m-1">{donations.campaign.title}</a>
           <p className="text-tosca font-bold text-2xl my-2">IDR {numberWithCommas(donations.amount)}</p>
           <p className="my-1">{donations.message}</p>
