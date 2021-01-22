@@ -17,33 +17,59 @@ export default function ModalsCampaignUpdate(props) {
     setWithdrawal(!withdrawal);
   };
 
-  const handleSubmitWithdrawal = (e) => {
-    e.preventDefault();
-    const data = {
-      amount: e.target.amount.value,
-      message: e.target.story.value,
-      campaign_id: props.campaignId,
-    }
+
+  const axiosUpdateNoWithdrawal= (data) => {
     const config = {
       headers: {
         'Authorization': 'Bearer ' + token, 
       },
     };
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const API= "https://talikasih.kuyrek.com:3003/update/create"
+    const API= "https://talikasih.kuyrek.com:3003/update/create";
     axios
-      .post(proxy + API, data, config) 
+      .post(API, data, config) 
       .then((response) => {
-        console.log(response)
+        console.log(response, 'update success')
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  const axiosUpdateWithdrawal= (data) => {
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + token, 
+      },
+    };
+    const API= "https://talikasih.kuyrek.com:3003/update/create/withdraw";
+    axios
+      .post(API, data, config) 
+      .then((response) => {
+        console.log(response, 'update success')
+        window.location.reload()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const handleSubmitWithdrawal = (e) => {
+    e.preventDefault();
+    const data = {
+      amount: e.target.amount.value,
+      message: e.target.withdrawalPurpose.value,
+      campaign_id: props.campaignId,
+    }
+    axiosUpdateWithdrawal(data)
   };
 
   const handleSubmitrecepient = (e) => {
     e.preventDefault();
-    console.log(e.target.recepientStory.value);
+    const data = {
+      message: e.target.recepientStory.value,
+      campaign_id: props.campaignId,
+    }
+    axiosUpdateNoWithdrawal(data)
   };
 
   return (
@@ -121,9 +147,9 @@ export default function ModalsCampaignUpdate(props) {
                           <span className="text-red-700">*</span>
                         </label>
                         <textarea
-                          name="story"
+                          name="withdrawalPurpose"
                           className="h-40 bg-gray-50 w-10/12"
-                          id="story"
+                          id="withdrawalPurpose"
                           type="text"
                           placeholder="Tell Your Story..."
                         />
