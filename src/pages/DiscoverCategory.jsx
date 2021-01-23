@@ -13,9 +13,10 @@ const DiscoverCategory = () => {
     }
 
     let { category } = useParams();
-    console.log(category)
+    // console.log(category)
     const [campaingByCategory, setCampaignCategory] = useState([]);
     const [sortOpen, setSortOpen] = useState(false);
+    const [slicedCampaign, setSlicedCampaign] = useState([]);
 
 
     useEffect(() => {
@@ -23,7 +24,7 @@ const DiscoverCategory = () => {
     }, []);
 
     function getCampaingByCategory() {
-        axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}&limit=12`)
+        axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}`)
         .then((res) => {
             setCampaignCategory(res.data.data)
         })
@@ -31,7 +32,7 @@ const DiscoverCategory = () => {
 
     const handleNewest = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/new?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/new?')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
             let data = res.data.posts
@@ -76,6 +77,19 @@ const DiscoverCategory = () => {
         })
     }
 
+    const handlePagination = (indexAwal = 0, indexAkhir = 2) => {
+        // console.log("handelPagination", indexAwal, indexAkhir)
+        let copyArray = [...campaingByCategory];
+        // console.log("copyArray", copyArray)
+        let slicedArray = copyArray.slice(indexAwal, indexAkhir);
+        // console.log("slice", slicedArray)
+        setSlicedCampaign(slicedArray)
+        // setCampaignCategory(slicedArray)
+    }
+
+    console.log(slicedCampaign)
+    
+
     return (
         <div>
             <DiscoverJumbotron category={category}/>
@@ -96,7 +110,7 @@ const DiscoverCategory = () => {
                     </button>
                 <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
             {
-                campaingByCategory.map(campaign => {
+                slicedCampaign.map(campaign => {
                     return (
                         <Link to={`/campaigndetail/${campaign._id}`}>
                             <div className="shadow-md h-full hover:shadow-xl" key={campaign._id}>
@@ -127,7 +141,7 @@ const DiscoverCategory = () => {
                     </div>
                 </div>
             </div>
-            <PaginationComp />
+            <PaginationComp campaignData={campaingByCategory} pagination={handlePagination} />
         </div>
     )
 }

@@ -76,7 +76,7 @@ const handleLessDonation = (e) => {
         </div>
       </div>
       <SearchResult campaign={campaignByTitle} newest={handleNewest} urgent={handleMostUrgent} popular={handlePopular} lessDonation={handleLessDonation} />
-      <PaginationComp />
+      {/* <PaginationComp /> */}
     </div>
   );
 }
