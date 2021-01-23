@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import axios from 'axios'
+import axios from 'axios';
+import moment from 'moment';
 
 export default function DonaturTimeline(props) {
   const [donaturData,setDonaturData] = useState([]);
@@ -15,7 +16,6 @@ export default function DonaturTimeline(props) {
   useEffect(() => {
     axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=4`)
         .then(response => {
-          console.log(response.data.data)
           setDonaturData(response.data.data);
         })
         .catch(err => {
@@ -49,7 +49,7 @@ export default function DonaturTimeline(props) {
                 Rp {comment.amount}
               </p>
               <p className="">{comment.user.name}</p>
-              <p className="text-gray-400">{countday(comment.createdAt)} days ago</p>
+              <p className="text-gray-400">{moment(comment.createdAt).startOf('hour').fromNow()}</p>
             </div>
             <p className="mt-2">
               {comment.message}

@@ -33,10 +33,16 @@ export default function CampaignDetail() {
 
   useEffect(() => {
     axios
-      .get(`https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`)
+      .get(`https://talikasih.kuyrek.com:3001/campaign/getone/${campaignId}`)
       .then((response) => {
         setCampaignData(response.data.data);
         setFundraiserId(response.data.data.user.id);
+        localStorage.setItem("campaign_id", response.data.data._id);
+        localStorage.setItem("campaign_title", response.data.data.title);
+        localStorage.setItem("campaign_goal", response.data.data.goal);
+        localStorage.setItem("campaign_story", response.data.data.story);
+        localStorage.setItem("campaign_category", response.data.data.category);
+        localStorage.setItem("campaign_due_date", response.data.data.due_date);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +65,7 @@ export default function CampaignDetail() {
             campaignData={campaignData}
           />
           <CampaignStory campaignData={campaignData} />
-          <CampaignTimeline />
+          <CampaignTimeline campaignId={campaignId}  />
           <DonaturTimeline campaignId={campaignId} />
           <CommentCampaignDetail role={role} />
           {role === "donatur" ? (
