@@ -2,41 +2,44 @@ import React, { useEffect, useState } from 'react';
 import campaignImage from '../assets/campaign-image.png';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SpinnerPage from './SpinnerPage';
+// import SpinnerPage from './SpinnerPage';
+import CardLoading from './CardLoading';
 
 
 const Newest = (props) => {
     //Loading
-    const [isLoading, setLoading] = useState(true);
-
+    const [loading, setLoading] = useState(true);
     const [newestCampaign, setNewestCampaign] = useState([]);
 
-    console.log(props)
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
     useEffect(() => {
-        getNewestCampaign();
+        const timer = setTimeout(() => {
+            getNewestCampaign();
+            setLoading(false);
+        }, 3000);
+        return () => clearTimeout(timer)
     }, [])
 
     async function getNewestCampaign() {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/new?limit=3')
         .then((res) => {
             setNewestCampaign(res.data.posts);
-                setLoading(false);  
         })
     }
 
     return (
         <div>
-            {isLoading ? (
-                <SpinnerPage/>
+            {loading ? (
+                <CardLoading/>
             ) : (
             <div className="w-10/12 mt-28 mb-5 mx-auto">
                 <h4 className="font-bold underline mb-4">Newest</h4>
                 <div className="grid grid-rows-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
                     {
                         newestCampaign.map(campaign => {
-                            const numberWithCommas = (x) => {
-                                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                            }
                             return (
                                 <Link to={`/campaigndetail/${campaign._id}`}>
                                     <div className="shadow-md h-full hover:shadow-xl" key={campaign._id}>
