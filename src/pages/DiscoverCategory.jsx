@@ -27,6 +27,7 @@ const DiscoverCategory = () => {
         axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}`)
         .then((res) => {
             setCampaignCategory(res.data.data)
+            setSlicedCampaign(res.data.data.slice(0,2))
         })
     }
 
@@ -38,6 +39,7 @@ const DiscoverCategory = () => {
             let data = res.data.posts
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
+            setSlicedCampaign(filters.slice(0,2))
         })
     }
 
@@ -49,6 +51,7 @@ const DiscoverCategory = () => {
             let data = res.data.posts
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
+            setSlicedCampaign(filters.slice(0,2))
         })
     }
 
@@ -60,6 +63,7 @@ const DiscoverCategory = () => {
             let data = res.data.posts
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
+            setSlicedCampaign(filters.slice(0,2))
         })
     }
 
@@ -74,6 +78,7 @@ const DiscoverCategory = () => {
             let filters = data.filter((data) => data.category === thisCategory)
             // console.log(filters, 'ini data filter')
             setCampaignCategory(filters)
+            setSlicedCampaign(filters.slice(0,2))
         })
     }
 
