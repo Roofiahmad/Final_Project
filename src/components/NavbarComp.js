@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import { Link, useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function NavbarComp() {
     const [isMobile, setisMobile] = useState(false);
@@ -21,7 +23,6 @@ function NavbarComp() {
         e.preventDefault();
         console.log("email :", e.target.email.value);
         console.log("password :", e.target.password.value);
-        alert(e.target.email.value);
     
         const sendaDataLogin = {
           email: e.target.email.value,
@@ -36,10 +37,16 @@ function NavbarComp() {
             console.log(response);
             localStorage.setItem("token", response.data.token);
             console.log(response, "login success"); 
+            toast.success("Login success. Let's donate!", {
+                position: toast.POSITION.TOP_CENTER
+            });
+
         })
         .catch((err) => {
             console.log("INI PESAN ERROR", err.response);
-            alert("Sorry, email or password is incorrect");
+            toast.error("Sorry, email or password is incorrect", {
+                position: toast.POSITION.TOP_CENTER
+            });
         })
 
         const token = localStorage.getItem("token");
@@ -67,7 +74,6 @@ function NavbarComp() {
         console.log("email :", e.target.email.value);
         console.log("password :", e.target.password.value);
         console.log("password :", e.target.passwordConfirmation.value);
-        alert(e.target.email.value);
 
     
         const sendaDataSignUp = {
@@ -88,7 +94,29 @@ function NavbarComp() {
         })
         .catch(err => {
             console.log("INI TUH ERROR MESSAGE", err.response);
-            alert(err.response.data.errors.email.msg);
+                if(err.response.data.errors.email !== undefined) {
+                    toast.error(err.response.data.errors.email.msg, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+
+                if(err.response.data.errors.name !== undefined) {
+                    toast.error(err.response.data.errors.name.msg, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+
+                if(err.response.data.errors.password !== undefined) {
+                    toast.error(err.response.data.errors.password.msg, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+
+                if(err.response.data.errors.passwordConfirmation !== undefined) {
+                    toast.error(err.response.data.errors.passwordConfirmation.msg, {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
         })
         
         // setTimeout(function() { window.location.reload(); }, 3000);
@@ -110,6 +138,7 @@ function NavbarComp() {
     
     return (
         <div className="bg-white h-20 shadow-md">
+            <ToastContainer/>
             <div className="flex flex-col lg:flex-row justify-between">
                 <div className="flex items-center justify-between mx-5 lg:mx-20">
                     <Link to="/">      
