@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import campaignImage from '../assets/campaign-image.png';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import CardLoading from './CardLoading';
 
 
 const GainedMomentum = () => {
+    const [loading, setLoading] = useState(true);
+
     const numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       }
@@ -12,7 +15,11 @@ const GainedMomentum = () => {
     const [gainedMomentumCampaign, setGainedMomentumCampaign] = useState([]);
 
     useEffect(() => {
+        const timer = setTimeout(() => {
         getGainedMomentumCampaign();
+        setLoading(false);
+        }, 5000);
+        return () => clearTimeout(timer)
     }, [])
 
     function getGainedMomentumCampaign() {
@@ -24,6 +31,10 @@ const GainedMomentum = () => {
 
 
     return (
+        <div>
+        {loading ? (
+           <CardLoading/>
+       ) : (
         <div className="w-10/12 mt-28 mb-5 mx-auto">
             <h4 className="font-bold underline mb-4">Gained Momentum</h4>
             <div className="grid grid-rows-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
@@ -59,6 +70,8 @@ const GainedMomentum = () => {
                 }
             </div>
         </div>
+                 )}
+                 </div>
     )
 }
 
