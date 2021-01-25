@@ -27,7 +27,7 @@ export default function CommentCampaignDetail(props) {
     
   return (
     <div className="border border-gray-300 shadow px-10 py-4 my-10">
-      <p className="text-xl font-semibold mt-4 mb-8 ">Comments({arrayComments.length})</p>
+      <p className="text-xl font-semibold mt-4 mb-8 ">{arrayComments.length >0 ? `Comments(${arrayComments.length})` : "No Comments Yet"}</p>
       {props.role == "donatur" ? <PostComment /> : null}
       {slicedArrayComments.length > 0 ? slicedArrayComments.map((comments, index) => {
         return (

@@ -60,7 +60,7 @@ export default function CampaignTimeline(props) {
 
   return (
     <div className="border border-gray-300 shadow px-4 py-2 my-10">
-      <p className="text-xl font-semibold mx-6 my-4">Updates({withdrawalData.length})</p>
+      <p className="text-xl font-semibold mx-6 my-4">{withdrawalData.length >0 ? `Updates(${withdrawalData.length})` : "No Updates Yet"}</p>
       <div>
         {/* <!-- component --> */}
         <div className="relative w-12/12  m-4">

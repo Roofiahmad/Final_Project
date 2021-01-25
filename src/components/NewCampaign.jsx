@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import UploadFile from "./UploadFile";
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Redirect } from 'react-router-dom';
 
 
 export default class NewCampaign extends Component {
@@ -19,6 +22,8 @@ export default class NewCampaign extends Component {
     ],
     token: localStorage.getItem("token"),
     image: null,
+    redirect : false,
+    input: ['goal', 'due_date','category', 'story']
 
   }
 
@@ -51,17 +56,33 @@ export default class NewCampaign extends Component {
       }
     )
     .then((response) => {
-      console.log(response);
-      alert("Your campaign is created successfully");
-      // window.location.reload();
+      toast.success("Your campaign is created successfully", {
+        position: toast.POSITION.TOP_CENTER
     })
-    .catch((err) => console.log(err.response));
-  };
+    setTimeout(() => {
+      this.setState({redirect:true})
+    }, 1500);
+    })
+    .catch((err) => {
+      if(err.response.data.errors.title.value == ''){
+        toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors['title'].msg}`, {
+          position: toast.POSITION.TOP_CENTER
+      })
+      }
+      for(let i = 0; i<this.state.input.length; i++){
+        if(err.response.data.errors[this.state.input[i]] !==undefined ){
+          toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors[this.state.input[i]].msg}`, {
+            position: toast.POSITION.TOP_CENTER
+        })
+        }
+      }
+    })
+  }
 
   render() {
-    console.log(this.state.image)
     return (
       <div className="w-10/12 mx-auto relative fromtop-animation  ">
+        {this.state.redirect ? <Redirect to ="/myprofile"/> :null}
         <div className="pb-4">
           <h2 className="text-3xl font-medium my-4">New Campaign</h2>
         </div>
