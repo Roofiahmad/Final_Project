@@ -45,7 +45,7 @@ const DiscoverCategory = () => {
 
     const handleMostUrgent = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
             let data = res.data.posts
@@ -57,7 +57,7 @@ const DiscoverCategory = () => {
 
     const handlePopular = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
             let data = res.data.posts
@@ -69,7 +69,7 @@ const DiscoverCategory = () => {
 
     const handleLessDonation = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/donation?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/donation')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
             // console.log(thisCategory)

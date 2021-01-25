@@ -14,7 +14,7 @@ const DiscoverSearchResult = () => {
   }, []);
 
   function getCampaignByTitle() {
-    axios.get(`https://talikasih.kuyrek.com:3001/campaign/title?title=${title}&limit=12`)
+    axios.get(`https://talikasih.kuyrek.com:3001/campaign/title?title=${title}`)
     .then((res) => {
       setCampaignByTitle(res.data.data)
     })
@@ -33,7 +33,7 @@ const DiscoverSearchResult = () => {
 
 const handleMostUrgent = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen?limit=12')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen')
     .then((res) => {
         let thisTitle = title
         let campaign = res.data.posts
@@ -44,7 +44,7 @@ const handleMostUrgent = (e) => {
 
 const handlePopular = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?limit=12')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/populer')
     .then((res) => {
         let thisTitle = title
         let campaign = res.data.posts
@@ -55,7 +55,7 @@ const handlePopular = (e) => {
 
 const handleLessDonation = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/donation?limit=12')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/donation')
     .then((res) => {
         let thisTitle = title
         let campaign = res.data.posts
