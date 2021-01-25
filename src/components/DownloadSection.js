@@ -10,7 +10,7 @@ import googleplay from "../assets/googleplay.png"
 function DownloadSection() {
     return (
         <div>
-            <div className="flex flex-col mb-40 gap-2 sm:flex-wrap w-10/12 mt-28 mx-auto">
+            <div className="flex flex-col gap-2 sm:flex-wrap w-10/12 mt-10 mb-10 lg:mt-16 lg:mb-16 mx-auto">
                 <div className="mb-3">
                     <h1 className="font-bold text-3xl">
                         Spread kindness anytime, anywhere

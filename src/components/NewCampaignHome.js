@@ -24,7 +24,7 @@ const NewCampaignHome = () => {
 
     return (
         <div>
-            <div className="flex flex-col sm:flex-wrap w-10/12 mt-28 gap-2 mx-auto">
+            <div className="flex flex-col sm:flex-wrap w-10/12 mt-10 mb-10 lg:mb-16 lg:mt-16 gap-2 mx-auto">
                 <div className="">
                     <h1 className="font-thin text-xl text-rose">
                         New

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import UploadFile from "./UploadFile";
-import axios from 'axios'
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default class EditCampaign extends Component {
@@ -8,13 +10,13 @@ export default class EditCampaign extends Component {
   state ={
     inputForm:[
       { name: "Title", id: "title", placeholder: "Input Title", type: "text", defaultValue: localStorage.getItem("campaign_title") },
-      {
-        name: "Category",
-        id: "category",
-        placeholder: "Input Category",
-        type: "text",
-        defaultValue: localStorage.getItem("campaign_category")
-      },
+      // {
+      //   name: "Category",
+      //   id: "category",
+      //   placeholder: "Input Category",
+      //   type: "text",
+      //   defaultValue: localStorage.getItem("campaign_category")
+      // },
       { name: "Goal", id: "goal", placeholder: "Input Goal", type: "number", defaultValue: Number(localStorage.getItem("campaign_goal")) },
       { name: "Due Date", id: "due_date", type: "date", defaultValue: localStorage.getItem("campaign_due_date") },
     ],
@@ -64,7 +66,7 @@ export default class EditCampaign extends Component {
     )
     .then((response) => {
       console.log(response);
-      alert("Your campaign is updated successfully");
+      toast.success("Your campaign is updated successfully!");
       this.props.history.push("/myprofile");
       // window.location.reload();
     })
@@ -138,6 +140,17 @@ export default class EditCampaign extends Component {
                 <hr className="border-b-3 border-gray-400 pb-3" />
               </div>
             ))}
+            <select className="bg-gray-50" name="Category" id="category">
+              <option value={localStorage.getItem("campaign_category")} selected>{localStorage.getItem("campaign_category")}</option>
+              <option value="Disability">Disability</option>
+              <option value="Disaster">Disaster</option>
+              <option value="Education">Education</option>
+              <option value="Environment">Environment</option>
+              <option value="Humanity">Humanity</option>
+              <option value="Medical">Medical</option>
+              <option value="Religious">Religious</option>
+              <option value="Sociopreneur">Sociopreneur</option>
+            </select>
           </div>
           <div className="grid grid-cols-1">
             <label>Story</label>
