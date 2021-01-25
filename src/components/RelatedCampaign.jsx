@@ -23,7 +23,7 @@ export default function RelatedCampaign(props) {
 
   return (
     <div className="mt-28 mb-10">
-      <h4 className="font-bold underline mb-4">Related Campaign</h4>
+      <h4 className="font-bold underline mb-4">{relatedCampaignData.length >0 ? 'Related Campaign' : 'No Related Campaign'}</h4>
       <div className="grid grid-cols-1 gap-5 justify-between md:gap-14 sm:grid-cols-3">
         {relatedCampaignData.map((campaign) => {
           return (

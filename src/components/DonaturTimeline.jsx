@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default function DonaturTimeline(props) {
   const [donaturData,setDonaturData] = useState([]);
-  let donaturLength = 0;
+  const [donaturDataSLiced,setDonaturDataSliced] = useState([]);
   
   const countday = (donateDate) => {
     const end = donateDate.split('T'); 
@@ -17,6 +17,7 @@ export default function DonaturTimeline(props) {
     axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=4`)
         .then(response => {
           setDonaturData(response.data.data);
+          setDonaturDataSliced(response.data.data.slice(0,2))
         })
         .catch(err => {
           console.log(err)
@@ -25,11 +26,11 @@ export default function DonaturTimeline(props) {
 
   return (
     <div className="border border-gray-300 shadow px-10 py-2 my-10 rounded-sm">
-      <p className="text-xl font-semibold my-4">Donations({donaturData.length})</p>
-      <div className="grid grid-cols-2 gap-8">
-        {donaturData.map ((comment, index) => {
+      <p className="text-xl font-semibold my-4">{donaturData.length >0 ? `Donations(${donaturData.length})` : "No Donations Yet"}</p>
+      <div className={`grid grid-cols-2 gap-8 ${donaturData.length > 0 ? "pb-10" : ''}`}>
+        {donaturDataSLiced.map ((comment, index) => {
           return (
-            <div key={index} className="border border-gray-300 shadow p-5 rounded-md ">
+            <div key={index} className="border border-gray-300 shadow p-5 rounded-md frombottom-animation ">
             <div style={{ display: "inline-block", width: "100px", height:"100px"}}>
               <img
                 style={{width: "100px", height:"100px"}}
@@ -58,9 +59,9 @@ export default function DonaturTimeline(props) {
           )
         })}
       </div>
-      <button className="btn-outline-tosca uppercase my-4 mx-auto block w-1/6">
-        see all
-      </button>
+{    donaturData.length >= 2 ? <button onClick={() => donaturDataSLiced.length <=2 ? setDonaturDataSliced(donaturData) : setDonaturDataSliced(donaturData.slice(0,2)) } className="btn-outline-tosca uppercase mb-4 mx-auto block w-1/6">
+        {donaturDataSLiced.length <=2 ? 'see all' : 'show less'}
+      </button> : null}
     </div>
   );
 }

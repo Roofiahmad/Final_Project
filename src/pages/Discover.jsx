@@ -15,9 +15,6 @@ import { Link } from 'react-router-dom';
 
 
 const Discover = () => {
-    const [category, setCategory] = useState('');
-    const [campaignCategory, setCampaignCategory] = useState('');
-
     const ListCategory = [
         {category: 'disability', image: disability},
         {category: 'disaster', image: disaster},
