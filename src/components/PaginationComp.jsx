@@ -17,12 +17,6 @@ const PaginationComp = (props) => {
     data.push(object)
   }
 
-  console.log("data", data)
-
-
-
-
-
 
   return (
     <div className="w-10/12 mx-auto">

@@ -3,7 +3,6 @@ import React from 'react'
 
 const CardLoading = () => {
   return (
-    <div className="w-10/12 mt-24 lg:mt-20 mb-5 mx-auto">
       <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
         <div className="shadow-md animate-pulse">
           <div className="w-full h-52 bg-gray-200 rounded-sm mt-1"></div>
@@ -72,7 +71,6 @@ const CardLoading = () => {
           </div>
         </div>
       </div>  
-    </div>
   )
 }
 

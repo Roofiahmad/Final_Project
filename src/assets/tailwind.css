@@ -351,3 +351,7 @@ input[type="number"] {
   background-color: #1d94a8;
   @apply text-center font-bold;
 }
+
+tbody>tr:nth-child(odd) {
+  background-color: #f1ede4;;
+}

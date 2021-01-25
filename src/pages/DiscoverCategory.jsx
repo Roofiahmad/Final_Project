@@ -4,7 +4,8 @@ import { useParams, Link } from 'react-router-dom'
 import DiscoverJumbotron from '../components/DiscoverJumbotron'
 import campaignImage from '../assets/campaign-image.png';
 import iconsort from '../assets/sort.png';
-import PaginationComp from '../components/PaginationComp'
+import PaginationComp from '../components/PaginationComp';
+import CardLoading from '../components/CardLoadingCategory';
 
 
 const DiscoverCategory = () => {
@@ -14,13 +15,18 @@ const DiscoverCategory = () => {
 
     let { category } = useParams();
     // console.log(category)
+    const [loading, setLoading] = useState(true);
     const [campaingByCategory, setCampaignCategory] = useState([]);
     const [sortOpen, setSortOpen] = useState(false);
     const [slicedCampaign, setSlicedCampaign] = useState([]);
 
 
     useEffect(() => {
-        getCampaingByCategory()
+        const timer = setTimeout(() => {
+            getCampaingByCategory()
+            setLoading(false);
+        }, 2000);
+        return () => clearTimeout(timer)
     }, []);
 
     function getCampaingByCategory() {
@@ -45,7 +51,7 @@ const DiscoverCategory = () => {
 
     const handleMostUrgent = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
             let data = res.data.posts
@@ -57,7 +63,7 @@ const DiscoverCategory = () => {
 
     const handlePopular = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
             let data = res.data.posts
@@ -69,14 +75,11 @@ const DiscoverCategory = () => {
 
     const handleLessDonation = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/donation?limit=12')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/donation')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            // console.log(thisCategory)
             let data = res.data.posts
-            // console.log(data, 'ini data')
             let filters = data.filter((data) => data.category === thisCategory)
-            // console.log(filters, 'ini data filter')
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
         })
@@ -91,8 +94,6 @@ const DiscoverCategory = () => {
         setSlicedCampaign(slicedArray)
         // setCampaignCategory(slicedArray)
     }
-
-    console.log(slicedCampaign)
     
 
     return (
@@ -113,6 +114,9 @@ const DiscoverCategory = () => {
                         </div>
                     ) : null}
                     </button>
+                    {loading ? (
+                        <CardLoading />
+                    ) : (
                 <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
             {
                 slicedCampaign.map(campaign => {
@@ -144,6 +148,7 @@ const DiscoverCategory = () => {
                 }) 
             }
                     </div>
+                )}
                 </div>
             </div>
             <PaginationComp campaignData={campaingByCategory} pagination={handlePagination} />
