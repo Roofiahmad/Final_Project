@@ -29551,11 +29551,13 @@ input[type="number"] {
 .Toastify__toast--error {
   background-color: #a43f3c;
   font-weight: 700;
+  text-align: center;
 }
 
 .Toastify__toast--success {
   background-color: #1d94a8;
   font-weight: 700;
+  text-align: center;
 }
 
 @media (min-width: 640px) {
