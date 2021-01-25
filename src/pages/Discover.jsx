@@ -15,6 +15,9 @@ import { Link } from 'react-router-dom';
 
 
 const Discover = () => {
+    const [category, setCategory] = useState('');
+    const [campaignCategory, setCampaignCategory] = useState('');
+    
     const ListCategory = [
         {category: 'disability', image: disability},
         {category: 'disaster', image: disaster},
@@ -28,8 +31,8 @@ const Discover = () => {
     
 
     return (
-        <div className="mt-6 fromtop-animation">
-            <div className="mx-auto mt-16 mb-36 w-10/12">
+        <div className="mt-10 lg:mt-16 mb-10 lg:mb-16 fromtop-animation">
+            <div className="mx-auto w-10/12">
                 <h1 className="font-bold text-2xl">Find Cause you truly care about</h1>
                 <div className="flex flex-wrap justify-center items-end mx-auto mt-14 w-full md:w-10/12">
             {

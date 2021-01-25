@@ -35,7 +35,7 @@ const GainedMomentum = () => {
         {loading ? (
            <CardLoading/>
        ) : (
-        <div className="w-10/12 mt-28 mb-5 mx-auto">
+        <div className="w-10/12 mt-24 lg:mt-20 mb-5 mx-auto">
             <h4 className="font-bold underline mb-4">Gained Momentum</h4>
             <div className="grid grid-rows-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
                 {
