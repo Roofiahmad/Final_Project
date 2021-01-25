@@ -3,6 +3,8 @@ import ProgressBar from "./ProgressBar";
 import { Link, useParams, useHistory } from "react-router-dom";
 import campaignImage from '../assets/campaign-image.png';
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function JumbotronCampaignDetail(props) {
@@ -25,19 +27,25 @@ export default function JumbotronCampaignDetail(props) {
   }
 
 
-  const handleDelete = () => {
+  const axiosDelete = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` }
   };
     axios.delete(`https://talikasih.kuyrek.com:3001/campaign/delete/${props.campaignId}`,config)
         .then(response => {
-            console.log(response);
-            alert("Campaign is deleted sucessfully");
+            toast.success("Your campaign is deleted successfully", {
+              position: toast.POSITION.TOP_CENTER
+          })
             history.push("/myprofile");
         })
         .catch(err => {
           console.log(err)
         })
+  }
+
+
+  const handleDelete = () => {
+    
   }
  
   return (
