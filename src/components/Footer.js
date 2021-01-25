@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
+
 
 function Footer() {
     return (
@@ -11,7 +13,9 @@ function Footer() {
                 <div className="flex flex-wrap gap-8 w-full md:w-auto flex-wrap md:gap-20 ">
                     <div className="w-full md:w-auto">
                         <h1 className="font-semibold text-tosca">FUNDRAISE FOR</h1>
+                        <Link to="/discoverbycategory/education">
                         <h1 className="font-light text-sm cursor-pointer mt-5">Education</h1>
+                        </Link>
                         <h1 className="font-light text-sm cursor-pointer mt-2">Disabilities</h1>
                         <h1 className="font-light text-sm cursor-pointer mt-2">Hospital Bills</h1>
                         <h1 className="font-light text-sm cursor-pointer mt-2">Religious</h1>

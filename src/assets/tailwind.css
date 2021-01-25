@@ -341,3 +341,13 @@ input[type="number"] {
 .card-hover:hover:before {
     transform: scale(2.15);
   }
+
+.Toastify__toast--error {
+  background-color: #a43f3c;
+  @apply font-bold;
+}
+
+.Toastify__toast--success {
+  background-color: #1d94a8;
+  @apply font-bold;
+}
