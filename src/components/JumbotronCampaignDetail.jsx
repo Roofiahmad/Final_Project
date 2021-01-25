@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import campaignImage from '../assets/campaign-image.png';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalsCampaignDelete from "./ModalsCampaignDelete";
 
 
 export default function JumbotronCampaignDetail(props) {
-  let history = useHistory();
+  
   const token = localStorage.getItem("token");
   let {campaignId} = useParams();
   const [dropdown, setDropdown] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
   // function to add thousand separator value of IDR
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -27,29 +29,15 @@ export default function JumbotronCampaignDetail(props) {
   }
 
 
-  const axiosDelete = () => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-  };
-    axios.delete(`https://talikasih.kuyrek.com:3001/campaign/delete/${props.campaignId}`,config)
-        .then(response => {
-            toast.success("Your campaign is deleted successfully", {
-              position: toast.POSITION.TOP_CENTER
-          })
-            history.push("/myprofile");
-        })
-        .catch(err => {
-          console.log(err)
-        })
-  }
 
 
   const handleDelete = () => {
-    
+    setModalDelete(!modalDelete)
   }
  
   return (
     <div>
+      {modalDelete ? <ModalsCampaignDelete  modalDelete={handleDelete}/> : null}
       <div className="flex justify-between">
         <h2 className=" inline-block text-3xl font-medium my-4">
           {props.campaignData.title}
