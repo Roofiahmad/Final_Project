@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import iconsort from '../assets/sort.png';
 import { Link } from "react-router-dom";
 import campaignImage from '../assets/campaign-image.png';
 
@@ -10,25 +9,10 @@ const SearchResult = (props) => {
     }
 
   let data = props.campaign  
-  const [sortOpen, setSortOpen] = useState(false);
   
   return (
     <div>
-        <div className="mt-16 mb-36">
-            <div className="w-10/12 mx-auto">
-                <button className="font-bold flex mb-5 bg-white hover:bg-blue" onClick={() => setSortOpen(!sortOpen)}>Sort
-                <img src={iconsort} alt="" width="20" className="ml-2"/>
-                {sortOpen ? (
-                    <div className="z-10 absolute shadow-md bg-white py-2 px-3 font-normal text-md text-left mt-8">
-                    <ul className="hover:">
-                        <li className="campaign-text-setting text-md" onClick={props.newest}>Newest</li>
-                        <li className="campaign-text-setting text-md" onClick={props.urgent}>Most urgent</li>
-                        <li className="campaign-text-setting text-md" onClick={props.popular}>Popular</li>
-                        <li className="campaign-text-setting text-md" onClick={props.lessDonation}>Less donation</li>
-                    </ul>
-                    </div>
-                ) : null}
-                </button>
+        <div className="mb-36">
             <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
         {
             data.map(campaign => {
@@ -62,7 +46,6 @@ const SearchResult = (props) => {
         }
                 </div>
             </div>
-        </div>
     </div>
   )
 }
