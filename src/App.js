@@ -22,6 +22,7 @@ import EditProfile from "./components/EditProfile";
 import ResetPassword from './components/ResetPassword';
 import PageNotFound from "./pages/PageNotFound";
 import EditCampaign from "./components/EditCampaign";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   return (
     <Router>
       <NavbarComp />
+      <ScrollToTop/>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/editprofile" component={EditProfile} />
