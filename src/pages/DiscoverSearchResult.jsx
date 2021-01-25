@@ -5,14 +5,20 @@ import axios from "axios";
 import { Link } from "react-router-dom" 
 import PaginationComp from "../components/PaginationComp";
 import iconsort from '../assets/sort.png';
+import CardLoading from '../components/CardLoadingCategory';
 
 const DiscoverSearchResult = () => {
   let title = localStorage.getItem("titleCampaign");
+  const [loading, setLoading] = useState(true);
   const [sortOpen, setSortOpen] = useState(false);
   const [campaignByTitle, setCampaignByTitle] = useState([]);
 
   useEffect(() => {
-    getCampaignByTitle();
+    const timer = setTimeout(() => {
+      getCampaignByTitle();
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer)
   }, []);
 
   function getCampaignByTitle() {
@@ -71,14 +77,14 @@ const handleLessDonation = (e) => {
       <div className="mt-16 mb-40">
         <div className="w-10/12 mx-auto">
           <h1 className="font-bold text-3xl mb-6">Result for "{title}"</h1>
-          <div className="flex justify-between">
-            <div>
-              <Link to="/discoverall" className="font-bold flex mb-24 ">
+          <div className="flex flex-wrap md:justify-between">
+            <div className="w-full md:w-auto">
+              <Link to="/discoverall" className="font-bold flex mb-10">
                 <img src={arrow} alt="" width="20" className="mr-2 hover:cursor-pointer" />
                 See all categories
               </Link>
             </div>
-            <div>
+            <div className="w-full md:w-auto">
             <button className="font-bold flex mb-5 bg-white hover:bg-blue" onClick={() => setSortOpen(!sortOpen)}>Sort
                 <img src={iconsort} alt="" width="20" className="ml-2"/>
                 {sortOpen ? (
@@ -94,7 +100,11 @@ const handleLessDonation = (e) => {
                 </button>
             </div>
           </div>
+          { loading ? (
+            <CardLoading />
+          ) : (
           <SearchResult campaign={campaignByTitle} /> 
+          )}
         </div>
       </div>
       {/* <PaginationComp /> */}

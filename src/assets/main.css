@@ -29560,6 +29560,10 @@ input[type="number"] {
   text-align: center;
 }
 
+tbody>tr:nth-child(odd) {
+  background-color: #f1ede4;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

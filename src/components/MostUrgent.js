@@ -34,7 +34,7 @@ const MostUrgent = () => {
              {loading ? (
                 <CardLoading/>
             ) : (
-        <div className="w-10/12 mt-24 mb-5 mx-auto">
+        <div className="w-10/12 mt-24 lg:mt-20 mb-5 mx-auto">
            <h4 className="font-bold underline mb-4">Most Urgent</h4>
            <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
                {

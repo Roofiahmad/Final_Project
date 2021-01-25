@@ -26,7 +26,7 @@ const DiscoverJumbotron = (props) => {
     }
     
     return (
-        <div className="w-10/12 mt-16 mb-32 mx-auto">
+        <div className="w-10/12 mt-16 mb-16 mx-auto">
             <div className="w-full flex flex-wrap gap-5 items-center lg:flex-nowrap justify-between">
                 <div className="mb-6">
                 <div className="">

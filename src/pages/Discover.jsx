@@ -31,8 +31,8 @@ const Discover = () => {
     
 
     return (
-        <div className="mt-6 fromtop-animation">
-            <div className="mx-auto mt-16 mb-36 w-10/12">
+        <div className="mt-10 lg:mt-16 mb-10 lg:mb-16 fromtop-animation">
+            <div className="mx-auto w-10/12">
                 <h1 className="font-bold text-2xl">Find Cause you truly care about</h1>
                 <div className="flex flex-wrap justify-center items-end mx-auto mt-14 w-full md:w-10/12">
             {

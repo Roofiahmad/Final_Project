@@ -23,6 +23,7 @@ import ResetPassword from './components/ResetPassword';
 import PageNotFound from "./pages/PageNotFound";
 import EditCampaign from "./components/EditCampaign";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminPage from "./pages/AdminPage";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/createdonation/:campaignId" component={CreateDonation} />
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
+          <Route exact path="/admin" component={AdminPage} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer/>
