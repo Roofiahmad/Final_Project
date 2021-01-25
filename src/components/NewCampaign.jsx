@@ -8,12 +8,12 @@ export default class NewCampaign extends Component {
   state ={
     inputForm:[
       { name: "Title", id: "title", placeholder: "Input Title", type: "text" },
-      {
-        name: "Category",
-        id: "category",
-        placeholder: "Input Category",
-        type: "text",
-      },
+      // {
+      //   name: "Category",
+      //   id: "category",
+      //   placeholder: "Input Category",
+      //   type: "text",
+      // },
       { name: "Goal", id: "goal", placeholder: "Input Goal", type: "number" },
       { name: "Due Date", id: "due_date", type: "date" },
     ],
@@ -84,6 +84,17 @@ export default class NewCampaign extends Component {
                 <hr className="border-b-3 border-gray-400 pb-3" />
               </div>
             ))}
+            <select className="bg-gray-50" name="Category" id="category">
+              <option value="" disabled selected>Choose a category...</option>
+              <option value="Disability">Disability</option>
+              <option value="Disaster">Disaster</option>
+              <option value="Education">Education</option>
+              <option value="Environment">Environment</option>
+              <option value="Humanity">Humanity</option>
+              <option value="Medical">Medical</option>
+              <option value="Religious">Religious</option>
+              <option value="Sociopreneur">Sociopreneur</option>
+            </select>
           </div>
           <div className="grid grid-cols-1">
             <label>Story</label>

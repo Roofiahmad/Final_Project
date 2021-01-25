@@ -344,10 +344,10 @@ input[type="number"] {
 
 .Toastify__toast--error {
   background-color: #a43f3c;
-  @apply font-bold;
+  @apply text-center font-bold;
 }
 
 .Toastify__toast--success {
   background-color: #1d94a8;
-  @apply font-bold;
+  @apply text-center font-bold;
 }
