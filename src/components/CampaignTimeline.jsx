@@ -5,6 +5,7 @@ export default function CampaignTimeline(props) {
   const token = localStorage.getItem("token");
   const campaignId = props.campaignId;
   const [withdrawalData, setWithdrawalData] = useState([]);
+  const [withdrawalDataSliced, setWithdrawalDataSliced] = useState([]);
 
   const timeCalc = (date) => {
     let minutes = 1000 * 60;
@@ -41,8 +42,11 @@ export default function CampaignTimeline(props) {
     axios
       .get(API, config)
       .then((response) => {
-        setWithdrawalData(response.data.data);
-        console.log(response.data.data)
+        console.log('original array' ,response.data.data)
+        let responseData = [...response.data.data] 
+        console.log('sorted array',responseData.sort((a,b) => new Date(b.createAt).getTime() - new Date(a.createAt).getTime()));
+        setWithdrawalData(responseData);
+        setWithdrawalDataSliced(responseData.slice(0,2))
       })
       .catch((err) => {
         console.log(err);
@@ -53,11 +57,10 @@ export default function CampaignTimeline(props) {
     getWithdrawalData();
   }, [props]);
 
-  console.log(withdrawalData);
 
   return (
     <div className="border border-gray-300 shadow px-4 py-2 my-10">
-      <p className="text-xl font-semibold my-4">Updates({withdrawalData.length})</p>
+      <p className="text-xl font-semibold mx-6 my-4">Updates({withdrawalData.length})</p>
       <div>
         {/* <!-- component --> */}
         <div className="relative w-12/12  m-4">
@@ -67,9 +70,9 @@ export default function CampaignTimeline(props) {
           ></div>
           <ul className="list-none m-0 p-0 ">
 
-            {withdrawalData.map((item) => {
+            {withdrawalDataSliced.map((item) => {
               return(item.amount === 0 ? 
-                <li className="mb-2 ">
+                <li className="mb-2 frombottom-animation">
                 <div className="flex items-center mb-1">
                   <div className="bg-tosca rounded-full h-6 w-6"></div>
                   <div className="flex-1 ml-4 font-medium ">
@@ -86,7 +89,7 @@ export default function CampaignTimeline(props) {
                 </div>
               </li>
                 : 
-                <li className="mb-2 ">
+                <li className="mb-2 frombottom-animation">
                 <div className="flex items-center mb-1">
                   <div className="bg-tosca rounded-full h-6 w-6"></div>
                   <div className="flex-1 ml-4 font-medium ">
@@ -106,9 +109,9 @@ export default function CampaignTimeline(props) {
           </ul>
         </div>
       </div>
-      <button className="uppercase btn-outline-tosca my-5 mx-auto block">
-        show older
-      </button>
+      { withdrawalData.length >= 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block w-1/6">
+        {withdrawalDataSliced.length <=2 ? 'see older' : 'show newest'}
+      </button> : null}
     </div>
   );
 }

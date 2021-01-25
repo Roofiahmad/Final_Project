@@ -8,6 +8,8 @@ import moment from 'moment';
 export default function CommentCampaignDetail(props) {
     let campaignId = useParams().campaignId;
     const [arrayComments, setComments] = useState("");
+    const [slicedArrayComments, setSlicedArrayComments] = useState([]);
+
     useEffect(() => {
       getData();
     }, []);
@@ -17,11 +19,8 @@ export default function CommentCampaignDetail(props) {
         `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${campaignId}&page=1&limit=10`
       )
       .then((response) => {
-          // console.log("INI GET COMMENT", response);
           setComments(response.data.data);
-          let stringdate = new Date;
-          // console.log("STRING DATE", stringdate.toDateString())
-          // console.log(arrayComments);
+          setSlicedArrayComments(response.data.data.slice(0,2))
       })
       .catch((err) => console.log(err))
     }
@@ -30,9 +29,9 @@ export default function CommentCampaignDetail(props) {
     <div className="border border-gray-300 shadow px-10 py-4 my-10">
       <p className="text-xl font-semibold mt-4 mb-8 ">Comments({arrayComments.length})</p>
       {props.role == "donatur" ? <PostComment /> : null}
-      {arrayComments.length > 0 ? arrayComments.map((comments, index) => {
+      {slicedArrayComments.length > 0 ? slicedArrayComments.map((comments, index) => {
         return (
-      <div key={index} className="border-t-2 border-gray-300  px-5 py-8  ">
+      <div key={index} className="border-t-2 border-gray-300  px-5 py-8 frombottom-animation ">
         <div style={{ display: "inline-block", width: "100px" }}>
           <img
             src={comments.user.profile_image}
@@ -60,9 +59,9 @@ export default function CommentCampaignDetail(props) {
         );
       })
        :null}
-      <button className="btn-outline-tosca uppercase mb-6 mt-10 mx-auto block w-1/6">
-        load more
-      </button>
+{ arrayComments.length > 2 ?<button onClick={() => slicedArrayComments.length <=2 ? setSlicedArrayComments(arrayComments) : setSlicedArrayComments(arrayComments.slice(0,2)) } className="btn-outline-tosca uppercase mb-6 mt-10 mx-auto block w-1/6">
+{slicedArrayComments.length <=2 ? 'load more' : 'show less'}
+      </button> :null}
     </div> 
   );
 }
