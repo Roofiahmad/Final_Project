@@ -8,8 +8,6 @@ export default function PostComment() {
   const handlePostComment = async (e) => {
     e.preventDefault();
 
-    console.log("INI IDNYA", campaignId)
-    
     const sendComment = {
       campaign_id: campaignId,
       comment: e.target.comment.value,
@@ -26,7 +24,6 @@ export default function PostComment() {
       sendComment, config
     )
     .then((response) => {
-        console.log(response);
         console.log(response, "update user data success"); 
         alert("Yass, your comment is sent");
         window.location.reload();
@@ -52,7 +49,7 @@ export default function PostComment() {
           Post
         </button>
       </form>
-      <div className="h-20"></div>
+      <div className="h-12"></div>
     </div>
   );
 }

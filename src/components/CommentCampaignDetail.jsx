@@ -27,7 +27,7 @@ export default function CommentCampaignDetail(props) {
     }
     
   return (
-    <div className="border border-gray-300 shadow px-10 py-4 my-10">
+    <div className="border border-gray-300 shadow px-10 lg:py-4 lg:my-10">
       <p className="text-xl font-semibold mt-4 mb-8 ">{arrayComments.length >0 ? `Comments(${arrayComments.length})` : "No Comments Yet"}</p>
       {props.role == "donatur" ? <PostComment /> : null}
       {slicedArrayComments.length > 0 ? slicedArrayComments.map((comments, index) => {
@@ -38,8 +38,7 @@ export default function CommentCampaignDetail(props) {
             src={comments.user.profile_image}
             alt="donatur image"
             className="rounded-md"
-            width={`200px`}
-            height={`200px`}
+            style={{width: "100px", height:"100px"}}
           />
         </div>
         <div
@@ -60,7 +59,7 @@ export default function CommentCampaignDetail(props) {
         );
       })
        :null}
-{ arrayComments.length > 2 ?<button onClick={() => slicedArrayComments.length <=2 ? setSlicedArrayComments(arrayComments) : setSlicedArrayComments(arrayComments.slice(0,2)) } className="btn-outline-tosca uppercase mb-6 mt-10 mx-auto block w-1/6">
+{ arrayComments.length > 2 ?<button onClick={() => slicedArrayComments.length <=2 ? setSlicedArrayComments(arrayComments) : setSlicedArrayComments(arrayComments.slice(0,2)) } className="btn-outline-tosca uppercase mb-6 mt-10 mx-auto block lg:w-1/6 sm:w-3/6">
 {slicedArrayComments.length <=2 ? 'load more' : 'show less'}
       </button> :null}
     </div> 

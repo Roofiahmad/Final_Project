@@ -5,6 +5,9 @@ import { Link} from 'react-router-dom';
 
 export default function RelatedCampaign(props) {
   const [relatedCampaignData, setRelatedCampaignData] = useState([])
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   useEffect(() => {
     axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${props.category}&page=1&limit=3`)
@@ -63,12 +66,12 @@ export default function RelatedCampaign(props) {
                   <div>
                     <p className="text-sm text-grey">Raised</p>
                     <p className="font-bold text-tosca">
-                      {campaign.total_donation_rupiah}
+                     IDR {numberWithCommas(campaign.total_donation_rupiah)}
                     </p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-grey">Goal</p>
-                    <p>{campaign.goal}</p>
+                    <p>IDR {numberWithCommas(campaign.goal)}</p>
                   </div>
                 </div>
               </div>

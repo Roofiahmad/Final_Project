@@ -59,7 +59,7 @@ export default function DonaturTimeline(props) {
           )
         })}
       </div>
-{    donaturData.length > 2 ? <button onClick={() => donaturDataSLiced.length <=2 ? setDonaturDataSliced(donaturData) : setDonaturDataSliced(donaturData.slice(0,2)) } className="btn-outline-tosca uppercase mb-4 mx-auto block w-1/6">
+{    donaturData.length > 2 ? <button onClick={() => donaturDataSLiced.length <=2 ? setDonaturDataSliced(donaturData) : setDonaturDataSliced(donaturData.slice(0,2)) } className="btn-outline-tosca uppercase mb-4 mx-auto block lg:w-1/6 sm:w-3/6">
         {donaturDataSLiced.length <=2 ? 'see all' : 'show less'}
       </button> : null}
     </div>
