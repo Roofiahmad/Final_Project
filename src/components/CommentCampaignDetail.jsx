@@ -50,7 +50,7 @@ export default function CommentCampaignDetail(props) {
           }}
         >
           <p className="">{comments.user.name}</p>
-          <p className="text-gray-400">{moment(comments.created_at).startOf('hour').fromNow()}</p>
+          <p className="text-gray-400">{moment(comments.created_at).startOf('minute').fromNow()}</p>
         </div>
         <p className="mt-4">
           {comments.comment}

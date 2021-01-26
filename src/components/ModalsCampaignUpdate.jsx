@@ -29,6 +29,7 @@ export default function ModalsCampaignUpdate(props) {
       .post(API, data, config) 
       .then((response) => {
         console.log(response, 'update success')
+        window.location.reload()
       })
       .catch((err) => {
         console.log(err);

@@ -61,9 +61,8 @@ export default function CampaignTimeline(props) {
   return (
     <div className="border border-gray-300 shadow px-4 py-2 my-10">
       <p className="text-xl font-semibold mx-6 my-4">{withdrawalData.length >0 ? `Updates(${withdrawalData.length})` : "No Updates Yet"}</p>
-      <div>
-        {/* <!-- component --> */}
-        <div className="relative w-12/12  m-4">
+      <div className={"pb-3"}>
+        <div className="relative w-12/12  m-4 ">
           <div
             className="border-r-4 border-tosca absolute h-full top-0"
             style={{ left: "11px" }}
@@ -82,7 +81,7 @@ export default function CampaignTimeline(props) {
                     </span>
                   </div>
                 </div>
-                <div className="ml-12 mr-12 border border-gray-300 shadow p-4 my-3">
+                <div className="ml-12 mr-12 border border-gray-100 shadow p-4 my-3">
                   <p>
                     {item.message}
                   </p>
@@ -99,7 +98,7 @@ export default function CampaignTimeline(props) {
                     </span>
                   </div>
                 </div>
-                <div className="ml-12 mr-12 border border-gray-300 shadow p-4 bg-gray-100 my-3 ">
+                <div className="ml-12 mr-12 border border-gray-100 shadow p-4 bg-gray-100 my-3 ">
                   <p className="text-lg font-semibold">Rp{numberWithCommas(item.amount)}</p>
                   <p> Withdrawal purpose: {item.message}</p>
                 </div>
@@ -109,7 +108,7 @@ export default function CampaignTimeline(props) {
           </ul>
         </div>
       </div>
-      { withdrawalData.length >= 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block w-1/6">
+      { withdrawalData.length > 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block w-1/6">
         {withdrawalDataSliced.length <=2 ? 'see older' : 'show newest'}
       </button> : null}
     </div>
