@@ -11,7 +11,6 @@ import {
 import MyProfilePage from "./pages/MyProfilePage";
 import NavbarComp from "./components/NavbarComp";
 import NewCampaign from "./components/NewCampaign";
-import CampaignDetailFundraiser from "./pages/CampaignDetailFundraiser";
 import CreateDonation from "./pages/CreateDonation";
 import Footer from './components/Footer';
 import CampaignDetail from "./pages/CampaignDetail";

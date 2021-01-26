@@ -15,24 +15,23 @@ export default function ModalDonationSuccess() {
             &#8203;
           </span>
           <div
-            className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-1/2"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"
           >
-            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left mb-6">
-                <img src ={SuccesDonate} className={"text-center"}/>
+            <div className="bg-white  pb-4 sm:p-4 sm:pb-4">
+              <div className="text-center sm:mt-0 sm:ml-4 sm:text-left mb-6">
+                <img src ={SuccesDonate} className={" mx-auto w-3/6"}/>
                 <h3
-                  className="text-lg leading-6 font-medium uppercase"
+                  className="text-xl leading-6 my-2 font-medium uppercase text-center"
                   id="modal-headline"
                 >
                   Congratulations!
                 </h3>
-                <p>Thank you for your donations</p>
+                <p className={"text-center text-xl font-light"}>Thank you for your donations</p>
               </div>
-              <div className=" p-4">
-          </div>
+              <div></div>
         </div>
       </div>
     </div>

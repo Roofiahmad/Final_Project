@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import card from "../assets/card.png";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ModalDonationSuccess from "../components/ModalDonationSuccess";
 
@@ -8,7 +8,8 @@ export default function CreateDonation() {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
+  let history = useHistory();
+  const [modalsDonate, setModalsDonate] = useState(false)
   const token = localStorage.getItem('token');
   const [creditCard, setCredit] = useState(false);
   const [bank, setBank] = useState(false);
@@ -76,8 +77,11 @@ export default function CreateDonation() {
     )
     .then((response) => {
         console.log(response, "Donation sent"); 
-        alert("Yass, you successfully donate to this campaign");
-        window.location.reload();
+        setModalsDonate(true);
+        setTimeout(() => {
+          setModalsDonate(false)
+          history.push(`/campaigndetail/${campaignId}`);
+        }, 1500);
     })
     .catch((err) => {
         console.log("INI PESAN ERROR", err.response);
@@ -87,7 +91,7 @@ export default function CreateDonation() {
 
   return (
     <div className=" px-10 fromtop-animation">
-      {true ? <ModalDonationSuccess/> :null}
+      {modalsDonate ? <ModalDonationSuccess/> :null}
       <form onSubmit={(e) => handleDonate(e)}>
       <div className="mt-8 w-10/12 mx-auto  px-10">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
