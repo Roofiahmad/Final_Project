@@ -50,7 +50,7 @@ export default function DonaturTimeline(props) {
                 Rp {comment.amount}
               </p>
               <p className="">{comment.user.name}</p>
-              <p className="text-gray-400">{moment(comment.createdAt).startOf('hour').fromNow()}</p>
+              <p className="text-gray-400">{moment(comment.createdAt).startOf('minute').fromNow()}</p>
             </div>
             <p className="mt-2">
               {comment.message}
