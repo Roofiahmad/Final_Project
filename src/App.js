@@ -23,6 +23,7 @@ import PageNotFound from "./pages/PageNotFound";
 import EditCampaign from "./components/EditCampaign";
 import ScrollToTop from "./components/ScrollToTop";
 import AdminPage from "./pages/AdminPage";
+import AdminLogin from "./pages/AdminLogin";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
           <Route exact path="/admin" component={AdminPage} />
+          <Route exact path="/adminlogin" component={AdminLogin} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer/>

@@ -20,6 +20,7 @@ export default function CommentCampaignDetail(props) {
       )
       .then((response) => {
           setComments(response.data.data);
+          console.log(arrayComments);
           setSlicedArrayComments(response.data.data.slice(0,2))
       })
       .catch((err) => console.log(err))

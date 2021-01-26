@@ -24,13 +24,13 @@ const MyDonation = () => {
       })
     }
   return (
-    <div className="w-11/12 mt-20 mb-20 mx-auto border border-solid p-5">
+    <div className="w-11/12 mt-10 mb-10 lg:mt-16 lg:mb-16 mx-auto border border-solid p-5">
       <h2 className="font-bold text-xl mb-5">My Donation ({myDonations.length})</h2>
       <div className="grid grid-cols-1 gap-8 w-11/12 mx-auto md:grid-cols-2">
       {myDonations.length > 0 ? myDonations.map((donations) => {
         return (
         <div className="shadow-md p-5">
-          <p className="text-right text-gray-400 text-sm m-1">{moment(donations.createdAt).startOf('hour').fromNow()}</p>
+          <p className="text-right text-gray-400 text-sm m-1">{moment(donations.createdAt).startOf('minute').fromNow(new Date())}</p>
           <a href="#" className="font-bold underline m-1">{donations.campaign.title}</a>
           <p className="text-tosca font-bold text-2xl my-2">IDR {numberWithCommas(donations.amount)}</p>
           <p className="my-1">{donations.message}</p>
