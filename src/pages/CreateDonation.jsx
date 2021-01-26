@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import card from "../assets/card.png";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ModalDonationSuccess from "../components/ModalDonationSuccess";
 
 export default function CreateDonation() {
   const numberWithCommas = (x) => {
@@ -41,7 +42,7 @@ export default function CreateDonation() {
       `https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`
     )
     .then((response) => {
-        console.log("INI GET ONE CAMPAIGN", response);
+        // console.log("INI GET ONE CAMPAIGN", response);
         setImages(response.data.data.images);
         setCategory(response.data.data.category);
         setTitle(response.data.data.title);
@@ -74,7 +75,6 @@ export default function CreateDonation() {
       sendDonate, config
     )
     .then((response) => {
-        console.log(response);
         console.log(response, "Donation sent"); 
         alert("Yass, you successfully donate to this campaign");
         window.location.reload();
@@ -87,6 +87,7 @@ export default function CreateDonation() {
 
   return (
     <div className=" px-10 fromtop-animation">
+      {true ? <ModalDonationSuccess/> :null}
       <form onSubmit={(e) => handleDonate(e)}>
       <div className="mt-8 w-10/12 mx-auto  px-10">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
