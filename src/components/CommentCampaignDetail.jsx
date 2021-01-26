@@ -20,6 +20,7 @@ export default function CommentCampaignDetail(props) {
       )
       .then((response) => {
           setComments(response.data.data);
+          console.log(arrayComments);
           setSlicedArrayComments(response.data.data.slice(0,2))
       })
       .catch((err) => console.log(err))
@@ -50,7 +51,7 @@ export default function CommentCampaignDetail(props) {
           }}
         >
           <p className="">{comments.user.name}</p>
-          <p className="text-gray-400">{moment(comments.created_at).startOf('hour').fromNow()}</p>
+          <p className="text-gray-400">{moment(comments.created_at).startOf('minute').fromNow()}</p>
         </div>
         <p className="mt-4">
           {comments.comment}
