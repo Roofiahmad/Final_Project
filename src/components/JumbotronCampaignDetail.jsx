@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import campaignImage from '../assets/campaign-image.png';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalsCampaignDelete from "./ModalsCampaignDelete";
 
 
 export default function JumbotronCampaignDetail(props) {
-  let history = useHistory();
+  
   const token = localStorage.getItem("token");
   let {campaignId} = useParams();
   const [dropdown, setDropdown] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
   // function to add thousand separator value of IDR
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -27,29 +29,15 @@ export default function JumbotronCampaignDetail(props) {
   }
 
 
-  const axiosDelete = () => {
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-  };
-    axios.delete(`https://talikasih.kuyrek.com:3001/campaign/delete/${props.campaignId}`,config)
-        .then(response => {
-            toast.success("Your campaign is deleted successfully", {
-              position: toast.POSITION.TOP_CENTER
-          })
-            history.push("/myprofile");
-        })
-        .catch(err => {
-          console.log(err)
-        })
-  }
 
 
   const handleDelete = () => {
-    
+    setModalDelete(!modalDelete)
   }
  
   return (
     <div>
+      {modalDelete ? <ModalsCampaignDelete  modalDelete={handleDelete}/> : null}
       <div className="flex justify-between">
         <h2 className=" inline-block text-3xl font-medium my-4">
           {props.campaignData.title}
@@ -71,13 +59,13 @@ export default function JumbotronCampaignDetail(props) {
           ) : null}
         </div> : null}
       </div>
-      <div className="grid grid-cols-10 gap-0">
+      <div className="flex flex-col md:flex-row ">
         <img
-          className="w-full h-full rounded col-span-6"
+          className="lg:w-8/12 lg:h-8/12 md:w-full rounded"
           src={props.campaignData.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : props.campaignData.images}
           alt="Campaign Image"
         />
-        <div className="w-10/12 rounded border-2 border-gray-200 ml-12 p-5 col-span-4">
+        <div className="lg:w-4/12 md:w-full rounded border-2 border-gray-200 lg:ml-12 p-5 ">
           <p className="text-red-600 text-2xl">IDR {numberWithCommas(props.campaignData.total_donation_rupiah)}</p>
           <p className="text-md text-gray-400">IDR {numberWithCommas(props.campaignData.goal - props.campaignData.total_donation_rupiah)} remaining</p>
           <ProgressBar totalDonation={props.campaignData.total_donation_rupiah} donationGoal={props.campaignData.goal} />

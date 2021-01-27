@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import card from "../assets/card.png";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import ModalDonationSuccess from "../components/ModalDonationSuccess";
 
 export default function CreateDonation() {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
+  let history = useHistory();
+  const [amount, setAmount] = useState(0)
+  const [modalsDonate, setModalsDonate] = useState(false)
   const token = localStorage.getItem('token');
   const [creditCard, setCredit] = useState(false);
   const [bank, setBank] = useState(false);
@@ -41,7 +44,7 @@ export default function CreateDonation() {
       `https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`
     )
     .then((response) => {
-        console.log("INI GET ONE CAMPAIGN", response);
+        // console.log("INI GET ONE CAMPAIGN", response);
         setImages(response.data.data.images);
         setCategory(response.data.data.category);
         setTitle(response.data.data.title);
@@ -74,10 +77,12 @@ export default function CreateDonation() {
       sendDonate, config
     )
     .then((response) => {
-        console.log(response);
         console.log(response, "Donation sent"); 
-        alert("Yass, you successfully donate to this campaign");
-        window.location.reload();
+        setModalsDonate(true);
+        setTimeout(() => {
+          setModalsDonate(false)
+          history.push(`/campaigndetail/${campaignId}`);
+        }, 1500);
     })
     .catch((err) => {
         console.log("INI PESAN ERROR", err.response);
@@ -86,26 +91,28 @@ export default function CreateDonation() {
   };
 
   return (
-    <div className=" px-10 fromtop-animation">
+    <div className="fromtop-animation">
+      {modalsDonate ? <ModalDonationSuccess/> :null}
       <form onSubmit={(e) => handleDonate(e)}>
-      <div className="mt-8 w-10/12 mx-auto  px-10">
+      <div className="mt-8 w-10/12 mx-auto ">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
           Donation
         </h3>
-        <div className=" grid grid-cols-10 py-4">
-          <div className="col-span-6">
+        <div className=" flex flex-row">
+          <div className="w-7/12 flex-grow ">
             <label className="block items-center mb-3">
               Amount<span className="text-red-700">*</span>
             </label>
             <input
-              className="bg-gray-50 border-b border-tosca w-10/12"
+              className="bg-gray-50 border-b border-tosca w-full"
               type="number" name="amount"
+              onChange={(e)=> setAmount(e.target.value)}
             />
             <label className="block items-center mt-4 mb-4">
               Name<span className="text-red-700">*</span>
             </label>
             <input
-              className="bg-gray-50 border-b border-tosca w-10/12"
+              className="bg-gray-50 border-b border-tosca w-full"
               type="text" defaultValue={localStorage.getItem('name')}
               name="name"
             />
@@ -122,14 +129,14 @@ export default function CreateDonation() {
             </label>
             <textarea
               name="message"
-              className="h-64 outline-none p-2 border-b border-tosca bg-gray-50 w-10/12"
+              className="h-64 outline-none p-2 border-b border-tosca bg-gray-50 w-full"
               id="story"
               type="text"
               placeholder="Tell Your Story..."
             />
           </div>
-          <div className="shadow-md  col-span-4 w-full">
-            <img src={images} alt="" />
+          <div className="shadow-md w-5/12 lg:inline hidden ml-10">
+            <img src={images} alt="campaign_image" />
             <div className="w-5/6 mx-auto pb-4 pt-2">
               <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">
                 {category}
@@ -159,14 +166,14 @@ export default function CreateDonation() {
           </div>
         </div>
       </div>
-      <div className="mt-16 w-10/12 mx-auto  px-10">
+      <div className="mt-16 w-10/12 mx-auto ">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
           Payment
         </h3>
         <label>
           Select Payment <span className="text-red-700">*</span>
         </label>
-        <div className=" my-4">
+        <div className=" my-4 flex flex-row">
           <div
             onClick={handleCredit}
             className={`inline-block py-4 px-10 hover:bg-blue-200  rounded text-center mr-10 ${
@@ -187,41 +194,41 @@ export default function CreateDonation() {
           </div>
         </div>
         {creditCard ? (
-          <div className="grid grid-cols-10 gap-10 mb-10 frombottom-animation">
-            <div className="col-span-5">
+          <div className="flex md:flex-row flex-col lg:gap-10 mb-10 frombottom-animation ">
+            <div className="lg:w-6/12 w-full">
               <label className="block">
                 Card Number<span className="text-red-700">*</span>
               </label>
               <input
                 type="number"
-                className="border-b focus:border-blue-700  outline-none my-5 bg-grey-50 w-full"
+                className="border-b focus:border-blue-700  outline-none my-5  w-full"
                 placeholder=" e.g. 1234 5678 9012 3456"
               ></input>
             </div>
-            <div className="col-span-3">
+            <div className="lg:w-3/12 w-full">
               <label className="block">
                 Expired Date<span className="text-red-700">*</span>
               </label>
               <input
                 type="date"
-                className="border-b focus:border-blue-700  outline-none my-5 bg-grey-50"
+                className="border-b focus:border-blue-700  outline-none my-5 "
                 placeholder="MM/YY"
               ></input>
             </div>
-            <div className="col-span-2">
+            <div className="lg:w-3/12 w-full">
               <label className="block">
                 CVV<span className="text-red-700">*</span>
               </label>
               <input
                 type="number"
-                className="border-b focus:border-blue-700  outline-none my-5 bg-grey-50 w-full"
+                className="border-b focus:border-blue-700  outline-none my-5  w-full"
                 placeholder=" 123"
               ></input>
             </div>
           </div>
         ) : null}
         {bank ? (
-          <div className="bg-gray-100 p-6 w-1/3 rounded frombottom-animation ">
+          <div className="bg-gray-100 p-6 lg:w-1/3 rounded frombottom-animation ">
             <p className="text-xl font-medium text-tosca">Transfer to</p>
             <div className="my-2">
               <p>Account Number</p>
@@ -233,7 +240,7 @@ export default function CreateDonation() {
             </div>
             <div>
               <p>Total Amount</p>
-              <p className="font-bold">Rp.20,000,000</p>
+              <p className="font-bold">Rp {numberWithCommas(amount)}</p>
             </div>
           </div>
         ) : null}

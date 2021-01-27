@@ -27,7 +27,7 @@ const MyCampaign = () => {
       })
     }
   return (
-    <div className="w-11/12 mt-20 mb-20 mx-auto border border-solid p-5">
+    <div className="w-11/12 mt-10 mb-10 lg:mt-16 lg:mb-16 mx-auto border border-solid p-5">
       <h2 className="font-bold text-xl mb-5">My Campaign ({myCampaigns.length})</h2>
       <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
         {myCampaigns.length > 0 ? myCampaigns.map((campaigns) => {
