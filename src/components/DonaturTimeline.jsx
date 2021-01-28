@@ -9,12 +9,12 @@ export default function DonaturTimeline(props) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   
-  const countday = (donateDate) => {
-    const end = donateDate.split('T'); 
-    const calc = end[0].split('-');
-    const today = [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()];
-    return (Number(today[0])-calc[0])*365 + (Number(today[1])-calc[1])*30 +(Number(today[2])-calc[2]);
-  }
+  // const countday = (donateDate) => {
+  //   const end = donateDate.split('T'); 
+  //   const calc = end[0].split('-');
+  //   const today = [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()];
+  //   return (Number(today[0])-calc[0])*365 + (Number(today[1])-calc[1])*30 +(Number(today[2])-calc[2]);
+  // }
   
   useEffect(() => {
     axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=4`)
@@ -38,7 +38,7 @@ export default function DonaturTimeline(props) {
               <img
                 style={{width: "100px", height:"100px"}}
                 src={comment.user.profile_image}
-                alt="donatur image"
+                alt="donatur"
                 className="rounded-md"
               />
             </div>

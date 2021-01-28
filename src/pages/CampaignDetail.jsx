@@ -47,10 +47,11 @@ export default function CampaignDetail() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [campaignId]);
 
   userId === fundraiserId ? (role = "fundraiser") : (role = "donatur");
 
+  console.log("campaign data", campaignData.id === campaignId )
   return (
     <div>
       {!campaignData ? (

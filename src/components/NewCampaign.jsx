@@ -95,7 +95,7 @@ export default class NewCampaign extends Component {
         <hr className="border-b-3 border-gray-400 pb-3" />
         <hr />
         <form onSubmit={(e) => this.handleFormSubmit(e)}>
-          <UploadFile handleFile={this.handleFile} />
+          <UploadFile handleFile={this.handleFile} image={this.state.image} />
           <div className="grid  gap-4 my-8 sm:grid-cols-1 md:grid-cols-2">
             {this.state.inputForm.map((item, index) => (
               <div key={index}>
