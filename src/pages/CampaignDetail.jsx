@@ -56,7 +56,7 @@ export default function CampaignDetail() {
       {!campaignData ? (
         <SpinnerPage />
       ) : (
-        <div className="w-11/12 mx-auto relative fromtop-animation ">
+        <div className="w-10/12 mx-auto relative fromtop-animation ">
           <JumbotronCampaignDetail
             role={role}
             newProgressModal={newProgressModal}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function PostComment() {
   let {campaignId} = useParams();
@@ -24,13 +26,16 @@ export default function PostComment() {
       sendComment, config
     )
     .then((response) => {
-        console.log(response, "update user data success"); 
-        alert("Yass, your comment is sent");
+        toast.success("Your comment is created successfully", {
+          position: toast.POSITION.TOP_CENTER
+      })
         window.location.reload();
     })
     .catch((err) => {
         console.log("INI PESAN ERROR", err.response);
-        alert("Sorry, email or password is incorrect");
+        toast.error("Something went wrong", {
+          position: toast.POSITION.TOP_CENTER
+      })
     })
   };
   return (

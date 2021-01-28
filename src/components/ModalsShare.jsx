@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalsShare(props) {
   
@@ -11,10 +13,15 @@ export default function ModalsShare(props) {
     axios.put(`https://talikasih.kuyrek.com:3001/campaign/update/share/${props.campaignId}`,data)
         .then(response => {
             console.log(response);
+            toast.success("Thank You For Sharing ", {
+              position: toast.POSITION.TOP_CENTER
+          })
             window.location.reload()
         })
         .catch(err => {
-          console.log(err)
+          toast.error("Something went wrong ", {
+            position: toast.POSITION.TOP_CENTER
+        })
         })
 
   }
@@ -32,7 +39,7 @@ export default function ModalsShare(props) {
                 &#8203;
               </span>
               <div
-                className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-auto m:my-8 sm:align-middle sm:max-w-lg sm:w-full"
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="modal-headline"

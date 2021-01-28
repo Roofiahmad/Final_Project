@@ -11,12 +11,6 @@ export default class NewCampaign extends Component {
   state ={
     inputForm:[
       { name: "Title", id: "title", placeholder: "Input Title", type: "text" },
-      // {
-      //   name: "Category",
-      //   id: "category",
-      //   placeholder: "Input Category",
-      //   type: "text",
-      // },
       { name: "Goal", id: "goal", placeholder: "Input Goal", type: "number" },
       { name: "Due Date", id: "due_date", type: "date" },
     ],
@@ -40,7 +34,9 @@ export default class NewCampaign extends Component {
       Authorization: "Bearer " + this.state.token,
     };
     let formData = new FormData();
-    formData.append("images", this.state.image, this.state.image.name);
+    this.state.image == null ? 
+    formData.append("images", null)
+    : formData.append("images", this.state.image, this.state.image.name)
     formData.append("title",e.target.title.value);
     formData.append("category",e.target.category.value);
     formData.append("goal",e.target.goal.value);

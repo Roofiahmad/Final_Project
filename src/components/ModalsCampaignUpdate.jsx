@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalsCampaignUpdate(props) {
@@ -37,7 +37,9 @@ export default function ModalsCampaignUpdate(props) {
         window.location.reload()
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Something went wrong", {
+          position: toast.POSITION.TOP_CENTER
+      })
       });
   }
 
@@ -51,11 +53,15 @@ export default function ModalsCampaignUpdate(props) {
     axios
       .post(API, data, config) 
       .then((response) => {
-        console.log(response, 'update success')
+        toast.success("Create Update Withdrawal Successfully", {
+          position: toast.POSITION.TOP_CENTER
+      })
         window.location.reload()
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Something went wrong", {
+          position: toast.POSITION.TOP_CENTER
+      })
       });
   }
 
@@ -97,7 +103,7 @@ export default function ModalsCampaignUpdate(props) {
             aria-modal="true"
             aria-labelledby="modal-headline"
           >
-            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div className="bg-white px-4 pt-5 ">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left mb-6">
                 <h3
                   className="text-lg leading-6 font-medium text-gray-900 inline-block"
@@ -144,7 +150,7 @@ export default function ModalsCampaignUpdate(props) {
                           Amount<span className="text-red-700">*</span>
                         </label>
                         <input
-                          className="bg-gray-50 border-b border-tosca w-10/12"
+                          className="bg-gray-50 border-b border-tosca w-full"
                           type="number"
                           name="amount"
                         />
@@ -154,13 +160,13 @@ export default function ModalsCampaignUpdate(props) {
                         </label>
                         <textarea
                           name="withdrawalPurpose"
-                          className="h-40 bg-gray-50 w-10/12"
+                          className="h-40 bg-gray-50 w-full"
                           id="withdrawalPurpose"
                           type="text"
                           placeholder="Tell Your Story..."
                         />
                       </div>
-                      <div className="bg-gray-50 my-3 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                      <div className=" my-3 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button
                           type="submit"
                           className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
@@ -185,13 +191,13 @@ export default function ModalsCampaignUpdate(props) {
                         </label>
                         <textarea
                           name="recepientStory"
-                          className="h-40 bg-gray-50 w-10/12"
+                          className="h-40 bg-gray-50 w-full"
                           id="story"
                           type="text"
                           placeholder="Tell Your Story..."
                         />
                       </div>
-                      <div className="bg-gray-50 my-3 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                      <div className=" my-3 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button
                           type="submit"
                           className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"

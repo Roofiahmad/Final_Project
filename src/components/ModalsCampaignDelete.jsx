@@ -21,7 +21,9 @@ export default function ModalsCampaignDelete(props) {
             history.push("/myprofile");
         })
         .catch(err => {
-          console.log(err)
+          toast.error("Something went wrong", {
+            position: toast.POSITION.TOP_CENTER
+        })
         })
   }
 
@@ -47,7 +49,7 @@ export default function ModalsCampaignDelete(props) {
             &#8203;
           </span>
           <div
-            className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-auto sm:my-8 sm:align-middle sm:max-w-lg w-full"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"
