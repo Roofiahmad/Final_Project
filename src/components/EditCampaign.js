@@ -20,6 +20,7 @@ export default class EditCampaign extends Component {
     campaign_story : localStorage.getItem("campaign_story"),
     token: localStorage.getItem("token"),
     image: null,
+    input: ['goal', 'due_date','category', 'story']
 
   }
 
@@ -58,10 +59,30 @@ export default class EditCampaign extends Component {
       this.props.history.push("/myprofile");
     })
     .catch((err) => {
-      toast.error("Something Went Wrong", {
-        position: toast.POSITION.TOP_CENTER
-    })
       console.log(err.response)
+
+      if(err.response){
+        if(err.response.data.errors.title !== undefined){
+          toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors['title'].msg}`, {
+            position: toast.POSITION.TOP_CENTER
+        })
+        }
+        for(let i = 0; i<this.state.input.length; i++){
+          if(err.response.data.errors[this.state.input[i]] !==undefined ){
+            toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors[this.state.input[i]].msg}`, {
+              position: toast.POSITION.TOP_CENTER
+          })
+          }
+        }
+      }
+      // else if(err.request){
+      //   console.log('server not responsed')
+      // }
+      else{
+        toast.error( err.message, {
+          position: toast.POSITION.TOP_CENTER
+      })
+      }
     });
   };
 
