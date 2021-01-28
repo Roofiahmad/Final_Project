@@ -60,17 +60,27 @@ export default class NewCampaign extends Component {
     }, 1500);
     })
     .catch((err) => {
-      if(err.response.data.errors.title.value == ''){
-        toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors['title'].msg}`, {
-          position: toast.POSITION.TOP_CENTER
-      })
-      }
-      for(let i = 0; i<this.state.input.length; i++){
-        if(err.response.data.errors[this.state.input[i]] !==undefined ){
-          toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors[this.state.input[i]].msg}`, {
+      if(err.response){
+        if(err.response.data.errors.title !== undefined){
+          toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors['title'].msg}`, {
             position: toast.POSITION.TOP_CENTER
         })
         }
+        for(let i = 0; i<this.state.input.length; i++){
+          if(err.response.data.errors[this.state.input[i]] !==undefined ){
+            toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors[this.state.input[i]].msg}`, {
+              position: toast.POSITION.TOP_CENTER
+          })
+          }
+        }
+      }
+      // else if(err.request){
+      //   console.log('server not responsed')
+      // }
+      else{
+        toast.error( err.message, {
+          position: toast.POSITION.TOP_CENTER
+      })
       }
     })
   }
