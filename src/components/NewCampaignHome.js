@@ -15,10 +15,10 @@ const NewCampaignHome = () => {
     }, []);
 
     function getNewCampaign() {
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/new?limit=3')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/new?page=1&limit=3')
         .then((res) => {
-            console.log(res.data.posts)
-            setCampaign(res.data.posts)
+            console.log(res)
+            setCampaign(res.data.data)
         })
     }
 

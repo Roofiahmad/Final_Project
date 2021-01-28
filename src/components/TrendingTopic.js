@@ -13,9 +13,10 @@ const TrendingTopic = () => {
     }, []);
 
     function getTrending() {
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?limit=1')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?page=1&limit=1')
         .then((res) => {
-            setTrendingCampaign(res.data.posts)
+             console.log(res);
+            setTrendingCampaign(res.data.data)
         })
     }
 
