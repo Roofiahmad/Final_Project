@@ -25,7 +25,7 @@ const MostUrgent = () => {
     function getMostUrgentCampaign() {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen?limit=3')
         .then((res) => {
-            setMostUrgentCampaign(res.data.posts)
+            setMostUrgentCampaign(res.data.data)
         })
     }
 
