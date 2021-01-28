@@ -15,7 +15,7 @@ export default function ModalDonationSuccess() {
             &#8203;
           </span>
           <div
-            className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-1/2"
+            className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-auto pt-10 sm:align-middle w-5/6 sm:w-1/2"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"

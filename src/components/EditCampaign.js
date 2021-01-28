@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UploadFile from "./UploadFile";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -10,13 +10,6 @@ export default class EditCampaign extends Component {
   state ={
     inputForm:[
       { name: "Title", id: "title", placeholder: "Input Title", type: "text", defaultValue: localStorage.getItem("campaign_title") },
-      // {
-      //   name: "Category",
-      //   id: "category",
-      //   placeholder: "Input Category",
-      //   type: "text",
-      //   defaultValue: localStorage.getItem("campaign_category")
-      // },
       { name: "Goal", id: "goal", placeholder: "Input Goal", type: "number", defaultValue: Number(localStorage.getItem("campaign_goal")) },
       { name: "Due Date", id: "due_date", type: "date", defaultValue: localStorage.getItem("campaign_due_date") },
     ],
@@ -52,10 +45,6 @@ export default class EditCampaign extends Component {
       story: e.target.story.value,
     };
 
-    // let formImage = new FormData();
-
-    // formImage.append("images", this.state.image, this.state.image.name);
-
     axios
     .put(
       `https://talikasih.kuyrek.com:3001/campaign/update/campaign/${this.state.campaign_id}`,
@@ -65,12 +54,15 @@ export default class EditCampaign extends Component {
       }
     )
     .then((response) => {
-      console.log(response);
       toast.success("Your campaign is updated successfully!");
       this.props.history.push("/myprofile");
-      // window.location.reload();
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => {
+      toast.error("Something Went Wrong", {
+        position: toast.POSITION.TOP_CENTER
+    })
+      console.log(err.response)
+    });
   };
 
   //Update Image
@@ -80,16 +72,9 @@ export default class EditCampaign extends Component {
       Authorization: "Bearer " + this.state.token,
     };
     let formImage = new FormData();
+    this.state.image == null ? 
+    formImage.append("images", null):
     formImage.append("images", this.state.image, this.state.image.name);
-    // formData.append("title",e.target.title.value);
-    // formData.append("category",e.target.category.value);
-    // formData.append("goal",e.target.goal.value);
-    // formData.append("due_date",e.target.due_date.value);
-    // formData.append("story",e.target.story.value);
-
-    // let formImage = new FormData();
-
-    // formImage.append("images", this.state.image, this.state.image.name);
 
     axios
     .put(
@@ -101,11 +86,17 @@ export default class EditCampaign extends Component {
     )
     .then((response) => {
       console.log(response);
-      alert("Your campaign's image is updated successfully");
-      this.props.history.push("/myprofile");
-      // window.location.reload();
+      toast.success("Your campaign is updated successfully", {
+        position: toast.POSITION.TOP_CENTER
     })
-    .catch((err) => console.log(err.response));
+      this.props.history.push("/myprofile")
+    })
+    .catch((err) => {
+      toast.error("Something Went Wrong", {
+        position: toast.POSITION.TOP_CENTER
+    })
+      console.log(err.response)
+    });
   };
 
   render() {
@@ -113,7 +104,7 @@ export default class EditCampaign extends Component {
     return (
       <div className="w-10/12 mx-auto relative fromtop-animation  ">
         <div className="pb-4">
-          <h2 className="text-3xl font-medium my-4">New Campaign</h2>
+          <h2 className="text-3xl font-medium my-4">Edit Campaign</h2>
         </div>
         <hr className="border-b-3 border-gray-400 pb-3" />
         <hr />

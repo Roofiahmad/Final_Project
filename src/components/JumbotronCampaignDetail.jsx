@@ -28,9 +28,6 @@ export default function JumbotronCampaignDetail(props) {
     dayRemain= 0;
   }
 
-
-
-
   const handleDelete = () => {
     setModalDelete(!modalDelete)
   }
@@ -67,16 +64,16 @@ export default function JumbotronCampaignDetail(props) {
         />
         <div className="lg:w-4/12 md:w-full rounded border-2 border-gray-200 lg:ml-12 p-5 ">
           <p className="text-red-600 text-2xl">IDR {numberWithCommas(props.campaignData.total_donation_rupiah)}</p>
-          <p className="text-md text-gray-400">IDR {numberWithCommas(props.campaignData.goal - props.campaignData.total_donation_rupiah)} remaining</p>
+          <p className="text-md text-gray-400">{`IDR ${numberWithCommas((props.campaignData.goal - props.campaignData.total_donation_rupiah <= 0 ? 0 : props.campaignData.goal - props.campaignData.total_donation_rupiah))} remaining`}</p>
           <ProgressBar totalDonation={props.campaignData.total_donation_rupiah} donationGoal={props.campaignData.goal} />
           <p>from IDR {numberWithCommas(props.campaignData.goal)} goal</p>
-          <div className="fundraiser-profil grid grid-cols-12">
+          <div className="fundraiser-profil flex gap-3">
             <img
               src={props.campaignData.user.profile_image === 'https://talikasih.kuyrek.com:3000/img/null' ?  campaignImage : props.campaignData.user.profile_image}
               alt="fundraiser-image"
-              className="w-12 h-12 inline-block border border-gray-500 rounded-md col-span-2"
+              className="w-12 h-12 inline-block border border-gray-500 rounded-md "
             />
-            <div className="inline-block col-span-10">
+            <div className="inline-block ">
               <p className="font-medium">{props.campaignData.user.name}</p>
               <p className="text-gray-400">Fundraiser</p>
             </div>

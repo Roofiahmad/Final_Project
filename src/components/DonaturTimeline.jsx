@@ -5,6 +5,9 @@ import moment from 'moment';
 export default function DonaturTimeline(props) {
   const [donaturData,setDonaturData] = useState([]);
   const [donaturDataSLiced,setDonaturDataSliced] = useState([]);
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   
   const countday = (donateDate) => {
     const end = donateDate.split('T'); 
@@ -40,14 +43,14 @@ export default function DonaturTimeline(props) {
               />
             </div>
             <div
+             className={"mx-2 w-6/12"}
               style={{
                 display: "inline-block",
-                margin: "0px 20px",
                 position: "relative",
               }}
             >
-              <p className="text-tosca text-xl font-medium mb-5">
-                Rp {comment.amount}
+              <p className="text-tosca text-lg font-medium mb-5">
+                Rp {numberWithCommas(comment.amount)}
               </p>
               <p className="">{comment.user.name}</p>
               <p className="text-gray-400">{moment(comment.createdAt).startOf('minute').fromNow()}</p>
