@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Logo from '../assets/logos.png';
 
 function NavbarComp() {
     const [isMobile, setisMobile] = useState(false);
@@ -64,6 +65,8 @@ function NavbarComp() {
         .then(response => {
             console.log(response, "AUTHORIZED");
             localStorage.setItem("id", response.data.user.id);
+            localStorage.setItem("name", response.data.user.name);
+
             window.location.reload();
         })
       };
@@ -143,7 +146,7 @@ function NavbarComp() {
                 <div className="flex items-center justify-between mx-5 lg:mx-20">
                     <Link to="/">      
                         <div className="text-tosca flex items-center justify-between">
-                            <img className=" h-7 lg:h-10 my-5" src="https://drive.google.com/uc?export=view&id=1mFBGzM1N38-Pr51DVAWXk-BFPtCjFgMM" alt="tali-kasih-logo"/>
+                            <img className=" h-7 lg:h-10 my-5" src={Logo} alt="tali-kasih-logo"/>
                             <h1 className="text-2xl lg:text-3xl ml-2 font-semibold">TALI</h1> <span> <h1 className="font-light text-2xl lg:text-3xl">KASIH</h1></span>
                         </div>
                     </Link>

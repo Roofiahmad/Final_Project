@@ -3,11 +3,13 @@ import card from "../assets/card.png";
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ModalDonationSuccess from "../components/ModalDonationSuccess";
+import SpinnerPage from '../components/SpinnerPage';
 
 export default function CreateDonation() {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+  const [isLoading, setIsLoading] = useState(true);
   let history = useHistory();
   const [amount, setAmount] = useState(0)
   const [modalsDonate, setModalsDonate] = useState(false)
@@ -51,6 +53,7 @@ export default function CreateDonation() {
         setName(response.data.data.user.name);
         setRaised(response.data.data.total_donation_rupiah);
         setGoal(response.data.data.goal);
+        setIsLoading(false);
     })
   }
 
@@ -93,6 +96,9 @@ export default function CreateDonation() {
   return (
     <div className="fromtop-animation">
       {modalsDonate ? <ModalDonationSuccess/> :null}
+      {isLoading ? (
+        <SpinnerPage />
+      ) : (
       <form onSubmit={(e) => handleDonate(e)}>
       <div className="mt-8 w-10/12 mx-auto ">
         <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
@@ -256,6 +262,7 @@ export default function CreateDonation() {
         </button>
       </div>
       </form>
+      )}
     </div>
   );
 }
