@@ -6,7 +6,7 @@ import SpinnerPage from '../components/SpinnerPage';
 import { toast } from 'react-toastify';
 
 
-const MyProfile = () => {
+const AdminProfile = () => {
   const signOutHandler = () => {
     localStorage.clear();
     window.location.reload();
@@ -39,9 +39,6 @@ const MyProfile = () => {
   const [image, setImage] = useState(`${profile}`);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [bank, setBank] = useState("");
-  const [bankName, setBankName] = useState("");
-  const [bankNumber, setBankNumber] = useState("");
 
   // Get user data
   useEffect(() => {
@@ -58,36 +55,19 @@ const MyProfile = () => {
     };
 
     axios.get(
-      "https://talikasih.kuyrek.com:3000/user/profile",
+      "https://talikasih.kuyrek.com:3005/admin/profile",
       config
     )
     .then((response) => {
         console.log("INI DATA USER", response);
-        if(response.data.data.profile_image !== "https://talikasih.kuyrek.com:3000/img/null") {
-          setImage(response.data.data.profile_image);
-        }
         setName(response.data.data.name);
         setEmail(response.data.data.email);
-        let bankAccount = response.data.data.bank_account_number;
-        if (bankAccount != null) {
-          let bankAccounReversedtArray = bankAccount.toString().split('').reverse();
-          let lastThree = bankAccounReversedtArray.slice(0,3).reverse().join('');
-          setBank(response.data.data.bank_name + " - " + "*******" + lastThree);
-          setBankName(response.data.data.bank_name);
-          setBankNumber(response.data.data.bank_account_number);
-        } else {
-          setBank("not set")
-        }
         setLoading(false);
     })
   }
 
   localStorage.setItem("name", name);
   localStorage.setItem("email", email);
-  localStorage.setItem("bank_name", bankName);
-  localStorage.setItem("bank_number", bankNumber);
-  localStorage.setItem("image", image);
-  
 
     return (
       <div>
@@ -99,8 +79,8 @@ const MyProfile = () => {
             <h2 className="font-bold text-xl">My Profile</h2>
             <a onClick={signOutHandler} className="text-red-800 underline font-bold cursor-pointer">Logout</a>
           </div>
-          <img src={image} alt="" className="mx-auto w-52 h-52"/>
-          <Link to="/editprofile">
+          <img src="https://media-exp1.licdn.com/dms/image/C5603AQGGSlK8xwfivQ/profile-displayphoto-shrink_200_200/0/1606981919722?e=1616025600&v=beta&t=cs8IZAu-AFy-GGAfSwmJQxlgmEQHEvh85_F2Jbf95dQ" alt="" className="mx-auto w-52 h-52"/>
+          <Link to="/editadminprofile">
             <a className="text-tosca underline font-bold flex justify-center mt-3">Edit Profile</a>
           </Link>
           <div className="flex flex-wrap content-end w-11/12 mx-auto mt-10 mb-5">
@@ -112,10 +92,6 @@ const MyProfile = () => {
               <label for="email" className="text-md font-medium text-gray-500">Email</label><br/>
               <input className="px-4 py-2 bg-gray-100 w-full text-md" type="email" id="fname" name="fname" value={email} disabled/><br/>
           </div>
-          <div className="w-full p-1 mb-5 sm:w-1/2">
-              <label for="bank" className="text-md font-medium text-gray-500">Bank Info</label><br/>
-              <input className="px-4 py-2 bg-gray-100 w-full text-md" type="text" id="lname" name="lname" value={bank} disabled/>
-          </div>
           </div>
       </div>
       )}
@@ -123,4 +99,4 @@ const MyProfile = () => {
     )
 }
 
-export default MyProfile;
+export default AdminProfile;

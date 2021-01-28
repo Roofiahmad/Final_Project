@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalsCampaignUpdate(props) {
 
@@ -29,6 +31,9 @@ export default function ModalsCampaignUpdate(props) {
       .post(API, data, config) 
       .then((response) => {
         console.log(response, 'update success')
+        toast.success("Campaign's progress updated!", {
+          position: toast.POSITION.TOP_CENTER
+        });
         window.location.reload()
       })
       .catch((err) => {
