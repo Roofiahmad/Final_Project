@@ -25,7 +25,7 @@ const GainedMomentum = () => {
     function getGainedMomentumCampaign() {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/donation?limit=3')
         .then((res) => {
-            setGainedMomentumCampaign(res.data.posts);
+            setGainedMomentumCampaign(res.data.data);
         })
     }
 
