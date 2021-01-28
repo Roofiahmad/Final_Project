@@ -7,6 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function AdminLogin() {
     let history = useHistory();
+    const [role] = useState(localStorage.getItem("role"));
+
+    useEffect(() => {
+        kick();
+      }, []);
+    
+      const kick = () => {
+        if (role == "admin") {
+          history.push("/admin");
+          window.location.reload();
+        }
+      }
 
     const handleSubmitLogin = async (e) => {
         e.preventDefault();
@@ -26,7 +38,7 @@ function AdminLogin() {
             console.log(response);
             localStorage.setItem("token", response.data.token);
             console.log(response, "login success"); 
-            toast.success("Login success. Let's donate!", {
+            toast.success("Login success!", {
                 position: toast.POSITION.TOP_CENTER
             });
 
@@ -53,6 +65,7 @@ function AdminLogin() {
         .then(response => {
             console.log(response, "AUTHORIZED");
             localStorage.setItem("id", response.data.user.id);
+            localStorage.setItem("role", response.data.user.role);
             history.push('/admin');
         })
     };

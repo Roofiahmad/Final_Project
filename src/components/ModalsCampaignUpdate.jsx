@@ -30,9 +30,10 @@ export default function ModalsCampaignUpdate(props) {
     axios
       .post(API, data, config) 
       .then((response) => {
-        toast.success("Create Update Successfully", {
+        console.log(response, 'update success')
+        toast.success("Campaign's progress updated!", {
           position: toast.POSITION.TOP_CENTER
-      })
+        });
         window.location.reload()
       })
       .catch((err) => {
