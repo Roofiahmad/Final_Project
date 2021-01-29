@@ -43,6 +43,7 @@ export default function CampaignDetail() {
         localStorage.setItem("campaign_story", response.data.data.story);
         localStorage.setItem("campaign_category", response.data.data.category);
         localStorage.setItem("campaign_due_date", response.data.data.due_date);
+        localStorage.setItem("campaign_images", response.data.data.images);
       })
       .catch((err) => {
         console.log(err);

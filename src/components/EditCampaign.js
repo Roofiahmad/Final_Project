@@ -18,16 +18,20 @@ export default class EditCampaign extends Component {
     campaign_category : localStorage.getItem("campaign_category"),
     campaign_goal : localStorage.getItem("campaign_goal"),
     campaign_story : localStorage.getItem("campaign_story"),
+    campaign_images: localStorage.getItem("campaign_images"),
     token: localStorage.getItem("token"),
+    input: ['goal', 'due_date','category', 'story'],
     image: null,
-    input: ['goal', 'due_date','category', 'story']
+    imagePrev: null
 
   }
 
   handleFile = (e) => {
+    let filePrev = URL.createObjectURL(e.target.files[0]);
     let file = e.target.files[0];
     this.setState({
       image: file,
+      imagePrev: filePrev,
     });
   };
 
@@ -45,6 +49,9 @@ export default class EditCampaign extends Component {
       category: e.target.category.value,
       story: e.target.story.value,
     };
+
+  if(editData.title === localStorage.getItem("campaign_title"))
+  {editData.title += ' '}
 
     axios
     .put(
@@ -130,7 +137,7 @@ export default class EditCampaign extends Component {
         <hr className="border-b-3 border-gray-400 pb-3" />
         <hr />
         <form onSubmit={(e) => this.handleImageUpdate(e)}>
-          <UploadFile handleFile={this.handleFile} />
+        <UploadFile handleFile={this.handleFile} {...this.state} />
           <button type="submit" className="btn-red float-right">
             Update Photo
           </button>

@@ -22,9 +22,9 @@ constructor(props) {
       { name: "Due Date", id: "due_date", type: "date" },
     ],
     token: localStorage.getItem("token"),
-    image: null,
     redirect : false,
     input: ['goal', 'due_date','category', 'story'],
+    image: null,
     imagePrev: null
 
   }
@@ -47,6 +47,8 @@ constructor(props) {
       Authorization: "Bearer " + this.state.token,
     };
     let formData = new FormData();
+    this.state.image == null ? 
+    formData.append("images", null):
     formData.append("images", this.state.image, this.state.image.name);
     formData.append("title",e.target.title.value);
     formData.append("category",e.target.category.value);
@@ -104,7 +106,6 @@ constructor(props) {
           <h2 className="text-3xl font-medium my-4">New Campaign</h2>
         </div>
         <hr className="border-b-3 border-gray-400 pb-3" />
-        <hr />
         <form onSubmit={(e) => this.handleFormSubmit(e)}>
           <UploadFile handleFile={this.handleFile} {...this.state} />
           <div className="grid  gap-4 my-8 sm:grid-cols-1 md:grid-cols-2">
