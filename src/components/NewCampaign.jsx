@@ -60,6 +60,8 @@ export default class NewCampaign extends Component {
     }, 1500);
     })
     .catch((err) => {
+      console.log('Error response', err)
+
       if(err.response.data.errors.title.value == ''){
         toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors['title'].msg}`, {
           position: toast.POSITION.TOP_CENTER
