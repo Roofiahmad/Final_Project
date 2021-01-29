@@ -35,6 +35,12 @@ const AdminProfile = () => {
     }
   }
 
+  const reRender = () => {
+    if (role == "admin") {
+      // window.location.reload();
+    }
+  }
+
   // Declare state to place the data
   const [image, setImage] = useState(`${profile}`);
   const [name, setName] = useState("");
@@ -45,6 +51,7 @@ const AdminProfile = () => {
     getData();
     kick();
     profileDirect();
+    reRender();
   }, []);
 
   function getData() {

@@ -24,6 +24,8 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminProfile from "./pages/AdminProfile";
 import EditAdminProfile from "./pages/EditAdminProfile";
 import ResetAdminPassword from "./pages/ResetAdminPassword";
+import ForgotPassword from "./pages/ForgotPassword";
+import PasswordRecovery from "./pages/PasswordRecovery";
 
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
           <Route exact path="/adminprofile" component={AdminProfile} />
           <Route exact path="/editadminprofile" component={EditAdminProfile} />
           <Route exact path="/resetadminpassword" component={ResetAdminPassword} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <Route exact path="/passwordrecovery/:token" component={PasswordRecovery} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer/>
