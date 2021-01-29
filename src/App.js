@@ -3,10 +3,7 @@ import HomePage from "./pages/HomePage";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useHistory,
-  Redirect,
-  useParams
+  Route
 } from "react-router-dom";
 import MyProfilePage from "./pages/MyProfilePage";
 import NavbarComp from "./components/NavbarComp";
@@ -30,7 +27,6 @@ import ResetAdminPassword from "./pages/ResetAdminPassword";
 
 
 function App() {
-  const id = localStorage.getItem('id');
   return (
     <Router>
       <NavbarComp />
