@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import { Link, useParams } from "react-router-dom";
 import campaignImage from '../assets/campaign-image.png';
-import axios from 'axios'
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalsCampaignDelete from "./ModalsCampaignDelete";
 

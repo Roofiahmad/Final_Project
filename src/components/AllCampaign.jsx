@@ -7,8 +7,11 @@ import reject from '../assets/reject.svg';
 import setting from '../assets/setting.svg';
 
 
-const AllCampaign = () => {
-  const [sortOpen, setSortOpen] = useState(false);
+const AllCampaign = (props) => {
+  console.log(props.filteredCampaign)
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   return (
     <div className="mx-auto w-10/12 mt-10 lg:mt-16 mb-10 border border-solid p-6 lg:mb-16">
@@ -38,19 +41,21 @@ const AllCampaign = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="grid grid-cols-7 justify-items-start Py-4 pl-4">
+          {props.filteredCampaign.map((campaign, index) => {
+            return(
+              <tr key={index} className="grid grid-cols-7 justify-items-start Py-4 pl-4">
             <td className="col-span-3">
-              <p className="font-bold underline">Aid for necessary items to help our country</p>
-              <p className="text-gray-400 text-sm">by Aksi Cepat Tanggap</p>
+              <p className="font-bold underline">{campaign.title}</p>
+              <p className="text-gray-400 text-sm">by {campaign.user.name}</p>
             </td>
             <td className="flex items-start gap-2">
               <div className="flex gap-2 items-center">
-                <img src={open} alt=""/>
-                <p className="font-bold">OPEN</p>
+                <img src={campaign.status==="open" ? open : campaign.status=="pending" ? pending : campaign.status=="finish" ? finish : campaign.status=="rejected" ? reject : null} alt=""/>
+                <p className="font-bold uppercase">{campaign.status}</p>
               </div>
             </td>
             <td>
-              <p>IDR 30.000.000</p>
+              <p>IDR {numberWithCommas(campaign.goal)}</p>
             </td>
             <td className="justify-between">
               <div>
@@ -63,83 +68,21 @@ const AllCampaign = () => {
               </div>
             </td>
             <td className="ml-auto mr-4">
-              <img src={setting} alt="" onClick={() => setSortOpen(!sortOpen)}/>
-              {sortOpen ? (
+              <img id ={index} src={setting} alt="" onClick={(e) => props.dropdownHandler(e.target.id)}/>
+              {campaign.dropdown ? (
                         <div className="z-10 absolute shadow-md bg-white mr-20 -ml-28 py-2 px-3 font-normal text-md text-left mt-2">
                         <ul className="hover:">
-                            <li className="campaign-text-setting text-md">Approve Campaign</li>
-                            <li className="campaign-text-setting text-md">Reject Campaign</li>
-                            <li className="campaign-text-setting text-md">Edit</li>
-                            <li className="campaign-text-setting text-md">Delete</li>
+                            <li onClick={(e)=> props.updateType("open", campaign.id)} className="campaign-text-setting text-md" >Approve Campaign</li>
+                            <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Reject Campaign</li>
+                            <li onClick={(e)=> props.updateType("edit", campaign.id)} className="campaign-text-setting text-md">Edit</li>
+                            <li onClick={(e)=> props.updateType("delete", campaign.id)} className="campaign-text-setting text-md">Delete</li>
                         </ul>
                         </div>
                     ) : null}
             </td>
           </tr>
-          <tr className="grid grid-cols-7 justify-items-start Py-4 pl-4">
-            <td className="col-span-3">
-              <p className="font-bold underline">Aid for necessary items to help our country</p>
-              <p className="text-gray-400 text-sm">by Aksi Cepat Tanggap</p>
-            </td>
-            <td className="flex items-center gap-2">
-              <div className="flex gap-2 items-center">
-                <img src={pending} alt=""/>
-                <p className="font-bold">PENDING</p>
-              </div>
-            </td>
-            <td>
-              
-            </td>
-            <td>
-              
-            </td>
-            <td className="ml-auto mr-4">
-              <img src={setting} alt=""/>
-            </td>
-          </tr>
-          <tr className="grid grid-cols-7 justify-items-start Py-4 pl-4">
-            <td className="col-span-3">
-              <p className="font-bold underline">Aid for necessary items to help our country</p>
-              <p className="text-gray-400 text-sm">by Aksi Cepat Tanggap</p>
-            </td>
-            <td className="flex items-center gap-2">
-              <div className="flex gap-2 items-center">
-                <img src={finish} alt=""/>
-                <p className="font-bold">FINISHED</p>
-              </div>
-            </td>
-            <td>
-              <p>IDR 30.000.000</p>
-            </td>
-            <td>
-              <p>IDR 20.000.000</p>
-              <p className="text-gray-400 text-sm">Withdrawal</p>
-            </td>
-            <td className="ml-auto mr-4">
-              <img src={setting} alt=""/>
-            </td>
-          </tr>
-          <tr className="grid grid-cols-7 justify-items-start Py-4 pl-4">
-            <td className="col-span-3">
-              <p className="font-bold underline">Aid for necessary items to help our country</p>
-              <p className="text-gray-400 text-sm">by Aksi Cepat Tanggap</p>
-            </td>
-            <td className="flex items-center gap-2">
-              <div className="flex gap-2 items-center">
-                <img src={reject} alt=""/>
-                <p className="font-bold">REJECTED</p>
-              </div>
-            </td>
-            <td>
-              
-            </td>
-            <td>
-              
-            </td>
-            <td className="ml-auto mr-4">
-              <img src={setting} alt=""/>
-            </td>
-          </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
