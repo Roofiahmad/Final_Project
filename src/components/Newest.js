@@ -26,8 +26,12 @@ const Newest = (props) => {
     async function getNewestCampaign() {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/new?limit=3')
         .then((res) => {
+<<<<<<< HEAD
             console.log("NEWEST CAMPAIGN", res)
             setNewestCampaign(res.data.posts);
+=======
+            setNewestCampaign(res.data.data);
+>>>>>>> 88e93f4f44c93edc13fd0a7613661c759437dae1
         })
     }
 

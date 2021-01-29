@@ -7,25 +7,38 @@ import { Redirect } from 'react-router-dom';
 
 
 export default class NewCampaign extends Component {
-
-  state ={
+constructor(props) {
+  super(props)
+  this.state ={
     inputForm:[
       { name: "Title", id: "title", placeholder: "Input Title", type: "text" },
+      // {
+      //   name: "Category",
+      //   id: "category",
+      //   placeholder: "Input Category",
+      //   type: "text",
+      // },
       { name: "Goal", id: "goal", placeholder: "Input Goal", type: "number" },
       { name: "Due Date", id: "due_date", type: "date" },
     ],
     token: localStorage.getItem("token"),
     image: null,
     redirect : false,
-    input: ['goal', 'due_date','category', 'story']
+    input: ['goal', 'due_date','category', 'story'],
+    imagePrev: null
 
   }
+}
 
   handleFile = (e) => {
+    let filePrev = URL.createObjectURL(e.target.files[0]);
     let file = e.target.files[0];
     this.setState({
       image: file,
+      imagePrev: filePrev,
     });
+    console.log(file);
+    console.log(filePrev);
   };
 
    handleFormSubmit = (e) => {
@@ -34,9 +47,7 @@ export default class NewCampaign extends Component {
       Authorization: "Bearer " + this.state.token,
     };
     let formData = new FormData();
-    this.state.image == null ? 
-    formData.append("images", null)
-    : formData.append("images", this.state.image, this.state.image.name)
+    formData.append("images", this.state.image, this.state.image.name);
     formData.append("title",e.target.title.value);
     formData.append("category",e.target.category.value);
     formData.append("goal",e.target.goal.value);
@@ -87,7 +98,7 @@ export default class NewCampaign extends Component {
         <hr className="border-b-3 border-gray-400 pb-3" />
         <hr />
         <form onSubmit={(e) => this.handleFormSubmit(e)}>
-          <UploadFile handleFile={this.handleFile} />
+          <UploadFile handleFile={this.handleFile} {...this.state} />
           <div className="grid  gap-4 my-8 sm:grid-cols-1 md:grid-cols-2">
             {this.state.inputForm.map((item, index) => (
               <div key={index}>
