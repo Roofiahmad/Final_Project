@@ -67,7 +67,11 @@ const AdminPage = () => {
     })
   }
 
-
+  const filterByCategory = (category) =>{
+    setFilteredCampaignData(campaignData.filter((item)=>{
+      return item.category ===category
+    }))
+  }
   const kick = () => {
     if (role !== "admin") {
       toast.error("Sorry, you are not an admin!", {
@@ -81,7 +85,7 @@ const AdminPage = () => {
 
   return (
     <div>
-      <CategoryButtonAdmin />
+      <CategoryButtonAdmin filterByCategory={filterByCategory}/>
       <AllCampaign filteredCampaign={filteredCampaignData}  dropdownHandler={dropdownHandler} updateType={updateType}/>
     </div>
   )
