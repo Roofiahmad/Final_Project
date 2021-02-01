@@ -24,6 +24,7 @@ export default function CreateDonation() {
   let [name, setName] = useState("");
   let [raised, setRaised] = useState("");
   let [goal, setGoal] = useState("");
+  let [slip, setSlip] = useState();
 
   const handleCredit = () => {
     setCredit(!creditCard);
@@ -33,6 +34,12 @@ export default function CreateDonation() {
   const handleBank = () => {
     setBank(!bank);
     setCredit(false);
+  };
+
+  const handleSlip = (e) => {
+    let file = e.target.files[0];
+    setSlip(file);
+    console.log(file);
   };
 
   //Get One Campaign
@@ -62,12 +69,20 @@ export default function CreateDonation() {
   const handleDonate = async (e) => {
     e.preventDefault();
     
-    const sendDonate = {
-      campaign: campaignId,
-      amount: e.target.amount.value,
-      message: e.target.message.value,
-      name: e.target.name.value,
-    };
+    // const sendDonate = {
+    //   campaign: campaignId,
+    //   amount: e.target.amount.value,
+    //   message: e.target.message.value,
+    //   name: e.target.name.value,
+    // };
+
+    let sendDonate = new FormData();
+    sendDonate.append("amount", e.target.amount.value);
+    sendDonate.append("message", e.target.message.value);
+    sendDonate.append("name", e.target.name.value);
+    sendDonate.append("campaign", campaignId);
+    sendDonate.append("verification_images", slip, slip.name);
+
 
     const config = {
       headers: {
@@ -92,6 +107,8 @@ export default function CreateDonation() {
         alert("Sorry, there is something wrong");
     })
   };
+
+  
 
   return (
     <div className="fromtop-animation">
@@ -247,6 +264,10 @@ export default function CreateDonation() {
             <div>
               <p>Total Amount</p>
               <p className="font-bold">Rp {numberWithCommas(amount)}</p>
+            </div>
+            <div>
+              <p>Payment Slip</p>
+              <input onChange={(e) => handleSlip(e)} type="file"/>
             </div>
           </div>
         ) : null}
