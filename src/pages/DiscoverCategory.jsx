@@ -39,10 +39,11 @@ const DiscoverCategory = () => {
 
     const handleNewest = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/new?')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/new')
         .then((res) => {
+            // console.log('respon', res)
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -54,7 +55,7 @@ const DiscoverCategory = () => {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -66,7 +67,7 @@ const DiscoverCategory = () => {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/populer')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -78,7 +79,7 @@ const DiscoverCategory = () => {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/donation')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))

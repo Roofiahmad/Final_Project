@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import CategoryButton from "../components/CategoryButton";
 import Newest from "../components/Newest";
 import MostUrgent from "../components/MostUrgent";
 import GainedMomentum from "../components/GainedMomentum";
@@ -12,12 +11,10 @@ import medical from '../assets/medical.png';
 import religious from '../assets/religious.png';
 import sociopreneur from '../assets/sociopreneur.png';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
-const Discover = () => {
-    const [category, setCategory] = useState('');
-    const [campaignCategory, setCampaignCategory] = useState('');
-    
+const Discover = () => {    
     const ListCategory = [
         {category: 'disability', image: disability},
         {category: 'disaster', image: disaster},
@@ -29,6 +26,7 @@ const Discover = () => {
         {category: 'sociopreneur', image: sociopreneur}
     ];
     
+    const history = useHistory();
 
     return (
         <div className="mt-10 lg:mt-16 mb-10 lg:mb-16 fromtop-animation">
@@ -38,14 +36,12 @@ const Discover = () => {
             {
                 ListCategory.map((button, index) => {
                     return (
-                        <Link key={index} to={`discoverbycategory/${button.category}`}>
-                            <div key={index} id={button.category} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24">
-                                <div className="m-auto">
-                                    <img src={button.image} alt="disability" className="mx-auto h-8"/>
-                                    <p className="pt-2 pb-0 text-xs text-gray-700">{button.category[0].toUpperCase()+button.category.substring(1).toLowerCase()}</p>
-                                </div>
+                        <div key={index} id={button.category} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24" onClick={() => history.push(`/discoverbycategory/${button.category}`)}>
+                            <div className="m-auto">
+                                <img src={button.image} alt="disability" className="mx-auto h-8"/>
+                                <p className="pt-2 pb-0 text-xs text-gray-700">{button.category[0].toUpperCase()+button.category.substring(1).toLowerCase()}</p>
                             </div>
-                        </Link>
+                        </div>
                     )
                 })
             }
