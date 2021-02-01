@@ -17,8 +17,8 @@ const dropdownHandler = (id)=> {
   setFilteredCampaignData(copyCampaignData)
 }
 
-const updateType = (type,id)=> {
-  updateStatusCampaign(type,id)
+const updateVerified = (verified,id)=> {
+  updateStatusCampaign(verified,id)
 }
 
 useEffect(() => {
@@ -28,7 +28,7 @@ useEffect(() => {
 }, []);
 
 const getAllCampaign = (category) => {
-  let url = `https://talikasih.kuyrek.com:3001/campaign/byadmin?page=1&limit=10`;
+  let url = 'https://talikasih.kuyrek.com:3002/donation';
   const config = {
     headers: {
       'Authorization': 'Bearer ' + token, 
@@ -36,40 +36,42 @@ const getAllCampaign = (category) => {
   };
   axios.get(url,config)
   .then((response) => {
-    setCampaignData(response.data.posts);
-    response.data.posts.forEach(element => {
+    // console.log("respon", response)
+    setCampaignData(response.data.data);
+    response.data.data.forEach(element => {
       element.dropdown= false;      
     });
-    setFilteredCampaignData(response.data.posts)
+    setFilteredCampaignData(response.data.data)
   })
 }
 
-const updateStatusCampaign = (type, idcampaign) =>{
-  let updateType = {
-    status:type
+const updateStatusCampaign = (verified, iddonation) =>{
+  let updateVerified = {
+    isVerified: verified
   }
-  let url = `https://talikasih.kuyrek.com:3001/campaign/update/status/${idcampaign}`;
+  let url = `https://talikasih.kuyrek.com:3002/donation/update/verified/${iddonation}`;
   const config = {
     headers: {
       'Authorization': 'Bearer ' + token, 
     },
   };
-  axios.put(url,updateType,config)
+  axios.put(url,updateVerified,config)
   .then((response) =>{
-    console.log(response)
-    toast.success("Campaign status updated successfully!");
+    // console.log(response)
+    toast.success("Campaign verified updated successfully!");
     window.location.reload()
   })
   .catch((err) => {
-    console.log(err)
+    // console.log(err)
   })
 }
-
+console.log("FILTER", campaignData)
 const filterByCategory = (category) =>{
   setFilteredCampaignData(campaignData.filter((item)=>{
-    return item.category ===category
+    return item.campaign.category === category
   }))
 }
+
 const kick = () => {
   if (role !== "admin") {
     toast.error("Sorry, you are not an admin!", {
@@ -82,7 +84,7 @@ const kick = () => {
 return (
   <div>
     <CategoryButtonAdmin filterByCategory={filterByCategory}/>
-    <AllWithdrawal filteredCampaign={filteredCampaignData}  dropdownHandler={dropdownHandler} updateType={updateType}/>
+    <AllWithdrawal filteredCampaign={filteredCampaignData}  dropdownHandler={dropdownHandler} updateVerified={updateVerified}/>
   </div>
 )
 }
