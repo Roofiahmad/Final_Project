@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 
 
 const PaginationComp = (props) => {
-  // console.log('props', props)
-  // console.log(props.campaignData.length)
-  
   const campaignItem = 2
 
   const totalPage = Math.ceil(props.campaignData.length/campaignItem)
-  // console.log("Jumlah Button", totalPage)
 
   let data = [];
 
