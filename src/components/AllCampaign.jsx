@@ -35,7 +35,7 @@ const AllCampaign = (props) => {
               <img src={sort} alt=""/>
             </th>
             <th className="text-gray-400 font-normal text-sm w-10/12 flex justify-between">
-              <p>Updates</p>
+              <p>Progress</p>
               <img src={sort} alt=""/>
             </th>
           </tr>
@@ -59,12 +59,11 @@ const AllCampaign = (props) => {
             </td>
             <td className="justify-between">
               <div>
-                <p>IDR 20.000.000</p>
-                <p className="text-gray-400 text-sm">Withdrawal</p>
+                <p>IDR {numberWithCommas(campaign.total_donation_rupiah)}</p>
+                <p className="text-gray-400 text-sm">From</p>
               </div>
               <div>
-                <p>4</p>
-                <p className="text-gray-400 text-sm">Recipient Updates</p>
+                <p>IDR {numberWithCommas(campaign.goal)}</p>
               </div>
             </td>
             <td className="ml-auto mr-4">
@@ -74,8 +73,7 @@ const AllCampaign = (props) => {
                         <ul className="hover:">
                             <li onClick={(e)=> props.updateType("open", campaign.id)} className="campaign-text-setting text-md" >Approve Campaign</li>
                             <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Reject Campaign</li>
-                            <li onClick={(e)=> props.updateType("edit", campaign.id)} className="campaign-text-setting text-md">Edit</li>
-                            <li onClick={(e)=> props.updateType("delete", campaign.id)} className="campaign-text-setting text-md">Delete</li>
+                            <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Close</li>
                         </ul>
                         </div>
                     ) : null}
