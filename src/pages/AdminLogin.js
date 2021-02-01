@@ -41,6 +41,7 @@ function AdminLogin() {
             toast.success("Login success!", {
                 position: toast.POSITION.TOP_CENTER
             });
+            // history.push("/admin");
 
         })
         .catch((err) => {
@@ -67,6 +68,7 @@ function AdminLogin() {
             localStorage.setItem("id", response.data.user.id);
             localStorage.setItem("role", response.data.user.role);
             history.push('/admin');
+            window.location.reload();
         })
     };
     return (

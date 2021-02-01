@@ -18,15 +18,20 @@ export default class EditCampaign extends Component {
     campaign_category : localStorage.getItem("campaign_category"),
     campaign_goal : localStorage.getItem("campaign_goal"),
     campaign_story : localStorage.getItem("campaign_story"),
+    campaign_images: localStorage.getItem("campaign_images"),
     token: localStorage.getItem("token"),
+    input: ['goal', 'due_date','category', 'story'],
     image: null,
+    imagePrev: null
 
   }
 
   handleFile = (e) => {
+    let filePrev = URL.createObjectURL(e.target.files[0]);
     let file = e.target.files[0];
     this.setState({
       image: file,
+      imagePrev: filePrev,
     });
   };
 
@@ -45,6 +50,9 @@ export default class EditCampaign extends Component {
       story: e.target.story.value,
     };
 
+  if(editData.title === localStorage.getItem("campaign_title"))
+  {editData.title += ' '}
+
     axios
     .put(
       `https://talikasih.kuyrek.com:3001/campaign/update/campaign/${this.state.campaign_id}`,
@@ -58,10 +66,30 @@ export default class EditCampaign extends Component {
       this.props.history.push("/myprofile");
     })
     .catch((err) => {
-      toast.error("Something Went Wrong", {
-        position: toast.POSITION.TOP_CENTER
-    })
       console.log(err.response)
+
+      if(err.response){
+        if(err.response.data.errors.title !== undefined){
+          toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors['title'].msg}`, {
+            position: toast.POSITION.TOP_CENTER
+        })
+        }
+        for(let i = 0; i<this.state.input.length; i++){
+          if(err.response.data.errors[this.state.input[i]] !==undefined ){
+            toast.error( `error code ${err.response.status}, error message : ${err.response.data.errors[this.state.input[i]].msg}`, {
+              position: toast.POSITION.TOP_CENTER
+          })
+          }
+        }
+      }
+      // else if(err.request){
+      //   console.log('server not responsed')
+      // }
+      else{
+        toast.error( err.message, {
+          position: toast.POSITION.TOP_CENTER
+      })
+      }
     });
   };
 
@@ -109,7 +137,7 @@ export default class EditCampaign extends Component {
         <hr className="border-b-3 border-gray-400 pb-3" />
         <hr />
         <form onSubmit={(e) => this.handleImageUpdate(e)}>
-          <UploadFile handleFile={this.handleFile} />
+        <UploadFile handleFile={this.handleFile} {...this.state} />
           <button type="submit" className="btn-red float-right">
             Update Photo
           </button>

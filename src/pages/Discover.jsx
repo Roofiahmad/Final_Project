@@ -38,7 +38,7 @@ const Discover = () => {
             {
                 ListCategory.map((button, index) => {
                     return (
-                        <Link to={`discoverbycategory/${button.category}`}>
+                        <Link key={index} to={`discoverbycategory/${button.category}`}>
                             <div key={index} id={button.category} className="flex-shrink-0 text-center flex shadow-md h-20 w-20 m-1 hover:bg-blue-100 active:bg-blue-100 cursor-pointer md:h-24 md:w-24">
                                 <div className="m-auto">
                                     <img src={button.image} alt="disability" className="mx-auto h-8"/>

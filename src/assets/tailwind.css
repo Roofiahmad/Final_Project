@@ -78,6 +78,19 @@
   outline: none;
 }
 
+.item-clicked{
+  @apply transition duration-300 cursor-pointer;
+}
+.item-clicked:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.item-clicked:active {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
 .campaign-text-setting {
   @apply mb-1 p-1;
 }

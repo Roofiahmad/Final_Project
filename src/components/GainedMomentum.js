@@ -39,10 +39,10 @@ const GainedMomentum = () => {
             <h4 className="font-bold underline mb-4">Gained Momentum</h4>
             <div className="grid grid-rows-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
                 {
-                    gainedMomentumCampaign.map(campaign => {
+                    gainedMomentumCampaign.map((campaign,index) => {
                         return (
-                            <Link to={`/campaigndetail/${campaign._id}`}>
-                                <div className="shadow-md h-full hover:shadow-xl" key={campaign._id}>
+                            <Link key={index} to={`/campaigndetail/${campaign._id}`}>
+                                <div className="shadow-md h-full item-clicked" key={campaign._id}>
                                     <img src={campaign.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaign.images} alt="" className="w-full h-52"/>
                                     <div className="w-5/6 mx-auto pb-4 pt-2">
                                         <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaign.category}</p>

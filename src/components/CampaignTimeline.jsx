@@ -42,7 +42,7 @@ export default function CampaignTimeline(props) {
     axios
       .get(API, config)
       .then((response) => {
-        console.log('original array' ,response.data.data)
+        // console.log('original array' ,response.data.data)
         let responseData = [...response.data.data] 
         console.log('sorted array',responseData.sort((a,b) => new Date(b.createAt).getTime() - new Date(a.createAt).getTime()));
         setWithdrawalData(responseData);

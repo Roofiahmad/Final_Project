@@ -3,10 +3,7 @@ import HomePage from "./pages/HomePage";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useHistory,
-  Redirect,
-  useParams
+  Route
 } from "react-router-dom";
 import MyProfilePage from "./pages/MyProfilePage";
 import NavbarComp from "./components/NavbarComp";
@@ -27,10 +24,13 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminProfile from "./pages/AdminProfile";
 import EditAdminProfile from "./pages/EditAdminProfile";
 import ResetAdminPassword from "./pages/ResetAdminPassword";
+import AdminDonationPage from "./pages/AdminDonationPage";
+import AdminWithdrawal from "./pages/AdminWithdrawal";
+import ForgotPassword from "./pages/ForgotPassword";
+import PasswordRecovery from "./pages/PasswordRecovery";
 
 
 function App() {
-  const id = localStorage.getItem('id');
   return (
     <Router>
       <NavbarComp />
@@ -48,10 +48,14 @@ function App() {
           <Route exact path="/myprofile" component={MyProfilePage} />
           <Route exact path="/resetpassword" component={ResetPassword} />
           <Route exact path="/admin" component={AdminPage} />
+          <Route exact path="/admindonations" component={AdminDonationPage} />
+          <Route exact path="/adminwithdrawal" component={AdminWithdrawal} />
           <Route exact path="/adminlogin" component={AdminLogin} />
           <Route exact path="/adminprofile" component={AdminProfile} />
           <Route exact path="/editadminprofile" component={EditAdminProfile} />
           <Route exact path="/resetadminpassword" component={ResetAdminPassword} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <Route exact path="/passwordrecovery/:token" component={PasswordRecovery} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer/>
