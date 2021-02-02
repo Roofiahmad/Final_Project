@@ -4,6 +4,8 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ModalDonationSuccess from "../components/ModalDonationSuccess";
 import SpinnerPage from '../components/SpinnerPage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CreateDonation() {
   const numberWithCommas = (x) => {
@@ -24,6 +26,7 @@ export default function CreateDonation() {
   let [name, setName] = useState("");
   let [raised, setRaised] = useState("");
   let [goal, setGoal] = useState("");
+  let [status, setStatus] = useState("");
   let [slip, setSlip] = useState();
 
   const handleCredit = () => {
@@ -45,7 +48,17 @@ export default function CreateDonation() {
   //Get One Campaign
   useEffect(() => {
     getData();
+    kick();
   }, []);
+
+  let kick = () => {
+    if (status !=="open") {
+      history.push("/")
+      toast.error("Campaign is not found!", {
+        position: toast.POSITION.TOP_CENTER
+      });
+    }
+  }
 
   function getData() {
 
@@ -60,6 +73,7 @@ export default function CreateDonation() {
         setName(response.data.data.user.name);
         setRaised(response.data.data.total_donation_rupiah);
         setGoal(response.data.data.goal);
+        setStatus(response.data.data.status);
         setIsLoading(false);
     })
   }
