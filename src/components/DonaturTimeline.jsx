@@ -30,7 +30,7 @@ export default function DonaturTimeline(props) {
   return (
     <div className="border border-gray-300  px-10 py-2 my-10 rounded-sm">
       <p className="text-xl font-semibold my-4">{donaturData.length >0 ? `Donations(${donaturData.length})` : "No Donations Yet"}</p>
-      <div className={`flex flex-col md:flex-row md:flex-wrap gap-10 justify-center ${donaturData.length > 0 ? "pb-10" : ''}`}>
+      <div className={`flex flex-col md:flex-row md:flex-wrap gap-10 justify-items-start ${donaturData.length > 0 ? "pb-10" : ''}`}>
         {donaturDataSLiced.map ((comment, index) => {
           return (
             <div key={index} className="border border-gray-100 shadow py-5 px-3 rounded-md frombottom-animation lg:w-5/12 w-full ">

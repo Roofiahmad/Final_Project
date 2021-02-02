@@ -22,8 +22,8 @@ function NavbarComp() {
     const isLogged = localStorage.getItem("token");
     const handleSubmitLogin = async (e) => {
         e.preventDefault();
-        console.log("email :", e.target.email.value);
-        console.log("password :", e.target.password.value);
+        // console.log("email :", e.target.email.value);
+        // console.log("password :", e.target.password.value);
     
         const sendaDataLogin = {
           email: e.target.email.value,
@@ -35,16 +35,16 @@ function NavbarComp() {
           sendaDataLogin
         )
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             localStorage.setItem("token", response.data.token);
-            console.log(response, "login success"); 
+            // console.log(response, "login success"); 
             toast.success("Login success. Let's donate!", {
                 position: toast.POSITION.TOP_CENTER
             });
 
         })
         .catch((err) => {
-            console.log("INI PESAN ERROR", err.response);
+            // console.log("INI PESAN ERROR", err.response);
             toast.error("Sorry, email or password is incorrect", {
                 position: toast.POSITION.TOP_CENTER
             });
@@ -63,7 +63,7 @@ function NavbarComp() {
             config
         )
         .then(response => {
-            console.log(response, "AUTHORIZED");
+            // console.log(response, "AUTHORIZED");
             localStorage.setItem("id", response.data.user.id);
             localStorage.setItem("name", response.data.user.name);
 
@@ -73,10 +73,10 @@ function NavbarComp() {
 
       const handleSubmitSignup = async (e) => {
         e.preventDefault();
-        console.log("fullname :", e.target.name.value);
-        console.log("email :", e.target.email.value);
-        console.log("password :", e.target.password.value);
-        console.log("password :", e.target.passwordConfirmation.value);
+        // console.log("fullname :", e.target.name.value);
+        // console.log("email :", e.target.email.value);
+        // console.log("password :", e.target.password.value);
+        // console.log("password :", e.target.passwordConfirmation.value);
 
     
         const sendaDataSignUp = {
@@ -127,7 +127,7 @@ function NavbarComp() {
 
     const handleInputChange = (e) => {
         e.target.name = e.target.value
-        console.log(e.target.name)
+        // console.log(e.target.name)
     }
     
     const handleKeyPress = (e) => {

@@ -54,9 +54,9 @@ export default function JumbotronCampaignDetail(props) {
           ) : null}
         </div> : null}
       </div>
-      <div className="flex flex-col md:flex-row ">
+      <div className="flex flex-col md:flex-row lg:h-4/6">
         <img
-          className="lg:w-8/12 lg:h-8/12 md:w-full rounded"
+          className="lg:w-8/12 md:w-full rounded"
           src={props.campaignData.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : props.campaignData.images}
           alt="Campaign Image"
         />
@@ -77,15 +77,15 @@ export default function JumbotronCampaignDetail(props) {
             </div>
           </div>
           <div className="grid grid-cols-3 mt-5 text-center justify-items-center">
-            <div className="col-span-1 w-24 h-24 border-2 rounded-md border-gray-100 shadow-md p-3">
+            <div className="col-span-1 w-24 h-24 border-2 rounded-md shadow-md p-3">
               <p className="text-tosca text-3xl">{dayRemain}</p>
               <p>Days left</p>
             </div>
-            <div className="col-span-1 w-24 h-24 border-2 rounded-md border-gray-100 shadow-md p-3">
+            <div className="col-span-1 w-24 h-24 border-2 rounded-md shadow-md p-3">
               <p className="text-tosca text-3xl">{props.campaignData.total_donation}</p>
               <p>Donations</p>
             </div>
-            <div className="col-span-1 w-24 h-24 border-2 rounded-md border-gray-100 shadow-md p-3">
+            <div className="col-span-1 w-24 h-24 border-2 rounded-md shadow-md p-3">
               <p className="text-tosca text-3xl">{props.campaignData.share < 1 ? '0': props.campaignData.total_share}</p>
               <p>Share</p>
             </div>

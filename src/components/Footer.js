@@ -6,7 +6,7 @@ import logo from "../assets/logo.png";
 function Footer() {
     return (
         <div>
-            <div className="flex flex-wrap justify-between w-10/12 mt-28 mb-5 gap-8 mx-auto md:flex-nowrap">
+            <div className="flex flex-wrap justify-between w-10/12 mt-16 mb-5 gap-8 mx-auto md:flex-nowrap">
                 <div className="">
                     <img src={logo} alt="logo"/>
                 </div>

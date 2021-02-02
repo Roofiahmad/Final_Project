@@ -108,7 +108,7 @@ export default function CampaignTimeline(props) {
           </ul>
         </div>
       </div>
-      { withdrawalData.length > 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block w-1/6">
+      { withdrawalData.length > 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block lg:max-w-max">
         {withdrawalDataSliced.length <=2 ? 'see older' : 'show newest'}
       </button> : null}
     </div>

@@ -63,7 +63,7 @@ export default function AdminDonationPage() {
   
     const filterByCategory = (category) =>{
       setDonationsByCategory(donationsData.filter((item)=>{
-        return item.category ===category
+        return item.campaign.category ===category
       }))
     }
     const kick = () => {
