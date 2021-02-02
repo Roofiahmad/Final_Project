@@ -29,6 +29,8 @@ import AdminWithdrawal from "./pages/AdminWithdrawal";
 import ForgotPassword from "./pages/ForgotPassword";
 import PasswordRecovery from "./pages/PasswordRecovery";
 import DonateSuccess from "./pages/DonateSuccess";
+import MobileLogin from "./pages/MobileLogin";
+import MobileRegister from "./pages/MobileRegister";
 
 
 function App() {
@@ -58,6 +60,8 @@ function App() {
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/passwordrecovery/:token" component={PasswordRecovery} />
           <Route exact path="/donatesuccess/:campaignId" component={DonateSuccess} />
+          <Route exact path="/login" component={MobileLogin} />
+          <Route exact path="/register" component={MobileRegister} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer/>

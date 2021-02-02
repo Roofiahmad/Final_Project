@@ -72,11 +72,6 @@ function NavbarComp() {
 
     const handleSubmitSignup = async (e) => {
         e.preventDefault();
-        // console.log("fullname :", e.target.name.value);
-        // console.log("email :", e.target.email.value);
-        // console.log("password :", e.target.password.value);
-        // console.log("password :", e.target.passwordConfirmation.value);
-
     
         const sendaDataSignUp = {
           name: e.target.name.value,
@@ -159,14 +154,14 @@ function NavbarComp() {
                     {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
                         <Link to="/newcampaign">
-                            <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> CREATE CAMPAIGN </h1> </button>
+                            <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7 hidden lg:block"> <h1 className="font-bold"> CREATE CAMPAIGN </h1> </button>
                         </Link>
                     </div>
                     ) :null}
                     {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
                         <Link to="/discoverall">
-                            <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> DONATE </h1> </button>
+                            <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7 hidden lg:block"> <h1 className="font-bold"> DONATE </h1> </button>
                         </Link>
                     </div>
                     ) :null}
