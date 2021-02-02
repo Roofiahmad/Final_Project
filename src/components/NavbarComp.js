@@ -16,10 +16,8 @@ function NavbarComp() {
     }
 
     let history = useHistory();
-
-    // localStorage.setItem("login", "yes");
-
     const isLogged = localStorage.getItem("token");
+
     const handleSubmitLogin = async (e) => {
         e.preventDefault();
         // console.log("email :", e.target.email.value);
@@ -66,12 +64,13 @@ function NavbarComp() {
             // console.log(response, "AUTHORIZED");
             localStorage.setItem("id", response.data.user.id);
             localStorage.setItem("name", response.data.user.name);
+            localStorage.setItem("bank_number", response.data.user.bank_account_number);
 
             window.location.reload();
         })
-      };
+    };
 
-      const handleSubmitSignup = async (e) => {
+    const handleSubmitSignup = async (e) => {
         e.preventDefault();
         // console.log("fullname :", e.target.name.value);
         // console.log("email :", e.target.email.value);
@@ -120,9 +119,7 @@ function NavbarComp() {
                         position: toast.POSITION.TOP_CENTER
                     });
                 }
-        })
-        
-        // setTimeout(function() { window.location.reload(); }, 3000);
+        })        
     };
 
     const handleInputChange = (e) => {
@@ -195,7 +192,10 @@ function NavbarComp() {
                     ) :null}
                     {!isLogged ? (
                     <div className="block px-3 ">
-                        <button onClick={() => setToggleLogin(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> Login </button>
+                        <button onClick={() => setToggleLogin(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 hidden lg:block"> Login </button>
+                        <Link to="/login">
+                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Login </button>
+                        </Link>
                     </div>
                     ) :null}
                     {!isLogged ? (
@@ -203,7 +203,10 @@ function NavbarComp() {
                     ) :null}
                     {!isLogged ? (
                     <div className="block px-3 ">
-                        <button onClick={() => setToggleRegister(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> Register </button>
+                        <button onClick={() => setToggleRegister(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 hidden lg:block"> Register </button>
+                        <Link to="/register">
+                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Register </button>
+                        </Link>
                     </div>
                     ) :null}
                     {isLogged ? (
