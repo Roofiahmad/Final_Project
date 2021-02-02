@@ -68,21 +68,23 @@ export default function CreateDonation() {
   //Post Donation Data
   const handleDonate = async (e) => {
     e.preventDefault();
+    let sendDonate;
     
-    // const sendDonate = {
-    //   campaign: campaignId,
-    //   amount: e.target.amount.value,
-    //   message: e.target.message.value,
-    //   name: e.target.name.value,
-    // };
-
-    let sendDonate = new FormData();
+    if (bank) {
+    sendDonate = new FormData();
     sendDonate.append("amount", e.target.amount.value);
     sendDonate.append("message", e.target.message.value);
     sendDonate.append("name", e.target.name.value);
     sendDonate.append("campaign", campaignId);
     sendDonate.append("verification_images", slip, slip.name);
-
+    } else if (creditCard) {
+      sendDonate = {
+        campaign: campaignId,
+        amount: e.target.amount.value,
+        message: e.target.message.value,
+        name: e.target.name.value,
+      }
+    }
 
     const config = {
       headers: {
@@ -90,22 +92,37 @@ export default function CreateDonation() {
       },
     };
 
-    await axios.post(
-      "https://talikasih.kuyrek.com:3002/donation/create",
-      sendDonate, config
-    )
-    .then((response) => {
-        console.log(response, "Donation sent"); 
-        setModalsDonate(true);
-        setTimeout(() => {
-          setModalsDonate(false)
-          history.push(`/campaigndetail/${campaignId}`);
-        }, 1500);
-    })
-    .catch((err) => {
-        console.log("INI PESAN ERROR", err.response);
-        alert("Sorry, there is something wrong");
-    })
+    if (bank) {
+      await axios.post(
+        "https://talikasih.kuyrek.com:3002/donation/create",
+        sendDonate, config
+      )
+      .then((response) => {
+          console.log(response, "Donation sent"); 
+          setModalsDonate(true);
+          setTimeout(() => {
+            setModalsDonate(false)
+            history.push(`/campaigndetail/${campaignId}`);
+          }, 1500);
+      })
+      .catch((err) => {
+          console.log("INI PESAN ERROR", err.response);
+          alert("Sorry, there is something wrong");
+      })
+    } else if (creditCard) {
+      await axios.post(
+        "https://talikasih.kuyrek.com:3002/donation/create/midtrans/",
+        sendDonate, config
+      )
+      .then((response) => {
+          console.log(response, "Go to Midtrans");
+          window.location = response.data.data.redirect_url;
+      })
+      .catch((err) => {
+          console.log("INI PESAN ERROR", err.response);
+          alert("Sorry, there is something wrong");
+      })
+    }
   };
 
   
@@ -204,7 +221,7 @@ export default function CreateDonation() {
             }`}
           >
             <i className="far fa-credit-card text-5xl"></i>
-            <p>Credit Card</p>
+            <p>Midtrans</p>
           </div>
           <div
             onClick={handleBank}
@@ -218,36 +235,7 @@ export default function CreateDonation() {
         </div>
         {creditCard ? (
           <div className="flex md:flex-row flex-col lg:gap-10 mb-10 frombottom-animation ">
-            <div className="lg:w-6/12 w-full">
-              <label className="block">
-                Card Number<span className="text-red-700">*</span>
-              </label>
-              <input
-                type="number"
-                className="border-b focus:border-blue-700  outline-none my-5  w-full"
-                placeholder=" e.g. 1234 5678 9012 3456"
-              ></input>
-            </div>
-            <div className="lg:w-3/12 w-full">
-              <label className="block">
-                Expired Date<span className="text-red-700">*</span>
-              </label>
-              <input
-                type="date"
-                className="border-b focus:border-blue-700  outline-none my-5 "
-                placeholder="MM/YY"
-              ></input>
-            </div>
-            <div className="lg:w-3/12 w-full">
-              <label className="block">
-                CVV<span className="text-red-700">*</span>
-              </label>
-              <input
-                type="number"
-                className="border-b focus:border-blue-700  outline-none my-5  w-full"
-                placeholder=" 123"
-              ></input>
-            </div>
+            <h1 className="text-tosca font-bold text-xl">Donate easier, no verifications needed!</h1>
           </div>
         ) : null}
         {bank ? (
@@ -261,7 +249,7 @@ export default function CreateDonation() {
               <p>Account Holder Name</p>
               <p className="font-bold">TaliKasih</p>
             </div>
-            <div>
+            <div className="mb-2">
               <p>Total Amount</p>
               <p className="font-bold">Rp {numberWithCommas(amount)}</p>
             </div>
@@ -271,16 +259,16 @@ export default function CreateDonation() {
             </div>
           </div>
         ) : null}
-        <button
-          type="submit"
-          className={` uppercase  float-right mb-16 ${
-            creditCard || bank
-              ? "btn-red"
-              : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"
-          }`}
-        >
+        {bank ? (
+        <button type="submit" className={` uppercase  float-right mb-16 ${ creditCard || bank ? "btn-red" : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"}`}>
           donate
         </button>
+        ) : null}
+        {creditCard ? (
+        <button type="submit" className={` uppercase  float-right mb-16 ${ creditCard || bank ? "btn-red" : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"}`}>
+          next
+        </button>
+        ) : null}
       </div>
       </form>
       )}
