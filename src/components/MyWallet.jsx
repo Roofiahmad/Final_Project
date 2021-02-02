@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const MyWallet = () => {
   const id = localStorage.getItem("id");
+  console.log("ID", id)
     const numberWithCommas = (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -16,7 +17,7 @@ const MyWallet = () => {
         `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}`
       )
       .then((response) => {
-          console.log("INI CAMPAIGN BY USER", response);
+          console.log("INI CAMPAIGN BY USER", response.data.data);
           setMyCampaigns(response.data.data);
           console.log("myCampaigns", myCampaigns);
       })
