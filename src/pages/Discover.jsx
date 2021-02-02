@@ -10,7 +10,6 @@ import humanity from '../assets/humanity.png';
 import medical from '../assets/medical.png';
 import religious from '../assets/religious.png';
 import sociopreneur from '../assets/sociopreneur.png';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 

@@ -5,25 +5,14 @@ import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function AdminLogin() {
+function MobileLogin() {
     let history = useHistory();
-    const [role] = useState(localStorage.getItem("role"));
 
     useEffect(() => {
-        kick();
       }, []);
     
-      const kick = () => {
-        if (role == "admin") {
-          history.push("/admin");
-          window.location.reload();
-        }
-      }
-
-    const handleSubmitLogin = async (e) => {
+      const handleSubmitLogin = async (e) => {
         e.preventDefault();
-        console.log("email :", e.target.email.value);
-        console.log("password :", e.target.password.value);
     
         const sendaDataLogin = {
           email: e.target.email.value,
@@ -31,21 +20,20 @@ function AdminLogin() {
         };
     
         await axios.post(
-          "https://talikasih.kuyrek.com:3005/admin/login",
+          "https://talikasih.kuyrek.com:3000/user/login",
           sendaDataLogin
         )
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             localStorage.setItem("token", response.data.token);
-            console.log(response, "login success"); 
-            toast.success("Login success!", {
+            // console.log(response, "login success"); 
+            toast.success("Login success. Let's donate!", {
                 position: toast.POSITION.TOP_CENTER
             });
-            // history.push("/admin");
 
         })
         .catch((err) => {
-            console.log("INI PESAN ERROR", err.response);
+            // console.log("INI PESAN ERROR", err.response);
             toast.error("Sorry, email or password is incorrect", {
                 position: toast.POSITION.TOP_CENTER
             });
@@ -60,15 +48,14 @@ function AdminLogin() {
         };
 
         await axios.get(
-            "https://talikasih.kuyrek.com:3005/admin/authorization",
+            "https://talikasih.kuyrek.com:3000/user/authorization",
             config
         )
         .then(response => {
-            console.log(response, "AUTHORIZED");
             localStorage.setItem("id", response.data.user.id);
-            localStorage.setItem("role", response.data.user.role);
-            history.push('/admin');
-            window.location.reload();
+            localStorage.setItem("name", response.data.user.name);
+            localStorage.setItem("bank_number", response.data.user.bank_account_number);
+            history.push("/")
         })
     };
     return (
@@ -78,7 +65,7 @@ function AdminLogin() {
                     <div className="max-w-xs w-full m-auto bg-white rounded p-5 shadow-md">
                         <header>
                             <div>
-                                <h1 className="mb-5 text-tosca text-4xl font-bold">Admin Login</h1>
+                                <h1 className="mb-5 text-tosca text-4xl font-bold">Login</h1>
                             </div>
                         </header>
                         <form onSubmit={(e) => handleSubmitLogin(e)}>
@@ -104,4 +91,4 @@ function AdminLogin() {
     )
 }
 
-export default AdminLogin;
+export default MobileLogin;
