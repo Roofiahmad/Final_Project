@@ -22,52 +22,53 @@ const DiscoverSearchResult = () => {
   }, []);
 
   function getCampaignByTitle() {
-    axios.get(`https://talikasih.kuyrek.com:3001/campaign/title?title=${title}`)
+    axios.get(`https://talikasih.kuyrek.com:3001/campaign/title?title=${title}&limit=20`)
     .then((res) => {
       setCampaignByTitle(res.data.data)
+      console.log('FILTERTITLES', res.data.data)
     })
   }
 
   const handleNewest = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/new')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/new?&limit=20')
     .then((res) => {
-        let thisTitle = title
+        let thisTitle = title.toLocaleLowerCase();
         let campaign = res.data.data
-        let filters = campaign.filter((data) => data.title === thisTitle)
+        let filters = campaign.filter((data) => data.title.toLowerCase().indexOf(thisTitle) > -1)
         setCampaignByTitle(filters)
     })
 }
 
 const handleMostUrgent = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen?&limit=20')
     .then((res) => {
-        let thisTitle = title
+      let thisTitle = title.toLocaleLowerCase();
         let campaign = res.data.data
-        let filters = campaign.filter((data) => data.title === thisTitle)
+        let filters = campaign.filter((data) => data.title.toLowerCase().indexOf(thisTitle) > -1)
         setCampaignByTitle(filters)
     })
 }
 
 const handlePopular = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/populer')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/populer?&limit=20')
     .then((res) => {
-        let thisTitle = title
+      let thisTitle = title.toLocaleLowerCase();
         let campaign = res.data.data
-        let filters = campaign.filter((data) => data.title === thisTitle)
+        let filters = campaign.filter((data) => data.title.toLowerCase().indexOf(thisTitle) > -1)
         setCampaignByTitle(filters)
     })
 }
 
 const handleLessDonation = (e) => {
     e.preventDefault();
-    axios.get('https://talikasih.kuyrek.com:3001/campaign/donation')
+    axios.get('https://talikasih.kuyrek.com:3001/campaign/donation?&limit=20')
     .then((res) => {
-        let thisTitle = title
+      let thisTitle = title.toLocaleLowerCase();
         let campaign = res.data.data
-        let filters = campaign.filter((data) => data.title === thisTitle)
+        let filters = campaign.filter((data) => data.title.toLowerCase().indexOf(thisTitle) > -1)
         setCampaignByTitle(filters)
     })
 }

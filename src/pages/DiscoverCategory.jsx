@@ -6,6 +6,7 @@ import campaignImage from '../assets/campaign-image.png';
 import iconsort from '../assets/sort.png';
 import PaginationComp from '../components/PaginationComp';
 import CardLoading from '../components/CardLoadingCategory';
+import PageNotFound from './PageNotFound';
 
 
 const DiscoverCategory = () => {
@@ -92,9 +93,12 @@ const DiscoverCategory = () => {
         setSlicedCampaign(slicedArray)
     }
     
-
+    console.log("CATEGORY", category)
     return (
         <div>
+            {
+                category === 'disability' || category === 'disaster' || category === 'education' || category === 'environment' || category === 'medical' || category === 'humanity' || category === 'religious' || category === 'sociopreneur' ? 
+                <div>
             <DiscoverJumbotron category={category}/>
             <div className="mt-16 mb-36">
                 <div className="w-10/12 mx-auto">
@@ -149,6 +153,9 @@ const DiscoverCategory = () => {
                 </div>
             </div>
             <PaginationComp campaignData={campaingByCategory} pagination={handlePagination} />
+            </div>
+            : <PageNotFound /> 
+        }
         </div>
     )
 }
