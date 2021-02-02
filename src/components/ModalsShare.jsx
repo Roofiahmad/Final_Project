@@ -1,15 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ModalsShare(props) {
+  let [link, setLink] = useState();
   
   const handleShare = () => {
     const data = {
       total_share : props.share + 1,
       campaignId: props.campaignId
     };
+    const el = link;
+    el.select();
+    document.execCommand("copy");
     axios.put(`https://talikasih.kuyrek.com:3001/campaign/update/share/${props.campaignId}`,data)
         .then(response => {
             console.log(response);
@@ -24,7 +28,11 @@ export default function ModalsShare(props) {
         })
         })
 
-  }
+    }
+
+    // const copyCodeToClipboard = () => {
+      
+    // }
 
     return (
           <div className="fixed z-10 inset-0 overflow-y-auto">
@@ -62,14 +70,14 @@ export default function ModalsShare(props) {
                   <div className="mt-2 border-t border-gray-500 p-4">
                 <div className="mt-2 w-full grid grid-rows-2	justify-around">
                   <div className="text-sm">
-                  https://talilove.herokuapp.com/{props.campaignId}
+                    <input ref={(input) => setLink(input)} className="outline-bLack" type="text" name="" id="" value={`https://talilove.herokuapp.com/campaigndetail/${props.campaignId}`}/>
                   </div>
                   <button
                     onClick={handleShare}
                     type="button"
                     className="float-right w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
                   >
-                    Share
+                    Copy Link
                   </button>
                   </div>
               </div>
