@@ -8,7 +8,6 @@ import setting from '../assets/setting.svg';
 
 
 const AllCampaign = (props) => {
-  console.log(props.filteredCampaign)
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -17,7 +16,7 @@ const AllCampaign = (props) => {
     <div className="mx-auto w-10/12 mt-10 lg:mt-16 mb-10 border border-solid p-6 lg:mb-16">
       <div className="flex justify-between align-middle">
         <h2 className="text-tosca font-bold">All Campaigns</h2>
-        <input type="text" placeholder="search" className="border border-solid p-1 px-2 text-md"/>
+        {/* <input type="text" placeholder="search" className="border border-solid p-1 px-2 text-md"/> */}
       </div>
       <table className="mt-2 w-full" >
         <thead>
@@ -41,7 +40,7 @@ const AllCampaign = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.filteredCampaign.map((campaign, index) => {
+          {props.campaignByPage.map((campaign, index) => {
             return(
               <tr key={index} className="grid grid-cols-7 justify-items-start Py-4 pl-4">
             <td className="col-span-3">
@@ -69,7 +68,7 @@ const AllCampaign = (props) => {
             <td className="ml-auto mr-4">
               <img id ={index} src={setting} alt="" onClick={(e) => props.dropdownHandler(e.target.id)}/>
               {campaign.dropdown ? (
-                        <div className="z-10 absolute shadow-md bg-white mr-20 -ml-28 py-2 px-3 font-normal text-md text-left mt-2">
+                        <div className="fromtop-animation z-10 absolute shadow-md bg-white mr-20 -ml-28 py-2 px-3 font-normal text-md text-left mt-2">
                         <ul className="hover:">
                             <li onClick={(e)=> props.updateType("open", campaign.id)} className="campaign-text-setting text-md" >Approve Campaign</li>
                             <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Reject Campaign</li>

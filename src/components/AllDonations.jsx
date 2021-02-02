@@ -7,7 +7,7 @@ import reject from '../assets/reject.svg';
 import setting from '../assets/setting.svg';
 
 export default function AllDonations(props) {
-    console.log(props.filteredCampaign)
+    console.log('props in allDonations component', props.donationsByCategory)
     const numberWithCommas = (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -16,7 +16,6 @@ export default function AllDonations(props) {
       <div className="mx-auto w-10/12 mt-10 lg:mt-16 mb-10 border border-solid p-6 lg:mb-16">
         <div className="flex justify-between align-middle">
           <h2 className="text-tosca font-bold">All Donations</h2>
-          <input type="text" placeholder="search" className="border border-solid p-1 px-2 text-md"/>
         </div>
         <table className="mt-2 w-full" >
           <thead>
@@ -40,36 +39,36 @@ export default function AllDonations(props) {
             </tr>
           </thead>
           <tbody>
-            {props.filteredCampaign.map((campaign, index) => {
+            {props.donationsByCategory.map((donation, index) => {
               return(
                 <tr key={index} className="grid grid-cols-7 justify-items-start Py-4 pl-4">
               <td className="col-span-3">
-                <p className="font-bold underline">{campaign.title}</p>
-                <p className="text-gray-400 text-sm">by {campaign.user.name}</p>
+                <p className="font-bold underline">{donation.campaign.title}</p>
+                <p className="text-gray-400 text-sm">by {donation.campaign.user.name}</p>
               </td>
               <td className="flex items-start gap-2">
                 <div className="flex gap-2 items-center">
-                  <img src={campaign.status==="open" ? open : campaign.status=="pending" ? pending : campaign.status=="finish" ? finish : campaign.status=="rejected" ? reject : null} alt=""/>
-                  <p className="font-bold uppercase">{campaign.status}</p>
+                  <img src={donation.isVerified ? finish : pending} alt=""/>
+                  <p className="font-bold uppercase">{donation.isVerified ? "approve" : "pending"}</p>
                 </div>
               </td>
               <td>
-                <p>IDR {numberWithCommas(campaign.goal)}</p>
+                <p>IDR {numberWithCommas(donation.amount)}</p>
                 <p className="text-gray-400 text-sm" >from</p>
-                <p className="text-sm">{campaign.user.name}</p>
+                <p className="text-sm">{donation.name}</p>
               </td>
               <td className="justify-self-center">
-                  <a target="blank" href={"https://gusinfo.com/wp-content/uploads/2019/07/Contoh-Nota-transaksi-di-BNI-banking.jpg"}>
-                  <img className="w-12 h-20" src={"https://gusinfo.com/wp-content/uploads/2019/07/Contoh-Nota-transaksi-di-BNI-banking.jpg"} />
+                  <a target="blank" href={donation.verification_images}>
+                  <img className="w-12 h-20" src={donation.verification_images === "https://talikasih.kuyrek.com:3002/img/USING MIDTRANS" ? pending:donation.verification_images } />
                   </a>
               </td>
               <td className="justify-self-end">
                 <img id ={index} src={setting} alt="" onClick={(e) => props.dropdownHandler(e.target.id)}/>
-                {campaign.dropdown ? (
+                {donation.dropdown ? (
                           <div className="z-10 absolute shadow-md bg-white mr-20 -ml-28 py-2 px-3 font-normal text-md text-left mt-2">
                           <ul className="hover:">
-                              <li onClick={(e)=> props.updateType("open", campaign.id)} className="campaign-text-setting text-md" >Approve Donation</li>
-                              <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Reject Donation</li>
+                              <li onClick={(e)=> props.updateType(true, donation.id)} className="campaign-text-setting text-md" >Approve Donation</li>
+                              <li onClick={(e)=> props.updateType(false, donation.id)} className="campaign-text-setting text-md">Pending Donation</li>
                           </ul>
                           </div>
                       ) : null}
