@@ -83,6 +83,10 @@ const AllCampaign = (props) => {
           })}
         </tbody>
       </table>
+      <div className="flex justify-between align-middle mt-20">
+        <h2 className="text-sm text-gray-400">Showing 1 to 10 of 96 entries</h2>
+        <p>Pagination</p>
+      </div>
     </div>
   )
 }

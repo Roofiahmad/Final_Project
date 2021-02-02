@@ -22,6 +22,7 @@ constructor(props) {
       { name: "Due Date", id: "due_date", type: "date" },
     ],
     token: localStorage.getItem("token"),
+    bank: localStorage.getItem("bank_number"),
     redirect : false,
     input: ['goal', 'due_date','category', 'story'],
     image: null,
@@ -87,15 +88,29 @@ constructor(props) {
           }
         }
       }
-      // else if(err.request){
-      //   console.log('server not responsed')
-      // }
       else{
         toast.error( err.message, {
           position: toast.POSITION.TOP_CENTER
       })
       }
     })
+  }
+
+  componentDidMount() { 
+    if (!this.state.token) {
+      toast.error("Sorry, you are not logged in yet!", {
+        position : toast.POSITION.TOP_CENTER
+      });
+      this.props.history.push("/");
+    }
+
+    if (this.state.token && this.state.bank == "") {
+      toast.error("Please input your Bank Info first!", {
+        position : toast.POSITION.TOP_CENTER
+      });
+      this.props.history.push("/myprofile");
+    }
+    
   }
 
   render() {

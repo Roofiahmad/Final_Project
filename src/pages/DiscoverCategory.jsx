@@ -39,10 +39,11 @@ const DiscoverCategory = () => {
 
     const handleNewest = (e) => {
         e.preventDefault();
-        axios.get('https://talikasih.kuyrek.com:3001/campaign/new?')
+        axios.get('https://talikasih.kuyrek.com:3001/campaign/new')
         .then((res) => {
+            // console.log('respon', res)
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -54,7 +55,7 @@ const DiscoverCategory = () => {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/urgen')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -66,7 +67,7 @@ const DiscoverCategory = () => {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/populer')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -78,7 +79,7 @@ const DiscoverCategory = () => {
         axios.get('https://talikasih.kuyrek.com:3001/campaign/donation')
         .then((res) => {
             let thisCategory = category[0].toUpperCase()+category.substring(1).toLowerCase();
-            let data = res.data.posts
+            let data = res.data.data
             let filters = data.filter((data) => data.category === thisCategory)
             setCampaignCategory(filters)
             setSlicedCampaign(filters.slice(0,2))
@@ -122,7 +123,7 @@ const DiscoverCategory = () => {
                 slicedCampaign.map(campaign => {
                     return (
                         <Link to={`/campaigndetail/${campaign._id}`}>
-                            <div className="shadow-md h-full hover:shadow-xl" key={campaign._id}>
+                            <div className="shadow-md h-full item-clicked" key={campaign._id}>
                                 <img src={campaign.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaign.images} alt="" className="w-full h-52"/>
                                 <div className="w-5/6 mx-auto pb-4 pt-2">
                                     <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaign.category}</p>
