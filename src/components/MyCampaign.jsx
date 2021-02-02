@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import card2 from '../assets/card.png';
 import axios from 'axios';
 import campaignImage from '../assets/campaign-image.png';
 import { Link, useParams } from 'react-router-dom';
@@ -9,7 +8,8 @@ const MyCampaign = () => {
     const numberWithCommas = (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    const [myCampaigns, setMyCampaigns] = useState("");
+    const [myCampaigns, setMyCampaigns] = useState([]);
+    const [slicedMyCampaign, setSlicedMyCampaign] = useState([]) 
     useEffect(() => {
         getData();
       }, []);
@@ -17,23 +17,26 @@ const MyCampaign = () => {
     function getData() {
     
       axios.get(
-        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=3`
+        `https://talikasih.kuyrek.com:3001/campaign/user?user_id=${id}&page=1&limit=100`
       )
       .then((response) => {
-          console.log("INI CAMPAIGN BY USER", response);
           setMyCampaigns(response.data.data);
-          console.log("myCampaigns", myCampaigns);
+          setSlicedMyCampaign(response.data.data.slice(0,3))
           localStorage.removeItem("campaign_id");
       })
     }
+    console.log('campaign ku',myCampaigns)
+    console.log('sliced campaign',slicedMyCampaign)
+
+
   return (
     <div className="w-11/12 mt-10 mb-10 lg:mt-16 lg:mb-16 mx-auto border border-solid p-5">
       <h2 className="font-bold text-xl mb-5">My Campaign ({myCampaigns.length})</h2>
       <div className="grid grid-cols-1 gap-10 justify-between lg:grid-cols-3 sm:grid-cols-2">
-        {myCampaigns.length > 0 ? myCampaigns.map((campaigns) => {
+        {slicedMyCampaign.length > 0 ? slicedMyCampaign.map((campaigns) => {
           return (
         <Link to={`/campaigndetail/${campaigns.id}`}>
-        <div key={campaigns.id} className="shadow-md max-w-md mx-auto hover:shadow-xl">
+        <div key={campaigns.id} className="shadow-md max-w-md mx-auto item-clicked fromtop-animation">
           <img src={campaigns.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaigns.images} alt="" className="w-full h-52" alt="" />
           <div className="w-5/6 mx-auto pb-4 pt-2">
             <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaigns.category}</p>
@@ -61,9 +64,13 @@ const MyCampaign = () => {
       :null}
 
       </div>
-      <div className="w-max my-8 mx-auto hover:bg-blue-100">
-        <button className="Py-2 px-5 border-2 border-blue-400 text-blue-400 font-bold">LOAD MORE</button>
-      </div>
+     {myCampaigns.length > 3 ?<div className="w-max mt-6 mx-auto">
+        <button onClick={slicedMyCampaign.length > 3 ? 
+        () => setSlicedMyCampaign(myCampaigns.slice(0,3)): 
+        () => setSlicedMyCampaign(myCampaigns)} className="btn-outline-tosca uppercase">
+        {slicedMyCampaign.length >3 ? "show less": "show more"}
+        </button>
+      </div> : null}
     </div >
   )
 }
