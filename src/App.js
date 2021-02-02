@@ -28,6 +28,7 @@ import AdminDonationPage from "./pages/AdminDonationPage";
 import AdminWithdrawal from "./pages/AdminWithdrawal";
 import ForgotPassword from "./pages/ForgotPassword";
 import PasswordRecovery from "./pages/PasswordRecovery";
+import DonateSuccess from "./pages/DonateSuccess";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           <Route exact path="/resetadminpassword" component={ResetAdminPassword} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/passwordrecovery/:token" component={PasswordRecovery} />
+          <Route exact path="/donatesuccess/:campaignId" component={DonateSuccess} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer/>
