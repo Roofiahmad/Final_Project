@@ -33,7 +33,7 @@ const DiscoverCategory = () => {
         axios.get(`https://talikasih.kuyrek.com:3001/campaign/category?category=${category}`)
         .then((res) => {
             setCampaignCategory(res.data.data)
-            setSlicedCampaign(res.data.data.slice(0,2))
+            setSlicedCampaign(res.data.data.slice(0,6))
         })
     }
 
@@ -87,13 +87,9 @@ const DiscoverCategory = () => {
     }
 
     const handlePagination = (indexAwal = 0, indexAkhir = 2) => {
-        // console.log("handelPagination", indexAwal, indexAkhir)
         let copyArray = [...campaingByCategory];
-        // console.log("copyArray", copyArray)
         let slicedArray = copyArray.slice(indexAwal, indexAkhir);
-        // console.log("slice", slicedArray)
         setSlicedCampaign(slicedArray)
-        // setCampaignCategory(slicedArray)
     }
     
 

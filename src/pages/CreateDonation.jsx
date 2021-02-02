@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import card from "../assets/card.png";
+import campaignImage from '../assets/campaign-image.png';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ModalDonationSuccess from "../components/ModalDonationSuccess";
@@ -53,7 +53,7 @@ export default function CreateDonation() {
       `https://talikasih.kuyrek.com:3001/campaign/get/${campaignId}`
     )
     .then((response) => {
-        // console.log("INI GET ONE CAMPAIGN", response);
+        console.log("INI GET ONE CAMPAIGN", response);
         setImages(response.data.data.images);
         setCategory(response.data.data.category);
         setTitle(response.data.data.title);
@@ -176,7 +176,7 @@ export default function CreateDonation() {
             />
           </div>
           <div className="shadow-md w-5/12 lg:inline hidden ml-10">
-            <img src={images} alt="campaign_image" />
+            <img className="max-h-64 w-full" src={images === "https://talikasih.kuyrek.com:3001/img/" ? campaignImage: images} alt="campaign_image" />
             <div className="w-5/6 mx-auto pb-4 pt-2">
               <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">
                 {category}
