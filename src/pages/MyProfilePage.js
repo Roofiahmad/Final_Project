@@ -9,7 +9,6 @@ function MyProfilePage() {
     return (
         <div className="fromtop-animation">
             <MyProfile/>
-            <MyWallet />
             <MyDonation/>
             <MyCampaign/>
         </div>

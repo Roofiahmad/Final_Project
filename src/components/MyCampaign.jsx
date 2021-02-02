@@ -39,7 +39,10 @@ const MyCampaign = () => {
         <div key={campaigns.id} className="shadow-md max-w-md mx-auto item-clicked fromtop-animation">
           <img src={campaigns.images === 'https://talikasih.kuyrek.com:3001/img/' ?  campaignImage : campaigns.images} alt="" className="w-full h-52" alt="" />
           <div className="w-5/6 mx-auto pb-4 pt-2">
-            <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaigns.category}</p>
+            <div className="flex">
+              <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm mr-1">{campaigns.category}</p>
+              <p className="border border-solid border-rose px-2 text-rose text-sm w-max text-center my-2 rounded-sm">{campaigns.status}</p>
+            </div>
             <a href="#" className="font-bold mt-4">{campaigns.title}</a>
             <p className="text-sm mb-8 mt-1">{campaigns.user.name}</p>
             <div className="h-3 relative max-w-xl rounded-full overflow-hidden mb-8">
@@ -54,6 +57,14 @@ const MyCampaign = () => {
               <div className="text-right">
                 <p className="text-sm">Goal</p>
                 <p>IDR {numberWithCommas(campaigns.goal)}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 mt-2 items-center">
+              <div>
+                <i className="fas fa-wallet fa-lg text-rose"></i>
+              </div>
+              <div className="text-right">
+                <p className="text-rose font-bold">IDR {numberWithCommas(campaigns.wallet)}</p>
               </div>
             </div>
           </div>

@@ -8,6 +8,11 @@ export default function ModalsCampaignUpdate(props) {
   const token = localStorage.getItem("token");
   const [recepient, setRecepient] = useState(true);
   const [withdrawal, setWithdrawal] = useState(false);
+  const [wallet, setWallet] = useState(localStorage.getItem("campaign_wallet"));
+
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   const recepientHandler = () => {
     setRecepient(!recepient);
@@ -146,6 +151,9 @@ export default function ModalsCampaignUpdate(props) {
                   {withdrawal ? (
                     <form onSubmit={(e) => handleSubmitWithdrawal(e)}>
                       <div className="frombottom-animation ">
+                        <label className="block items-center mt-3 mb-3">
+                          Wallet Ballance :<span className="text-red-700"> IDR {numberWithCommas(wallet)}</span>
+                        </label>
                         <label className="block items-center mt-3 mb-3">
                           Amount<span className="text-red-700">*</span>
                         </label>
