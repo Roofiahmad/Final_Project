@@ -16,10 +16,8 @@ function NavbarComp() {
     }
 
     let history = useHistory();
-
-    // localStorage.setItem("login", "yes");
-
     const isLogged = localStorage.getItem("token");
+
     const handleSubmitLogin = async (e) => {
         e.preventDefault();
         // console.log("email :", e.target.email.value);
@@ -66,12 +64,13 @@ function NavbarComp() {
             // console.log(response, "AUTHORIZED");
             localStorage.setItem("id", response.data.user.id);
             localStorage.setItem("name", response.data.user.name);
+            localStorage.setItem("bank_number", response.data.user.bank_account_number);
 
             window.location.reload();
         })
-      };
+    };
 
-      const handleSubmitSignup = async (e) => {
+    const handleSubmitSignup = async (e) => {
         e.preventDefault();
         // console.log("fullname :", e.target.name.value);
         // console.log("email :", e.target.email.value);
@@ -120,9 +119,7 @@ function NavbarComp() {
                         position: toast.POSITION.TOP_CENTER
                     });
                 }
-        })
-        
-        // setTimeout(function() { window.location.reload(); }, 3000);
+        })        
     };
 
     const handleInputChange = (e) => {
@@ -140,7 +137,7 @@ function NavbarComp() {
     
     
     return (
-        <div className="bg-white h-20 shadow-md">
+        <div className="bg-white h-20 shadow-md ">
             <ToastContainer/>
             <div className="flex flex-col lg:flex-row justify-between">
                 <div className="flex items-center justify-between mx-5 lg:mx-20">
@@ -158,18 +155,18 @@ function NavbarComp() {
                         </button>
                     </div>
                 </div>
-                <div className={`${isMobile ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row items-center lg:mx-20 z-10 lg:z-0 bg-white shadow-md rounded lg:rounded-none lg:shadow-none py-10 lg:py-0 w-full lg:w-auto`}>
+                <div className={`${isMobile ? 'flex' : 'hidden'} fromtop-animation lg:flex flex-col lg:flex-row items-center lg:mx-20 z-10 lg:z-0 bg-white shadow-md rounded lg:rounded-none lg:shadow-none py-10 lg:py-0 w-full lg:w-auto`}>
                     {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
                         <Link to="/newcampaign">
-                            <button className="text-rose bg-white rounded-full border-2 border-rose text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> CREATE CAMPAIGN </h1> </button>
+                            <button className="text-lg px-2 py-1 m-1 text-rose bg-white rounded-full border-2 border-rose lg:text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> CREATE CAMPAIGN </h1> </button>
                         </Link>
                     </div>
                     ) :null}
                     {isLogged && !ToggleSearch ? (
                     <div className="block px-3 ">
                         <Link to="/discoverall">
-                            <button className="text-white bg-rose rounded-full text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> DONATE </h1> </button>
+                            <button className=" text-lg px-4 py-0.5 text-white bg-rose rounded-full lg:text-xl font-medium focus:outline-none focus:text-gray-500 lg:py-1 lg:px-7"> <h1 className="font-bold"> DONATE </h1> </button>
                         </Link>
                     </div>
                     ) :null}
@@ -180,6 +177,7 @@ function NavbarComp() {
                             </svg>
                         </button>
                     </div>
+                    
                     {ToggleSearch ? null :(
                     <div onClick={() => {setToggleSearch(!ToggleSearch)}} className="cursor-pointer text-tosca text-xl font-light">
                         <h1>Search</h1>
@@ -195,7 +193,10 @@ function NavbarComp() {
                     ) :null}
                     {!isLogged ? (
                     <div className="block px-3 ">
-                        <button onClick={() => setToggleLogin(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> Login </button>
+                        <button onClick={() => setToggleLogin(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 hidden lg:block"> Login </button>
+                        <Link to="/login">
+                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Login </button>
+                        </Link>
                     </div>
                     ) :null}
                     {!isLogged ? (
@@ -203,7 +204,10 @@ function NavbarComp() {
                     ) :null}
                     {!isLogged ? (
                     <div className="block px-3 ">
-                        <button onClick={() => setToggleRegister(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500"> Register </button>
+                        <button onClick={() => setToggleRegister(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 hidden lg:block"> Register </button>
+                        <Link to="/register">
+                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Register </button>
+                        </Link>
                     </div>
                     ) :null}
                     {isLogged ? (

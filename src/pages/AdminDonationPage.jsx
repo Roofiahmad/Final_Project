@@ -10,47 +10,41 @@ export default function AdminDonationPage() {
     const token = localStorage.getItem("token")
     let history = useHistory();
     const [role] = useState(localStorage.getItem("role"));
-    const [campaignData,setCampaignData] = useState([]);
-    const [filteredCampaignData,setFilteredCampaignData] = useState([])
+    const [donationsData,setDonationsData] = useState([]);
+    const [donationsByCategory,setDonationsByCategory] = useState([])
     
     const dropdownHandler = (id)=> {
-      let copyCampaignData = [...filteredCampaignData];
-      copyCampaignData[id].dropdown = !filteredCampaignData[id].dropdown;
-      setFilteredCampaignData(copyCampaignData)
+      let copyDonationsData = [...donationsByCategory];
+      copyDonationsData[id].dropdown = !donationsByCategory[id].dropdown;
+      setDonationsByCategory(copyDonationsData)
     }
   
     const updateType = (type,id)=> {
-      updateStatusCampaign(type,id)
+      updateStatusDonation(type,id)
     }
   
     useEffect(() => {
       kick();
-      getAllCampaign();
-    
+      getAllDonations();
     }, []);
   
-    const getAllCampaign = (category) => {
-      let url = `https://talikasih.kuyrek.com:3001/campaign/byadmin?page=1&limit=10`;
-      const config = {
-        headers: {
-          'Authorization': 'Bearer ' + token, 
-        },
-      };
-      axios.get(url,config)
+    const getAllDonations = () => {
+      let url = `https://talikasih.kuyrek.com:3002/donation/verified`;
+      axios.get(url)
       .then((response) => {
-        setCampaignData(response.data.posts);
-        response.data.posts.forEach(element => {
+        setDonationsData(response.data.data);
+        response.data.data.forEach(element => {
           element.dropdown= false;      
         });
-        setFilteredCampaignData(response.data.posts)
+        setDonationsByCategory(response.data.data)
       })
     }
   
-    const updateStatusCampaign = (type, idcampaign) =>{
+    const updateStatusDonation = (type, idcampaign) =>{
       let updateType = {
-        status:type
+        isVerified:type
       }
-      let url = `https://talikasih.kuyrek.com:3001/campaign/update/status/${idcampaign}`;
+      let url = `https://talikasih.kuyrek.com:3002/donation/update/verified/${idcampaign}`;
       const config = {
         headers: {
           'Authorization': 'Bearer ' + token, 
@@ -59,7 +53,7 @@ export default function AdminDonationPage() {
       axios.put(url,updateType,config)
       .then((response) =>{
         console.log(response)
-        toast.success("Campaign status updated successfully!");
+        toast.success("Donation status updated successfully!");
         window.location.reload()
       })
       .catch((err) => {
@@ -68,8 +62,8 @@ export default function AdminDonationPage() {
     }
   
     const filterByCategory = (category) =>{
-      setFilteredCampaignData(campaignData.filter((item)=>{
-        return item.category ===category
+      setDonationsByCategory(donationsData.filter((item)=>{
+        return item.campaign.category ===category
       }))
     }
     const kick = () => {
@@ -81,10 +75,18 @@ export default function AdminDonationPage() {
       }
     }
   
+    console.log('from API',donationsData)
+    console.log('after filtered',donationsByCategory)
+
+
     return (
-      <div>
+      donationsData.length>0 ?(<div>
         <CategoryButtonAdmin filterByCategory={filterByCategory}/>
-        <AllDonations filteredCampaign={filteredCampaignData}  dropdownHandler={dropdownHandler} updateType={updateType}/>
+        <AllDonations donationsByCategory={donationsByCategory}  dropdownHandler={dropdownHandler} updateType={updateType}/>
+      </div>): 
+      <div className="h-3/6 flex flex-wrap content-center justify-center">
+        <h1 className="text-3xl text-tosca font-bold">Yeayy... there is no pending donation</h1>
+        <span className="ml-2 animate-bounce text-3xl text-tosca font-bold">^_^</span>
       </div>
     )
 }
