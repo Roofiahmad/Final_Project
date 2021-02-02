@@ -7,7 +7,8 @@ const MyDonation = () => {
     const numberWithCommas = (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    const [myDonations, setMyDonations] = useState("");
+    const [myDonations, setMyDonations] = useState([]);
+    const [mySlicedDonations, setMySlicedDonations] = useState([]);
     useEffect(() => {
         getData();
       }, []);
@@ -18,30 +19,33 @@ const MyDonation = () => {
         `https://talikasih.kuyrek.com:3002/donation/user/?user_id=${id}&page=1&limit=4`
       )
       .then((response) => {
-          console.log("INI DONATION BY USER", response);
           setMyDonations(response.data.data);
-          console.log("myDonations", myDonations);
+          setMySlicedDonations(response.data.data.slice(0,2))
       })
     }
   return (
-    <div className="w-11/12 mt-10 mb-10 lg:mt-16 lg:mb-16 mx-auto border border-solid p-5">
+    <div className={`w-11/12 mt-10 mb-10 lg:mt-16 lg:mb-16 mx-auto border border-solid p-5 lg:pb-5 pb-8  ${myDonations.length >2 ? 'lg:pb-6' : 'lg:pb-14'}`}>
       <h2 className="font-bold text-xl mb-5">My Donation ({myDonations.length})</h2>
       <div className="grid grid-cols-1 gap-8 w-11/12 mx-auto md:grid-cols-2">
-      {myDonations.length > 0 ? myDonations.map((donations) => {
+      {mySlicedDonations.length > 0 ? mySlicedDonations.map((donations) => {
         return (
-        <div className="shadow-md p-5">
+        <div className="shadow-md p-5 fromtop-animation">
           <p className="text-right text-gray-400 text-sm m-1">{moment(donations.createdAt).startOf('minute').fromNow(new Date())}</p>
-          <a href="#" className="font-bold underline m-1">{donations.campaign.title}</a>
-          <p className="text-tosca font-bold text-2xl my-2">IDR {numberWithCommas(donations.amount)}</p>
+          <a href="#" className="uppercase font-bold text-base underline">{donations.campaign.title}</a>
+          <p className="text-tosca font-bold text-base my-2">IDR {numberWithCommas(donations.amount)}</p>
           <p className="my-1">{donations.message}</p>
         </div>
         );
       })
       :null}
       </div>
-      <div className="w-max my-8 mx-auto hover:bg-blue-100">
-        <button className="Py-2 px-5 border-2 border-blue-400 text-blue-400 font-bold">LOAD MORE</button>
-      </div>
+      {myDonations.length > 2 ?<div className="w-max mt-6 mx-auto">
+        <button onClick={mySlicedDonations.length > 2 ? 
+        () => setMySlicedDonations(myDonations.slice(0,2)): 
+        () => setMySlicedDonations(myDonations)} className="btn-outline-tosca uppercase">
+        {mySlicedDonations.length >2 ? "show less": "show more"}
+        </button>
+      </div> : null}
     </div >
   )
 }
