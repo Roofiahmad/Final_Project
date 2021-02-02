@@ -23,12 +23,12 @@ const updateVerified = (verified,id)=> {
 
 useEffect(() => {
   kick();
-  getAllCampaign();
+  getAllWithdrawal();
 
 }, []);
 
-const getAllCampaign = (category) => {
-  let url = 'https://talikasih.kuyrek.com:3002/donation';
+const getAllWithdrawal = (category) => {
+  let url = 'https://talikasih.kuyrek.com:3003/update/get/withdraw';
   const config = {
     headers: {
       'Authorization': 'Bearer ' + token, 
@@ -36,7 +36,7 @@ const getAllCampaign = (category) => {
   };
   axios.get(url,config)
   .then((response) => {
-    // console.log("respon", response)
+    console.log("respon withdrawal", response)
     setCampaignData(response.data.data);
     response.data.data.forEach(element => {
       element.dropdown= false;      
