@@ -235,7 +235,7 @@ export default function CreateDonation() {
         </div>
         {creditCard ? (
           <div className="flex md:flex-row flex-col lg:gap-10 mb-10 frombottom-animation ">
-            <h1 className="text-tosca font-bold text-xl">Donate easier, no verifications needed!</h1>
+            <h1 className="text-tosca font-bold text-xl">Donate easier, pay from everywhere.</h1>
           </div>
         ) : null}
         {bank ? (
@@ -259,16 +259,9 @@ export default function CreateDonation() {
             </div>
           </div>
         ) : null}
-        {bank ? (
         <button type="submit" className={` uppercase  float-right mb-16 ${ creditCard || bank ? "btn-red" : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"}`}>
           donate
         </button>
-        ) : null}
-        {creditCard ? (
-        <button type="submit" className={` uppercase  float-right mb-16 ${ creditCard || bank ? "btn-red" : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"}`}>
-          next
-        </button>
-        ) : null}
       </div>
       </form>
       )}
