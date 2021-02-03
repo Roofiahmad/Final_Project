@@ -23,12 +23,10 @@ function PasswordRecovery() {
           sendNewPassword
         )
         .then((response) => {
-            console.log(response);
-            console.log(response, "you got the new password"); 
             toast.success("Yeay, you got the new password!", {
                 position: toast.POSITION.TOP_CENTER
             });
-            history.push("/");
+            history.push("/login");
 
         })
         .catch((err) => {
