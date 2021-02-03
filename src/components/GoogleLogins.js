@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import GoogleLogin from 'react-google-login';
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function GoogleLogins() {
-    let history = useHistory();
-    let [email, setEmail] = useState();
-    let [name, setName] = useState();
-    let [password, setPassword] = useState();
-
 
     let responseGoogleSuccess = (response) => {
-        console.log(response);
-        setEmail(response.profileObj.email);
-        setName(response.profileObj.name);
-        setPassword("Almersayangsherarydandonat123");
-
         let data = {
-            name: name,
-            email: email,
-            password: password,
+            name: response.profileObj.name,
+            email: response.profileObj.email,
+            password: "Almersayangsherarydandonat123",
         }
         axios.post("https://talikasih.kuyrek.com:3000/user/login/google",
         data)
@@ -28,6 +19,9 @@ function GoogleLogins() {
             console.log("INI RESPONSEEEEEE", response);
             localStorage.setItem("token", response.data.token);
             window.location = "/";
+            toast.success("Login success. Let's donate!", {
+                position: toast.POSITION.TOP_CENTER
+            });
         })
     }
     let responseGoogleFail = () => {}
