@@ -86,7 +86,7 @@ const AdminProfile = () => {
             <h2 className="font-bold text-xl">My Profile</h2>
             <a onClick={signOutHandler} className="text-red-800 underline font-bold cursor-pointer">Logout</a>
           </div>
-          <img src="https://media-exp1.licdn.com/dms/image/C5603AQGGSlK8xwfivQ/profile-displayphoto-shrink_200_200/0/1606981919722?e=1616025600&v=beta&t=cs8IZAu-AFy-GGAfSwmJQxlgmEQHEvh85_F2Jbf95dQ" alt="" className="mx-auto w-52 h-52"/>
+          <img src="https://www.wowkeren.com/display/images/photo/2020/11/07/00338272.jpg" alt="" className="mx-auto w-52 h-52"/>
           <Link to="/editadminprofile">
             <a className="text-tosca underline font-bold flex justify-center mt-3">Edit Profile</a>
           </Link>
