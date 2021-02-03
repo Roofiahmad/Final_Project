@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogins from '../components/GoogleLogins';
+
 
 function MobileLogin() {
     let history = useHistory();
@@ -79,7 +81,13 @@ function MobileLogin() {
                             </div>
                             <div>          
                                 <button class="w-full bg-tosca cursor-pointer text-white font-bold py-2 px-4 mb-6 rounded" type="submit">Login</button>
-                            </div>       
+                            </div>
+                            <GoogleLogins/>
+                            <Link to="/register">
+                            <div>
+                                <a className="text-tosca">Need to register?</a>
+                            </div>
+                            </Link>       
                         </form>
                         <footer>
                             <img className="w-20 mx-auto mb-5" src={logo} />

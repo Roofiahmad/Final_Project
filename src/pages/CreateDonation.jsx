@@ -52,9 +52,16 @@ export default function CreateDonation() {
   }, []);
 
   let kick = () => {
-    if (status !=="open") {
+    if (localStorage.getItem("campaign_status") !=="open") {
       history.push("/")
       toast.error("Campaign is not found!", {
+        position: toast.POSITION.TOP_CENTER
+      });
+    }
+    
+    if (!token) {
+      history.push("/login")
+      toast.error("Please login first!", {
         position: toast.POSITION.TOP_CENTER
       });
     }
@@ -73,7 +80,6 @@ export default function CreateDonation() {
         setName(response.data.data.user.name);
         setRaised(response.data.data.total_donation_rupiah);
         setGoal(response.data.data.goal);
-        setStatus(response.data.data.status);
         setIsLoading(false);
     })
   }

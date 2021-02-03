@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Logo from '../assets/logos.png';
+import GoogleLogins from './GoogleLogins';
 
 function NavbarComp() {
     const [isMobile, setisMobile] = useState(false);
@@ -235,6 +236,12 @@ function NavbarComp() {
                                 <input name="email" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96 lg:mt-10" type="email" placeholder="Email"/>
                                 <input name="password" className="rounded shadow-sm block lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96" type="password" placeholder="Password"/>
                                 <button type="submit" className="focus:outline-none bg-rose text-white rounded shadow-sm block lg:text-xl lg:mx-10 lg:my-6 my-4 lg:py-3 lg:px-5 lg:w-96">LOGIN</button>
+                                <div className="">
+                                    <GoogleLogins/>
+                                </div>
+                                <Link className="text-sm" to="/forgotpassword">
+                                    <button onClick={() => setToggleLogin(false)} type="submit" className="focus:outline-none bg-none text-rose rounded shadow-sm block lg:text-base lg:mx-10 lg:my-1 my-1 lg:py-1 lg:px-5 lg:w-96">Forgot your password?</button>
+                                </Link>
                             </form>
                         </div>
                         <div onClick={() => setToggleLogin(false)} className="cursor-pointer h-9 text-rose flex flex-col justify-center items-center lg:mx-10">
