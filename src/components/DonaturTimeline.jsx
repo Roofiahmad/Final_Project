@@ -12,7 +12,7 @@ export default function DonaturTimeline(props) {
 
   
   useEffect(() => {
-    axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=4`)
+    axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=50`)
         .then(response => {
           setDonaturData(response.data.data);
           setDonaturDataSliced(response.data.data.slice(0,2))

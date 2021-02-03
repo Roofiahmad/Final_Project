@@ -7,6 +7,7 @@ import ModalsCampaignDelete from "./ModalsCampaignDelete";
 
 
 export default function JumbotronCampaignDetail(props) {
+  console.log(props)
   
   const token = localStorage.getItem("token");
   let {campaignId} = useParams();

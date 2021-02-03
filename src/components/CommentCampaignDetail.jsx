@@ -16,7 +16,7 @@ export default function CommentCampaignDetail(props) {
 
     async function getData() {
       await axios.get(
-        `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${campaignId}&page=1&limit=10`
+        `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${campaignId}&page=1&limit=50`
       )
       .then((response) => {
           setComments(response.data.data);
