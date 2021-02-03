@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import moment from 'moment';
+import defaultPictureProfile from '../assets/blank_profile.png'
 
 export default function DonaturTimeline(props) {
   const [donaturData,setDonaturData] = useState([]);
@@ -8,13 +9,7 @@ export default function DonaturTimeline(props) {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-  
-  // const countday = (donateDate) => {
-  //   const end = donateDate.split('T'); 
-  //   const calc = end[0].split('-');
-  //   const today = [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()];
-  //   return (Number(today[0])-calc[0])*365 + (Number(today[1])-calc[1])*30 +(Number(today[2])-calc[2]);
-  // }
+
   
   useEffect(() => {
     axios.get(`https://talikasih.kuyrek.com:3002/donation/campaign/?campaign_id=${props.campaignId}&page=1&limit=4`)
@@ -27,6 +22,8 @@ export default function DonaturTimeline(props) {
         })
   }, [props])
 
+  console.log("donatur data sliced",donaturDataSLiced)
+
   return (
     <div className="border border-gray-300  px-10 py-2 my-10 rounded-sm">
       <p className="text-xl font-semibold my-4">{donaturData.length >0 ? `Donations(${donaturData.length})` : "No Donations Yet"}</p>
@@ -37,7 +34,7 @@ export default function DonaturTimeline(props) {
             <div style={{ display: "inline-block", width: "100px", height:"100px"}}>
               <img
                 style={{width: "100px", height:"100px"}}
-                src={comment.user.profile_image}
+                src={comment.user.profile_image=== "https://talikasih.kuyrek.com:3000/img/null" ? defaultPictureProfile: comment.user.profile_image}
                 alt="donatur"
                 className="rounded-md"
               />
