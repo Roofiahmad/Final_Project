@@ -15,7 +15,7 @@ function GoogleLogins() {
         console.log(response);
         setEmail(response.profileObj.email);
         setName(response.profileObj.name);
-        setPassword("AlmerSayangSherary");
+        setPassword("Almersayangsherarydandonat123");
 
         let data = {
             name: name,
@@ -25,10 +25,9 @@ function GoogleLogins() {
         axios.post("https://talikasih.kuyrek.com:3000/user/login/google",
         data)
         .then(response => {
-            localStorage.setItem("id", response.data.user.id);
-            localStorage.setItem("name", response.data.user.name);
-            localStorage.setItem("bank_number", response.data.user.bank_account_number);
-            history.push("/")
+            console.log("INI RESPONSEEEEEE", response);
+            localStorage.setItem("token", response.data.token);
+            window.location = "/";
         })
     }
     let responseGoogleFail = () => {}
