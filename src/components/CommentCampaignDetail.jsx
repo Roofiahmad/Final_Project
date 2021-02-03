@@ -3,6 +3,7 @@ import PostComment from "./PostComment";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
+import defaultPictureProfile from '../assets/blank_profile.png'
 
 export default function CommentCampaignDetail(props) {
     let campaignId = useParams().campaignId;
@@ -15,7 +16,7 @@ export default function CommentCampaignDetail(props) {
 
     async function getData() {
       await axios.get(
-        `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${campaignId}&page=1&limit=10`
+        `https://talikasih.kuyrek.com:3004/comment/get/campaign?campaign_id=${campaignId}&page=1&limit=50`
       )
       .then((response) => {
           setComments(response.data.data);
@@ -24,6 +25,7 @@ export default function CommentCampaignDetail(props) {
       })
       .catch((err) => console.log(err))
     }
+
     
   return (
     <div className="border border-gray-300 shadow px-10 lg:py-4 lg:my-10">
@@ -34,7 +36,7 @@ export default function CommentCampaignDetail(props) {
       <div key={index} className="border-t-2 border-gray-300  px-5 py-8 frombottom-animation ">
         <div style={{ display: "inline-block", width: "100px" }}>
           <img
-            src={comments.user.profile_image}
+            src={comments.user.profile_image === "https://talikasih.kuyrek.com:3000/img/null" ? defaultPictureProfile :comments.user.profile_image}
             alt="donatur"
             className="rounded-md"
             style={{width: "100px", height:"100px"}}
