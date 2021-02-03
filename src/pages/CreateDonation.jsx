@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ModalDonationSuccess from "../components/ModalDonationSuccess";
 import SpinnerPage from '../components/SpinnerPage';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function CreateDonation() {
@@ -27,7 +27,7 @@ export default function CreateDonation() {
   let [raised, setRaised] = useState("");
   let [goal, setGoal] = useState("");
   let [status, setStatus] = useState("");
-  let [slip, setSlip] = useState();
+  let [slip, setSlip] = useState(null);
 
   const handleCredit = () => {
     setCredit(!creditCard);
@@ -83,14 +83,16 @@ export default function CreateDonation() {
   const handleDonate = async (e) => {
     e.preventDefault();
     let sendDonate;
-    
+
     if (bank) {
     sendDonate = new FormData();
     sendDonate.append("amount", e.target.amount.value);
     sendDonate.append("message", e.target.message.value);
     sendDonate.append("name", e.target.name.value);
     sendDonate.append("campaign", campaignId);
-    sendDonate.append("verification_images", slip, slip.name);
+    if(slip!==null){
+      sendDonate.append("verification_images", slip, slip.name);
+    }
     } else if (creditCard) {
       sendDonate = {
         campaign: campaignId,
@@ -121,7 +123,9 @@ export default function CreateDonation() {
       })
       .catch((err) => {
           console.log("INI PESAN ERROR", err.response);
-          alert("Sorry, there is something wrong");
+          toast.error("Sorry, there is something wrong", {
+            position: toast.POSITION.TOP_CENTER
+        })
       })
     } else if (creditCard) {
       await axios.post(
@@ -134,12 +138,14 @@ export default function CreateDonation() {
       })
       .catch((err) => {
           console.log("INI PESAN ERROR", err.response);
-          alert("Sorry, there is something wrong");
+          toast.error("Sorry, there is something wrong", {
+            position: toast.POSITION.TOP_CENTER
+        })
       })
     }
   };
 
-  
+  console.log(slip)
 
   return (
     <div className="fromtop-animation">

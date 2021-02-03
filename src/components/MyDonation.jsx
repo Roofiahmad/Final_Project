@@ -16,7 +16,7 @@ const MyDonation = () => {
     function getData() {
     
       axios.get(
-        `https://talikasih.kuyrek.com:3002/donation/user/?user_id=${id}&page=1&limit=4`
+        `https://talikasih.kuyrek.com:3002/donation/user/?user_id=${id}&page=1&limit=100`
       )
       .then((response) => {
           setMyDonations(response.data.data);
