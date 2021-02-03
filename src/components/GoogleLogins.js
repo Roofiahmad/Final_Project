@@ -18,13 +18,31 @@ function GoogleLogins() {
         .then(response => {
             console.log("INI RESPONSEEEEEE", response);
             localStorage.setItem("token", response.data.token);
-            window.location = "/";
-            toast.success("Login success. Let's donate!", {
-                position: toast.POSITION.TOP_CENTER
-            });
         })
         .catch(err => {
             toast.success(err, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        })
+
+        const token = localStorage.getItem("token");
+        
+        const config = {
+            headers: {
+              'Authorization': 'Bearer ' + token, 
+            },
+        };
+
+        axios.get(
+            "https://talikasih.kuyrek.com:3000/user/authorization",
+            config
+        )
+        .then(response => {
+            localStorage.setItem("id", response.data.user.id);
+            localStorage.setItem("name", response.data.user.name);
+            localStorage.setItem("bank_number", response.data.user.bank_account_number);
+            window.location = "/";
+            toast.success("Login success. Let's donate!", {
                 position: toast.POSITION.TOP_CENTER
             });
         })
