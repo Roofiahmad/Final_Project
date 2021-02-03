@@ -18,13 +18,16 @@ function GoogleLogins() {
         .then(response => {
             console.log("INI RESPONSEEEEEE", response);
             localStorage.setItem("token", response.data.token);
+            window.location = "/";
+            toast.success("Login success. Let's donate!", {
+                position: toast.POSITION.TOP_CENTER
+            });
         })
         .catch(err => {
             toast.success(err, {
                 position: toast.POSITION.TOP_CENTER
             });
         })
-
     }
     let responseGoogleFail = () => {}
     return (
