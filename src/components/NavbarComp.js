@@ -191,7 +191,7 @@ function NavbarComp() {
                     <div className="block px-3 ">
                         <button onClick={() => setToggleLogin(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 hidden lg:block"> Login </button>
                         <Link to="/login">
-                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Login </button>
+                            <button onClick={() => setisMobile(!isMobile)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Login </button>
                         </Link>
                     </div>
                     ) :null}
@@ -202,7 +202,7 @@ function NavbarComp() {
                     <div className="block px-3 ">
                         <button onClick={() => setToggleRegister(true)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 hidden lg:block"> Register </button>
                         <Link to="/register">
-                            <button className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Register </button>
+                            <button onClick={() => setisMobile(!isMobile)} className="text-tosca text-xl font-medium focus:outline-none focus:text-gray-500 lg:hidden"> Register </button>
                         </Link>
                     </div>
                     ) :null}
