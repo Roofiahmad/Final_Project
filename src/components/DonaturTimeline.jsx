@@ -34,7 +34,7 @@ export default function DonaturTimeline(props) {
             <div style={{ display: "inline-block", width: "100px", height:"100px"}}>
               <img
                 style={{width: "100px", height:"100px"}}
-                src={comment.user.profile_image=== "https://talikasih.kuyrek.com:3000/img/null" ? defaultPictureProfile: comment.user.profile_image}
+                src={comment.user.profile_image=== "https://talikasih.kuyrek.com:3000/img/null" || comment.name ==="Anonymous" ? defaultPictureProfile: comment.user.profile_image}
                 alt="donatur"
                 className="rounded-md"
               />
@@ -49,7 +49,7 @@ export default function DonaturTimeline(props) {
               <p className="text-tosca text-lg font-medium mb-5">
                 Rp {numberWithCommas(comment.amount)}
               </p>
-              <p className="">{comment.user.name}</p>
+              <p className="">{comment.name}</p>
               <p className="text-gray-400">{moment(comment.createdAt).startOf('minute').fromNow()}</p>
             </div>
             <p className="mt-2">

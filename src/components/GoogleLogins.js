@@ -23,6 +23,11 @@ function GoogleLogins() {
                 position: toast.POSITION.TOP_CENTER
             });
         })
+        .catch(err => {
+            toast.success(err, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        })
     }
     let responseGoogleFail = () => {}
     return (
