@@ -12,7 +12,7 @@ export default function CommentCampaignDetail(props) {
 
     useEffect(() => {
       getData();
-    }, []);
+    }, [campaignId]);
 
     async function getData() {
       await axios.get(
