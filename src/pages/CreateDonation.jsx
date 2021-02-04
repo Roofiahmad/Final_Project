@@ -182,6 +182,7 @@ export default function CreateDonation() {
               Amount<span className="text-red-700">*</span>
             </label>
             <input
+              min="0"
               className="bg-gray-50 border-b border-tosca w-full"
               type="number" name="amount"
               onChange={(e)=> setAmount(e.target.value)}
