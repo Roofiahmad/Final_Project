@@ -152,7 +152,7 @@ export default function ModalsCampaignUpdate(props) {
                     <form onSubmit={(e) => handleSubmitWithdrawal(e)}>
                       <div className="frombottom-animation ">
                         <label className="block items-center mt-3 mb-3">
-                          Wallet Ballance :<span className="text-red-700"> IDR {numberWithCommas(wallet)}</span>
+                          Wallet Balance :<span className="text-red-700"> IDR {numberWithCommas(wallet)}</span>
                         </label>
                         <label className="block items-center mt-3 mb-3">
                           Amount<span className="text-red-700">*</span>

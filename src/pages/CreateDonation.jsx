@@ -28,6 +28,7 @@ export default function CreateDonation() {
   let [goal, setGoal] = useState("");
   let [status, setStatus] = useState("");
   let [slip, setSlip] = useState(null);
+  let [donatur, setDonatur] = useState(localStorage.getItem("name"));
 
   const handleCredit = () => {
     setCredit(!creditCard);
@@ -45,11 +46,22 @@ export default function CreateDonation() {
     console.log(file);
   };
 
+  let handleAnonymous = () => {
+    if (donatur===localStorage.getItem("name")) {
+      setDonatur("Anonymous");
+    } else {
+      setDonatur(localStorage.getItem("name"));
+    }
+    console.log(donatur);
+  }
+
   //Get One Campaign
   useEffect(() => {
     getData();
     kick();
   }, []);
+
+  
 
   let kick = () => {
     if (localStorage.getItem("campaign_status") !=="open") {
@@ -179,11 +191,11 @@ export default function CreateDonation() {
             </label>
             <input
               className="bg-gray-50 border-b border-tosca w-full"
-              type="text" defaultValue={localStorage.getItem('name')}
+              type="text" value={donatur}
               name="name"
             />
             <label className="block items-center mt-4 mb-4 ">
-              <input
+              <input onChange={(e)=> handleAnonymous()}
                 name="isGoing"
                 type="checkbox"
                 className="w-4 h-4 rounded-md mr-2"
