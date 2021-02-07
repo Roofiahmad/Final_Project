@@ -59,9 +59,9 @@ export default function CampaignTimeline(props) {
 
 
   return (
-    <div className="border border-gray-300 shadow px-4 py-2 my-10">
-      <p className="text-xl font-semibold mx-6 my-4">{withdrawalData.length >0 ? `Updates(${withdrawalData.length})` : "No Updates Yet"}</p>
-      <div className={"pb-3"}>
+    <div className="lg:rounded rounded-md border border-gray-300 shadow lg:px-4 lg:py-2 lg:mt-10 mt-6">
+      <p className="text-2xl font-semibold mx-6 my-4">{withdrawalData.length >0 ? `Updates (${withdrawalData.length})` : "No Updates Yet"}</p>
+      <div className={"lg:pb-3"}>
         <div className="relative w-12/12  m-4 ">
           <div
             className="border-r-4 border-tosca absolute h-full top-0"
@@ -74,14 +74,14 @@ export default function CampaignTimeline(props) {
                 <li className="mb-2 frombottom-animation">
                 <div className="flex items-center mb-1">
                   <div className="bg-tosca rounded-full h-6 w-6"></div>
-                  <div className="flex-1 ml-4 font-medium ">
+                  <div className="flex-1 ml-4 font-medium text-lg">
                   {timeCalc(item.updatedAt) === 0 ? "Today" : timeCalc(item.updatedAt) === 1 ? "Yesterday" : toLongdate(item.updatedAt)}
-                    <span className="normal-case text-sm text-gray-300">
+                    <span className="normal-case text-lg text-gray-300">
                       - Recepient Update
                     </span>
                   </div>
                 </div>
-                <div className="ml-12 mr-12 border border-gray-100 shadow p-4 my-3">
+                <div className="ml-12 lg:mr-12 border border-gray-100 shadow p-4 bg-gray-50 lg:my-3 mt-2 text-lg">
                   <p>
                     {item.message}
                   </p>
@@ -91,16 +91,16 @@ export default function CampaignTimeline(props) {
                 <li className="mb-2 frombottom-animation">
                 <div className="flex items-center mb-1">
                   <div className="bg-tosca rounded-full h-6 w-6"></div>
-                  <div className="flex-1 ml-4 font-medium ">
+                  <div className="flex-1 ml-4 font-medium text-lg">
                   {timeCalc(item.updatedAt) === 0 ? "Today" : timeCalc(item.updatedAt) === 1 ? "Yesterday" : toLongdate(item.updatedAt)}
-                    <span className="normal-case text-sm text-yellow-300 rounded-md border border-yellow-300 p-1 m-2 mx-3">
+                    <span className="normal-case text-lg text-yellow-300 rounded-md border border-yellow-300 p-1 m-2 ">
                       Withdrawal
                     </span>
                   </div>
                 </div>
-                <div className="ml-12 mr-12 border border-gray-100 shadow p-4 bg-gray-100 my-3 ">
-                  <p className="text-lg font-semibold">Rp{numberWithCommas(item.amount)}</p>
-                  <p> Withdrawal purpose: {item.message}</p>
+                <div className="ml-12 lg:mr-12 border border-gray-100 shadow p-4 bg-gray-50 lg:my-3 mt-2 ">
+                  <p className="text-lg font-semibold">Rp {numberWithCommas(item.amount)}</p>
+                  <p className="text-lg"> Withdrawal purpose: {item.message}</p>
                 </div>
               </li>
                 )
@@ -108,7 +108,7 @@ export default function CampaignTimeline(props) {
           </ul>
         </div>
       </div>
-      { withdrawalData.length > 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block lg:max-w-max">
+      { withdrawalData.length > 2 ? <button onClick={() => withdrawalDataSliced.length <=2 ? setWithdrawalDataSliced(withdrawalData) : setWithdrawalDataSliced(withdrawalData.slice(0,2)) } className="btn-outline-tosca uppercase my-4 mx-auto block lg:max-w-max lg:text-base text-sm">
         {withdrawalDataSliced.length <=2 ? 'see older' : 'show newest'}
       </button> : null}
     </div>

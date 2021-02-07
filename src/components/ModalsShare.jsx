@@ -47,35 +47,35 @@ export default function ModalsShare(props) {
                 &#8203;
               </span>
               <div
-                className=" fromtop-animation inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-auto m:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                className=" fromtop-animation inline-block  bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-auto m:my-8 align-middle lg:w-4/12 w-8/12"
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="modal-headline"
               >
-                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left mb-6">
+                <div className="bg-white lg:px-4 lg:pt-5 lg:pb-4 p-6 pb-4 ">
+                  <div className="flex flex-row justify-between ">
                     <h3
-                      className="text-lg leading-6 font-medium text-gray-900 inline-block"
+                      className="lg:text-lg text-base font-medium text-gray-900 inline-block"
                       id="modal-headline"
                     >
                       Help by sharing
                     </h3>
-                    <h3
+                    <div
                       onClick={props.modalShareHandler}
-                      className="text-lg leading-6  font-medium text-gray-900 inline-block absolute right-6 cursor-pointer	"
+                      className="font-medium text-red-700 w-12 h-6  text-center  rounded-full hover:bg-red-500 hover:text-white transition duration-500 cursor-pointer  "
                     >
                       X
-                    </h3>
+                    </div>
                   </div>
                   <div className="mt-2 border-t border-gray-500 p-4">
                 <div className="mt-2 w-full grid grid-rows-2	justify-around">
                   <div className="text-sm">
-                    <input ref={(input) => setLink(input)} className="outline-bLack" type="text" name="" id="" value={`https://talilove.herokuapp.com/campaigndetail/${props.campaignId}`}/>
+                    <input ref={(input) => setLink(input)} className="underline" type="text"  value={`https://talilove.herokuapp.com/campaigndetail/${props.campaignId}`}/>
                   </div>
                   <button
                     onClick={handleShare}
                     type="button"
-                    className="float-right w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="float-right w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 lg:text-base text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
                   >
                     Copy Link
                   </button>

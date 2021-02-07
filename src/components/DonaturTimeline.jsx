@@ -22,21 +22,18 @@ export default function DonaturTimeline(props) {
         })
   }, [props])
 
-  console.log("donatur data sliced",donaturDataSLiced)
-
   return (
-    <div className="border border-gray-300  px-10 py-2 my-10 rounded-sm">
-      <p className="text-xl font-semibold my-4">{donaturData.length >0 ? `Donations(${donaturData.length})` : "No Donations Yet"}</p>
-      <div className={`flex flex-col md:flex-row md:flex-wrap gap-10 justify-items-start ${donaturData.length > 0 ? "pb-10" : ''}`}>
+    <div className="border border-gray-300  lg:px-10 px-6 lg:py-2 lg:mt-10 mt-6 lg:rounded rounded-md">
+      <p className="lg:text-xl text-base font-semibold my-4">{donaturData.length >0 ? `Donations (${donaturData.length})` : "No Donations Yet"}</p>
+      <div className={`flex flex-col md:flex-row md:flex-wrap lg:gap-8 gap-4 justify-between ${donaturData.length > 0 ? "lg:pb-10 pb-5" : ''}`}>
         {donaturDataSLiced.map ((comment, index) => {
           return (
             <div key={index} className="border border-gray-100 shadow py-5 px-3 rounded-md frombottom-animation lg:w-5/12 w-full ">
-            <div style={{ display: "inline-block", width: "100px", height:"100px"}}>
+            <div  style={{ display: "inline-block"}}>
               <img
-                style={{width: "100px", height:"100px"}}
                 src={comment.user.profile_image=== "https://talikasih.kuyrek.com:3000/img/null" || comment.name ==="Anonymous" ? defaultPictureProfile: comment.user.profile_image}
                 alt="donatur"
-                className="rounded-md"
+                className="rounded-md lg:w-24 lg:h-24 w-14 h-14"
               />
             </div>
             <div
@@ -46,20 +43,20 @@ export default function DonaturTimeline(props) {
                 position: "relative",
               }}
             >
-              <p className="text-tosca text-lg font-medium mb-5">
+              <p className="text-tosca lg:text-lg text-sm font-medium lg:mb-5 ">
                 Rp {numberWithCommas(comment.amount)}
               </p>
-              <p className="">{comment.name}</p>
-              <p className="text-gray-400">{moment(comment.createdAt).startOf('minute').fromNow()}</p>
+              <p className="lg:text-lg text-sm">{comment.name.split(' ').slice(0,2).join(' ')}</p>
+              <p className="text-gray-400 lg:text-lg text-sm">{moment(comment.createdAt).startOf('minute').fromNow()}</p>
             </div>
-            <p className="mt-2">
+            <p className="mt-2 lg:text-lg text-sm">
               {comment.message}
             </p>
           </div>
           )
         })}
       </div>
-{    donaturData.length > 2 ? <button onClick={() => donaturDataSLiced.length <=2 ? setDonaturDataSliced(donaturData) : setDonaturDataSliced(donaturData.slice(0,2)) } className="btn-outline-tosca uppercase mb-4 mx-auto block lg:w-1/6 sm:w-3/6">
+{    donaturData.length > 2 ? <button onClick={() => donaturDataSLiced.length <=2 ? setDonaturDataSliced(donaturData) : setDonaturDataSliced(donaturData.slice(0,2)) } className="btn-outline-tosca uppercase mb-4 mx-auto block lg:w-1/6 sm:w-3/6 lg:text-base text-sm">
         {donaturDataSLiced.length <=2 ? 'see all' : 'show less'}
       </button> : null}
     </div>

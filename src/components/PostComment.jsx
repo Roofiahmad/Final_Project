@@ -40,21 +40,20 @@ export default function PostComment() {
   };
   return (
     <div>
-      <form onSubmit={(e) => handlePostComment(e)}>
-        <div className="grid grid-cols-1">
+      <form onSubmit={(e) => handlePostComment(e)} className="grid grid-cols-1">
+        <div className=" ">
           <textarea
             name="comment"
-            className="h-40 bg-gray-50 mb-4 focus:outline-none p-4"
+            className="h-40 w-full bg-gray-50 mb-4 focus:outline-none p-4 lg:text-base text-sm"
             id="story"
             type="text"
             placeholder="Give them support..."
           />
         </div>
-        <button type="submit" className="btn-red float-right uppercase">
+        <button type="submit" className="mb-4 btn-red uppercase lg:text-base text-sm w-28 justify-self-end">
           Post
         </button>
       </form>
-      <div className="h-12"></div>
     </div>
   );
 }

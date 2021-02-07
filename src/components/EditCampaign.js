@@ -131,26 +131,26 @@ export default class EditCampaign extends Component {
     console.log(this.state.image)
     return (
       <div className="w-10/12 mx-auto relative fromtop-animation  ">
-        <div className="pb-4">
-          <h2 className="text-3xl font-medium my-4">Edit Campaign</h2>
+        <div className="lg:pb-4">
+          <h2 className="lg:text-3xl text-xl font-medium lg:my-4 mt-2">Edit Campaign</h2>
         </div>
         <hr className="border-b-3 border-gray-400 pb-3" />
         <hr />
-        <form onSubmit={(e) => this.handleImageUpdate(e)}>
+        <form className="flex flex-col" onSubmit={(e) => this.handleImageUpdate(e)}>
         <UploadFile handleFile={this.handleFile} {...this.state} />
-          <button type="submit" className="btn-red float-right">
+          <button type="submit" className="btn-red w-44 self-center lg:text-base text-sm">
             Update Photo
           </button>
         </form>
         <form onSubmit={(e) => this.handleFormSubmit(e)}>
-          <div className="grid  gap-4 my-8 sm:grid-cols-1 md:grid-cols-2">
+          <div className="grid  lg:gap-4  lg:my-8 my-4 sm:grid-cols-1 md:grid-cols-2">
             {this.state.inputForm.map((item, index) => (
               <div key={index}>
-                <label>
+                <label className="lg:text-base text-sm">
                   {item.name} <span className="text-red-700">*</span>
                 </label>
                 <input
-                  className="w-full bg-gray-50"
+                  className="w-full bg-gray-50 lg:text-base text-sm"
                   name={item.id}
                   type={item.type}
                   placeholder={item.placeholder}
@@ -159,7 +159,7 @@ export default class EditCampaign extends Component {
                 <hr className="border-b-3 border-gray-400 pb-3" />
               </div>
             ))}
-            <select className="bg-gray-50" name="Category" id="category">
+            <select className="bg-gray-50 lg:text-base text-sm" name="Category" id="category">
               <option value={localStorage.getItem("campaign_category")} selected>{localStorage.getItem("campaign_category")}</option>
               <option value="Disability">Disability</option>
               <option value="Disaster">Disaster</option>
@@ -171,11 +171,11 @@ export default class EditCampaign extends Component {
               <option value="Sociopreneur">Sociopreneur</option>
             </select>
           </div>
-          <div className="grid grid-cols-1">
+          <div className="grid grid-cols-1 lg:text-base text-sm">
             <label>Story</label>
             <textarea
               name="story"
-              className="h-40 bg-gray-50 focus:outline-none p-4"
+              className="h-40 bg-gray-50 focus:outline-none p-4 lg:text-base text-sm"
               id="story"
               type="text"
               placeholder="Input Story Here"
@@ -183,11 +183,11 @@ export default class EditCampaign extends Component {
             />
             <hr className="border-b-3 border-gray-400 pb-3" />
           </div>
-          <button type="submit" className="btn-red float-right">
+          <button type="submit" className="btn-red float-right lg:text-base text-sm">
             Submit
           </button>
         </form>
-        <div className="h-40"></div>
+        <div className="lg:h-28 h-8"></div>
       </div>
     );
   }

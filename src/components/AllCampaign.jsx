@@ -49,7 +49,7 @@ const AllCampaign = (props) => {
             </td>
             <td className="flex items-start gap-2">
               <div className="flex gap-2 items-center">
-                <img src={campaign.status==="open" ? open : campaign.status=="pending" ? pending : campaign.status=="finish" ? finish : campaign.status=="rejected" ? reject : null} alt=""/>
+                <img src={campaign.status==="open" ? open : campaign.status=="pending" ? pending : campaign.status=="close" ? finish : campaign.status=="rejected" ? reject : null} alt=""/>
                 <p className="font-bold uppercase">{campaign.status}</p>
               </div>
             </td>
@@ -72,7 +72,7 @@ const AllCampaign = (props) => {
                         <ul className="hover:">
                             <li onClick={(e)=> props.updateType("open", campaign.id)} className="campaign-text-setting text-md" >Approve Campaign</li>
                             <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Reject Campaign</li>
-                            <li onClick={(e)=> props.updateType("rejected", campaign.id)} className="campaign-text-setting text-md">Close</li>
+                            <li onClick={(e)=> props.updateType("close", campaign.id)} className="campaign-text-setting text-md">Close</li>
                         </ul>
                         </div>
                     ) : null}

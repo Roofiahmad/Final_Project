@@ -28,37 +28,33 @@ export default function CommentCampaignDetail(props) {
 
     
   return (
-    <div className="border border-gray-300 shadow px-10 lg:py-4 lg:my-10">
-      <p className="text-xl font-semibold mt-4 mb-8 ">{arrayComments.length >0 ? `Comments(${arrayComments.length})` : "No Comments Yet"}</p>
+<div className="border border-gray-300  lg:px-10 px-6 lg:py-2 lg:mt-10 mt-6 lg:rounded rounded-md">
+      <p className="lg:text-xl text-base font-semibold mt-4 lg:mb-8 mb-4 ">{arrayComments.length >0 ? `Comments (${arrayComments.length})` : "No Comments Yet"}</p>
       {props.role === "donatur" ? <PostComment /> : null}
       {slicedArrayComments.length > 0 ? slicedArrayComments.map((comments, index) => {
         return (
-      <div key={index} className="border-t-2 border-gray-300  px-5 py-8 frombottom-animation ">
-        <div style={{ display: "inline-block", width: "100px" }}>
+      <div key={index} className=" border-t-2 border-gray-300 lg:py-8 py-4 frombottom-animation ">
+        <div className="flex flex-row gap-3">
+        <div className="lg:w-24 lg:h-24 w-14 h-14 ">
           <img
             src={comments.user.profile_image === "https://talikasih.kuyrek.com:3000/img/null" ? defaultPictureProfile :comments.user.profile_image}
             alt="donatur"
             className="rounded-md"
-            style={{width: "100px", height:"100px"}}
           />
         </div>
-        <div className={" mx-2 w-6/12"}
-          style={{
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
-          <p className="">{comments.user.name}</p>
-          <p className="text-gray-400">{moment(comments.created_at).startOf('minute').fromNow()}</p>
+        <div className={"w-6/12"}>
+          <p className="lg:text-lg text-sm">{comments.user.name}</p>
+          <p className="text-gray-400 lg:text-lg text-sm">{moment(comments.created_at).startOf('minute').fromNow()}</p>
         </div>
-        <p className="mt-4">
+        </div>
+        <p className="mt-2 lg:text-lg text-sm">
           {comments.comment}
         </p>
       </div>
         );
       })
        :null}
-{ arrayComments.length > 2 ?<button onClick={() => slicedArrayComments.length <=2 ? setSlicedArrayComments(arrayComments) : setSlicedArrayComments(arrayComments.slice(0,2)) } className="btn-outline-tosca uppercase mb-6 mt-10 mx-auto block lg:w-1/6 sm:w-3/6">
+{ arrayComments.length > 2 ?<button onClick={() => slicedArrayComments.length <=2 ? setSlicedArrayComments(arrayComments) : setSlicedArrayComments(arrayComments.slice(0,2)) } className="btn-outline-tosca uppercase mb-6 lg:mt-10 mx-auto block lg:w-1/6 lg:text-base text-sm">
 {slicedArrayComments.length <=2 ? 'load more' : 'show less'}
       </button> :null}
     </div> 

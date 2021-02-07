@@ -101,10 +101,12 @@ export default function CreateDonation() {
   const handleDonate = async (e) => {
     e.preventDefault();
     let sendDonate;
-
     if (bank) {
     sendDonate = new FormData();
     sendDonate.append("amount", e.target.amount.value);
+    e.target.message.value=== '' ? 
+    sendDonate.append("message", ' ')
+    :
     sendDonate.append("message", e.target.message.value);
     sendDonate.append("name", e.target.name.value);
     sendDonate.append("campaign", campaignId);
@@ -118,6 +120,7 @@ export default function CreateDonation() {
         message: e.target.message.value,
         name: e.target.name.value,
       }
+      e.target.message.value === '' ? sendDonate.message = ' ' : sendDonate.message = e.target.message.value;
     }
 
     const config = {
@@ -140,7 +143,6 @@ export default function CreateDonation() {
           }, 1500);
       })
       .catch((err) => {
-          console.log("INI PESAN ERROR", err.response);
           toast.error("Sorry, there is something wrong", {
             position: toast.POSITION.TOP_CENTER
         })
@@ -155,7 +157,6 @@ export default function CreateDonation() {
           window.location = response.data.data.redirect_url;
       })
       .catch((err) => {
-          console.log("INI PESAN ERROR", err.response);
           toast.error("Sorry, there is something wrong", {
             position: toast.POSITION.TOP_CENTER
         })
@@ -172,43 +173,43 @@ export default function CreateDonation() {
         <SpinnerPage />
       ) : (
       <form onSubmit={(e) => handleDonate(e)}>
-      <div className="mt-8 w-10/12 mx-auto ">
-        <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
+      <div className="lg:mt-8 mt-4 w-10/12 mx-auto ">
+        <h3 className="lg:text-3xl text-xl lg:pb-6 lg:mb-6 mb-4  border-b border-gray-500  leading-6 font-medium text-gray-900 ">
           Donation
         </h3>
         <div className=" flex flex-row">
           <div className="w-7/12 flex-grow ">
-            <label className="block items-center mb-3">
+            <label className="block items-center lg:mb-3 mb-1 lg:text-base text-sm">
               Amount<span className="text-red-700">*</span>
             </label>
             <input
               min="0"
-              className="bg-gray-50 border-b border-tosca w-full"
+              className="bg-gray-50 border-b border-tosca w-full lg:text-base text-sm"
               type="number" name="amount"
               onChange={(e)=> setAmount(e.target.value)}
             />
-            <label className="block items-center mt-4 mb-4">
-              Name<span className="text-red-700">*</span>
+            <label className="lg:text-base text-sm block items-center lg:mt-4 mt-2 lg:mb-4 mb-1">
+              Name<span className=" text-red-700">*</span>
             </label>
             <input
-              className="bg-gray-50 border-b border-tosca w-full"
+              className="bg-gray-50 border-b border-tosca w-full lg:text-base text-sm" 
               type="text" value={donatur}
               name="name"
             />
-            <label className="block items-center mt-4 mb-4 ">
+            <label className="lg:text-base text-sm block items-center lg:mt-4 mt-2 lg:mb-4 ">
               <input onChange={(e)=> handleAnonymous()}
                 name="isGoing"
                 type="checkbox"
-                className="w-4 h-4 rounded-md mr-2"
+                className="lg:text-base text-sm lg:w-4 lg:h-4 rounded-md mr-2"
               />
               Set as anonymous
             </label>
-            <label className="block items-center my-4">
+            <label className="block items-center lg:my-4 mt-2 mb-1 lg:text-base text-sm">
               Message <span className="text-gray-400">(Optional)</span>
             </label>
             <textarea
               name="message"
-              className="h-64 outline-none p-2 border-b border-tosca bg-gray-50 w-full"
+              className="lg:text-base text-sm h-64 outline-none p-2 border-b border-tosca bg-gray-50 w-full"
               id="story"
               type="text"
               placeholder="Tell Your Story..."
@@ -245,12 +246,12 @@ export default function CreateDonation() {
           </div>
         </div>
       </div>
-      <div className="mt-16 w-10/12 mx-auto ">
-        <h3 className="text-3xl pb-6 mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
+      <div className="lg:mt-16 mt-6 w-10/12 mx-auto ">
+        <h3 className="lg:text-3xl text-xl pb-6 lg:mb-6 border-b border-gray-500  leading-6 font-medium text-gray-900 ">
           Payment
         </h3>
         <label>
-          Select Payment <span className="text-red-700">*</span>
+          Select Payment <span className="text-red-700 lg:text-base text-sm">*</span>
         </label>
         <div className=" my-4 flex flex-row">
           <div
@@ -260,7 +261,7 @@ export default function CreateDonation() {
             }`}
           >
             <i className="far fa-credit-card text-5xl"></i>
-            <p>Midtrans</p>
+            <p className="lg:text-base text-sm" >Midtrans</p>
           </div>
           <div
             onClick={handleBank}
@@ -269,36 +270,36 @@ export default function CreateDonation() {
             }`}
           >
             <i className="fas fa-university text-5xl"></i>
-            <p>Bank Transfer</p>
+            <p className="lg:text-base text-sm">Bank Transfer</p>
           </div>
         </div>
         {creditCard ? (
           <div className="flex md:flex-row flex-col lg:gap-10 mb-10 frombottom-animation ">
-            <h1 className="text-tosca font-bold text-xl">Donate easier, pay from everywhere.</h1>
+            <h1 className="text-tosca font-bold lg:text-xl text-base">Donate easier, pay from everywhere.</h1>
           </div>
         ) : null}
         {bank ? (
           <div className="bg-gray-100 p-6 lg:w-1/3 rounded frombottom-animation ">
-            <p className="text-xl font-medium text-tosca">Transfer to</p>
-            <div className="my-2">
+            <p className="lg:text-xl text-base font-medium text-tosca">Transfer to</p>
+            <div className="my-2 lg:text-base text-sm">
               <p>Account Number</p>
               <p className="font-bold">1234 5678 90</p>
             </div>
-            <div className="mb-2">
+            <div className="mb-2 lg:text-base text-sm">
               <p>Account Holder Name</p>
               <p className="font-bold">TaliKasih</p>
             </div>
-            <div className="mb-2">
+            <div className="mb-2 lg:text-base text-sm">
               <p>Total Amount</p>
               <p className="font-bold">Rp {numberWithCommas(amount)}</p>
             </div>
-            <div>
+            <div className="lg:text-base text-sm">
               <p>Payment Slip</p>
               <input onChange={(e) => handleSlip(e)} type="file"/>
             </div>
           </div>
         ) : null}
-        <button type="submit" className={` uppercase  float-right mb-16 ${ creditCard || bank ? "btn-red" : "bg-gray-200 px-8 py-2 mt-2 focus:outline-none"}`}>
+        <button type="submit" className={`lg:text-base text-sm uppercase float-right mb-16 ${ creditCard || bank ? "btn-red" : " bg-gray-200 px-8 py-2 mt-2 focus:outline-none"}`}>
           donate
         </button>
       </div>
